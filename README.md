@@ -1,3 +1,3 @@
 # h5AutoTool
-quickly generate an h5 web page
+快速生成一个h5端的活动展示页，当前只是一个雏形，完善中
 ![Alt text](./images/图片.png)
