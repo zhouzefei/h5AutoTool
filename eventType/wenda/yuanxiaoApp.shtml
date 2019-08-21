@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>汽车超人问答活动</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<script src="http://sale.qccr.com/commonComponents/js/common/zepto.min.js"></script>
+	<script src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+</head>
+<body>
+	<div style="width:0px;height:0px;overflow: hidden;">
+		<img src="http://static.qichechaoren.com/upload/yuanxiaoshare.jpg" />
+	</div>
+	<div class="loadingbg">
+		<div id="loading">
+			<div class="spinner">
+				<div class="spinner-container container1">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container2">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container3">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<span class="showtxt"></span>
+			</div>
+		</div>
+	</div>
+	<div id="con">
+		<div class="pages p1">
+			<span class="chaorenwarp">
+				<img src="images/cdm.png"/>
+				<img src="images/zhuti.png"/>
+			</span>
+			<span class="start_btn">
+				<img src="images/ksdt.png" style="opacity: 0;" />
+			</span>
+			<span class="rule">
+				<img src="images/ckgz.png" alt="">
+			</span>
+		</div>
+		<div class="pages p2">
+				<div class="q1 quswarp">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/dioneti.png"  />
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/oneA.png">
+							</p>
+							<p class="sloution">
+								<img src="images/oneB.png">
+							</p>
+							<p class="sloution">
+								<img src="images/oneC.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q2 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/dierti.png"/>
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution">
+								<img src="images/twoA.png">
+							</p>
+							<p class="sloution" data-ok="true">
+								<img src="images/twoB.png">
+							</p>
+							<p class="sloution">
+								<img src="images/twoC.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q3 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/sanzt_03.png" />
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/san_03.png">
+							</p>
+							<p class="sloution">
+								<img src="images/san_06.png">
+							</p>
+							<p class="sloution">
+								<img src="images/san_08.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q4 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/si_03.png"/>
+						</div>
+					</div>
+
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution">
+								<img src="images/si_07.png">
+							</p>
+							<p class="sloution">
+								<img src="images/si_10.png">
+							</p>
+							<p class="sloution" data-ok="true">
+								<img src="images/si_12.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+
+				<div class="q5 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+						<img src="images/wu_03.png"/>
+					</div>
+					</div>
+
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/wu_07.png">
+							</p>
+							<p class="sloution">
+								<img src="images/wu_10.png">
+							</p>
+							<p class="sloution">
+								<img src="images/wu_12.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="surequs" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+			</div>
+		<div class="pages p3">
+			<div class="p3_2">
+				<div class='phoneIn'>
+					<input type="tel" id="phone" maxlength="11" placeholder="输入手机号码领奖吧"/>
+					<img src="images/daduile_03.png"/>
+				</div>
+			</div>
+			<div class="p3_3">
+				<img id="infoSubmit" src="images/daduile_07.png" />
+			</div>
+			<div class="p3_4 ">
+				<img src="images/daduile_11.png" />
+			</div>
+		</div>
+		<div class="pages p4">
+			<div class="p3_1">
+				<img class="overtitle" src="images/dacuole_03.png" />
+			</div>
+			<div class="p4_2">
+				<img class="reque requAgain" src="images/dacuole_07.png" />
+				<!-- <img class="share_btn" src="images/dacuole_10.png" /> -->
+			</div>
+			<div class="p3_4">
+				<img src="images/daduile_11.png" />
+			</div>
+		</div>
+		<div class="pages p5">
+			<div class="p3_1">
+				<img class="overtitle" src="images/tjcg_03.png" />
+			</div>
+			<div class="p4_2">
+				<img class="reque requ1" src="images/btnicon_04.png" />
+				<img class="share_btn" src="images/btnicon_08.png" />
+			</div>
+			<div class="p3_4">
+				<img src="images/daduile_11.png" />
+			</div>
+		</div>
+		<div class="pages p6">
+			<div class="p3_1">
+				<img class="overtitle" src="images/yjdaguo_03.png" />
+			</div>
+			<div class="p4_2">
+				<img class="reque requ1" src="images/btnicon_04.png" />
+				<img class="share_btn" src="images/btnicon_08.png" />
+			</div>
+			<div class="p3_4">
+				<img src="images/daduile_11.png" />
+			</div>
+		</div>
+	</div>
+	<div class="share_img" style="display:none;">
+		<img src="images/ios_share.png" width="80%" style="padding-top: 15%;">
+	</div>
+	 <script type="text/html" id="msgtip">
+        <div class="confirmmsg">
+            <div class="ftitle">活动规则</div>
+            <div class="fcontent">
+            	<span>答对所有题目可以获得66元养车红包</span>
+				<span>红包有效期：自领取之日起30天内有效</span>
+				<span>每个手机账户只能参加一次活动</span>
+				<span>下载进入汽车超人APP，进入超人钱包即可查看红包</span>
+				<span>特维轮网络科技（杭州）有限公司在法律规定的范围内对此活动有解释权。</span>
+            </div>
+        </div>
+    </script>
+	<script src="js/coupon.js?v=1"></script>
+	<script src="js/dialogchange.js?v=1"></script>
+	<script type="text/javascript">
+	var ajaxurlredbag="http://market.yfbqccr.com";
+	var url=location.href;
+	var redbagId=1707078;
+	if(/\.qccr\.com/.test(url))
+	{
+		redbagId=2350179;
+		ajaxurl="http://market.qccr.com";
+		ajaxurlredbag="http://market.qccr.com";
+	}
+	var userId=getQueryString('userId');//108003136;//
+	// userId=108003136;
+	//页面操作
+	var shareFriend=function(){
+		var sharedata=["http://static.qichechaoren.com/upload/yuanxiaoshare.jpg?v="+new Date().getTime(),"猜字谜闹元宵，赢66元养车红包，你也赶紧来吧！","http://sale.qccr.com/ssycx/wenda/yuanxiaoWX.shtml"];
+		toApp.sharered(sharedata[0]+"?"+(new Date()).getTime(),sharedata[1],sharedata[2]);
+    }
+	var url=location.href;
+	var h=document.documentElement.clientHeight,
+		w=document.documentElement.clientWidth,
+		qusStep=0,
+		okCount=0; 	
+	var reslutA=[3,2,1,1,0];
+	$(".pages,body").css({"height":h, "width":w});	
+	$(".requ1").bind("touchend",function(){
+		//location.reload();
+		toApp.wallet();
+	});
+	$(".requAgain").bind("touchend",function(){
+		location.reload();
+	});
+	//规则查看
+	$(".rule").bind("touchend",function(){
+		iDialog.show($("#msgtip").html(), { width:'8.963rem', height: '10rem' });
+	});
+	$("input").bind("blur",function(){
+		window.scrollTo(0,0);
+	});				  
+	var cou=new coupon({
+		'bagListUrl':ajaxurlredbag+'/redbag/getRedbagList4app',
+		'userId':userId,
+		'RedBagUrl':ajaxurlredbag+'/redbag/rush4PhoneApp'
+	});
+	//加载券领取状态
+	cou.getRedbagList(redbagId);
+	//分享给好友
+	$("body").on("touchend",".share_btn",function(e){
+		e.stopPropagation();
+		shareFriend();
+	});
+	//超人钱包
+    $(".wallet").on("touchend", function (e) {
+    	e.stopPropagation();
+    	toApp.wallet();
+    });
+    $("#con").bind("touchmove", function(e) {
+		e.preventDefault();
+	});
+	$("body").on('touchmove',"#idialog", function(e) {
+		e.preventDefault();
+	});
+	</script>
+	<script type="text/javascript" src="js/traffics.js"></script>
+</body>
+</html>

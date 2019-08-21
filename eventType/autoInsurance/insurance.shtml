@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>保单详情</title>
+  <meta charset="UTF-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      
+    </div>
+  </div>
+</body>
+</html>
+<script>    
+
+  var insurance = {
+    optionss:{
+        car_code: {head:"车牌号：",foot:""},
+        comanyName: {head:"承保公司：",foot:""},
+        city_name: {head:"投保城市：",foot:""},
+        tci_order_no: {head:"交强险保单号：",foot:""},
+        vci_order_no: {head:"商业险保单号：",foot:""},
+        tic_start_endTime: {head:"交强险生效时间：",foot:" 0点"},
+        vic_start_endTime: {head:"商业险生效时间：",foot:" 0点"},
+        total_gross_premium: {head:"保单金额：<span class=\"addColor\">￥",foot:"元<\/span>"},
+        tci_amount: {head:"交强险：<span class=\"addColor\">￥",foot:"元<\/span>"},
+        vst_amount: {head:"车船税：<span class=\"addColor\">￥",foot:"元<\/span>"},
+        cdi_amount: {head:"车损险：<span class=\"addColor\">￥",foot:"元<\/span>"},
+        tpi_amount: {head:"三者险（50万，不计免赔）：<span class=\"addColor\">",foot:"元<\/span>"},
+        carer_truename: {head:"姓名：",foot:""},
+        carer_phone: {head:"手机号：",foot:""},
+        carer_code: {head:"身份证：",foot:""},
+        insured_name: {head:"姓名：",foot:""},
+        insured_phone: {head:"手机号：",foot:""},
+        insured_code: {head:"身份证：",foot:""}
+    },
+    setcarinfo:function(obj,code,isNum){
+        var str="";
+        if(obj.info[code]!=undefined&&obj.info[code]!=""){
+            str += "   <p>";
+            str +=      insurance.optionss[code].head;
+            if(isNum == 1){
+                str +=  parseFloat(obj.info[code]).toFixed(2);
+            }else if(isNum == 2){
+                str += obj.info[code].replace(obj.info[code].substr(3,4),"****");
+            }else if(isNum == 3){
+                str += obj.info[code].replace(obj.info[code].substr(1,16),"****************");
+            }else if(isNum == 4){
+                str += obj.info.companyLogo?"<img class=\"logo\" src=\""+ obj.info.companyLogo +"\">":"" + obj.info[code];
+            }else{
+                if(code == "car_code" && obj.info[code] == ""){
+                    str += "新车未上牌";
+                }else{
+                    str += obj.info[code];
+                }
+            }
+            str += insurance.optionss[code].foot;
+            str += "   <\/p>";
+        }
+        return str;
+    },
+    init: function(){
+        var orderId = getQueryString("orderId");
+        signCreate("Order",'{"insurance_id": "1","service_id":"OrderInfo","order_id": '+ orderId +'}',insurance.getOrderInfo);
+    },
+    getOrderInfo: function(data){
+        var strVar = "";
+        strVar += "<table class=\"orderInfo\" cellspacing=\"0\">";
+        strVar += "<tr>";
+        strVar += " <td class=\"td_title\">";
+        strVar += "   投保信息";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr>";
+        strVar += " <td class=\"insurance\">";
+        
+        strVar += insurance.setcarinfo(data,"car_code");
+        strVar += insurance.setcarinfo(data,"comanyName",4);
+        strVar += insurance.setcarinfo(data,"city_name");
+        strVar += insurance.setcarinfo(data,"tci_order_no");
+        strVar += insurance.setcarinfo(data,"vci_order_no");
+        strVar += insurance.setcarinfo(data,"tic_start_endTime");
+        strVar += insurance.setcarinfo(data,"vic_start_endTime");
+
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr>";
+        strVar += " <td class=\"td_title\">";
+        strVar += "   <p>";
+        strVar += "     承保险种";
+        strVar += "   <\/p>";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr>";
+        strVar += " <td class=\"insurance\">";
+
+        strVar += insurance.setcarinfo(data,"total_gross_premium",1);
+        if(data.info.insuranceInfo){
+            for(var j=0;j<data.info.insuranceInfo.length;j++){
+                strVar += "<p>"+ data.info.insuranceInfo[j].name+"：<span class=\"addColor\">￥"+ parseFloat(data.info.insuranceInfo[j].value).toFixed(2) +"元<\/span>   <\/p>";
+            }
+        }
+
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr>";
+        strVar += " <td class=\"td_title\">";
+        strVar += "   <p>";
+        strVar += "     车主信息";
+        strVar += "   <\/p>";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr>";
+        strVar += " <td class=\"insurance\">";
+
+        strVar += insurance.setcarinfo(data,"carer_truename");
+        strVar += insurance.setcarinfo(data,"carer_phone",2);
+        strVar += insurance.setcarinfo(data,"carer_code",3);
+
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        if(data.info.insured_name != data.info.carer_truename){
+            strVar += "<tr>";
+            strVar += " <td class=\"td_title\">";
+            strVar += "   <p>";
+            strVar += "     被保人信息";
+            strVar += "   <\/p>";
+            strVar += " <\/td>";
+            strVar += "<\/tr>";
+            strVar += "<tr>";
+            strVar += " <td class=\"insurance\">";
+
+            strVar += insurance.setcarinfo(data,"insured_name");
+            strVar += insurance.setcarinfo(data,"insured_phone",2);
+            strVar += insurance.setcarinfo(data,"insured_code",3);
+
+            strVar += " <\/td>";
+            strVar += "<\/tr>";
+        }
+        strVar += "<\/table>";
+        $(".content").html(strVar);
+    }
+  }
+  insurance.init();
+</script>

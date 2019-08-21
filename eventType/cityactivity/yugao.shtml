@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+<meta name="screen-orientation" content="portrait">
+<meta charset="utf-8">
+<style>
+	*{padding: 0; margin: 0;}
+	#main{background: url(audioyg.jpg?v1) center top;background-size:auto 100% ;}
+</style>
+<title>电台活动预告页</title>
+</head>
+<body>
+<div id="main">
+</div>
+<script src="zepto.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="http://market.qccr.com/resources/coupon/js/weixinshare.js?v5"></script>
+	<script>
+	main.style.height=document.documentElement.clientHeight+"px";
+	var shareurl="${base}/wechat/cityactivity";
+		shareWeixin([{title:" 天啦撸，动动手指就能获得免费洗车卡！",content:"汽车超人联合《早安新发现》送洗车卡啦！",url:shareurl,imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg?"+Math.random().toFixed(10),success:function(){},cancel:function(){}},{title:"天啦撸，动动手指就能获得免费洗车卡!",content:"汽车超人联合《早安新发现》送洗车卡啦！",url:shareurl,imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg?"+Math.random().toFixed(10),success:function(){},cancel:function(){}}]);
+	</script>
+</body>
+</html>

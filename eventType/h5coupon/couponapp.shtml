@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>汽车超人-领取优惠券</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+<body>
+    <div class="ibanner"><img src="images/1212.png" /></div>
+
+	<div class="icontainer">
+		<div class="irow iflex">
+			<div class="item_im">
+				<img src="images/chepin.png" />
+				<div class="item_get">
+					<div style="font-size:12px" class="item_btn" data-title="车品券" data-rid="1210545">立即领取</div>
+				</div>
+				
+			</div>
+			<div class="item_im">
+				<img src="images/meirong.png" />
+				<div class="item_get">
+					<div style="font-size:12px" class="item_btn" data-title="美容券" data-rid="1210489">立即领取</div>
+				</div>
+			</div>		
+		</div>
+		<div class="irow iflex">
+			<div class="item_im">
+				<img src="images/baoyang.png" />
+				<div class="item_get">
+					<div style="font-size:12px" class="item_btn" data-title="保养券" data-rid="1210614">立即领取</div>
+				</div>				
+			</div>
+			<div class="item_im">
+				<img src="images/luntai.png" />
+				<div class="item_get">
+					<div  style="font-size:12px" class="item_btn" data-title="轮胎券" data-rid="1210516">立即领取</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="icontainer">
+        <div class="irow iflex">
+        	<div class="item_im">
+            	<div class="sharefriend_app">分享给好友</div>
+			</div>
+			<div class="item_im">
+            	<div class="wallet">我的超人钱包</div>
+			</div>
+        </div>
+    </div>
+ 
+ 	<script type="text/html" id="msgtip">
+        <div class="confirmmsg">
+            <div class="ftitle"></div>
+            <div class="fcontent"></div>
+            <div class="ffoot"></div>
+        </div>
+    </script>
+    
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/weixinshare.js?v1"></script>
+    <script src="js/index.js"></script>
+    <script>
+    	var ajaxurlredbag = "http://market.qccr.com";
+    	var userId=getQueryString('userId');//108003136;//
+        $(document).ready(function () {
+        	getRedbagList();
+        	
+        	$(".item_btn").on("click", function () {  
+				receiveRedBag($(this));
+            });
+        	
+        	//分享给好友
+			$(".sharefriend_app").on("click", function () {
+				shareFriend();
+            });		
+        	//超人钱包
+            $(".wallet").on("click", function () {
+            	toApp.wallet();
+            });
+        })
+
+        var getRedbagList = function () {
+        	var ids="";
+        	$(".item_btn").each(function(){
+        		ids+=ids==""?$(this).attr("data-rid"):","+$(this).attr("data-rid");
+        	});
+		    getJsonDataP("get",ajaxurlredbag + '/redbag/getRedbagList4app', { format: 'json',userId:userId, ids: ids }, function (data) {	        
+		        if (data.code == 0) {
+		        	if(data.resultList){
+		        		for(i=0;i<data.resultList.length;i++){
+		        			var itembtn=$(".item_btn[data-rid='"+data.resultList[i].redbagDO.id+"']");
+		        			var img=itembtn.parent().parent().find("img");
+		        			if(data.resultList[i].hasGet==0){
+					            itembtn.text('立即领取');
+								
+								
+		        			}
+		        			if(data.resultList[i].hasGet==1){
+		        				itembtn.text('已领取').unbind("click");
+		        				//itembtn.closest(".item_im").removeClass("gray").addClass("gray");
+								if(!(/hui/.test(img.attr("src",img.attr("src")))))
+		        				img.attr("src",img.attr("src").replace(/.png/,'hui.png'));
+		        				itembtn.removeClass("item_btn").removeClass("item_btn_gray").addClass("item_btn_gray");
+		        			}
+		        			if(data.resultList[i].redbagDO.remainNum<=0){
+		        				itembtn.text('已领光').unbind("click");
+		        				//itembtn.closest(".item_im").removeClass("gray").addClass("gray");
+								if(!(/hui/.test(img.attr("src",img.attr("src")))))
+		        				img.attr("src",img.attr("src").replace(/.png/,'hui.png'));
+		        				itembtn.removeClass("item_btn").removeClass("item_btn_gray").addClass("item_btn_gray");
+		        			}
+		        		}
+		        	}
+		        } else {
+		            showDialog("",data.msg,"我知道了");
+		        }
+		    },
+		    function () {
+		        showDialog("","优惠券加载失败","我知道了");
+		    });
+		}     
+        var receiveRedBag = function (obj) {
+		    var rid = $(obj).attr("data-rid");
+		    getJsonDataP("get",ajaxurlredbag + '/redbag/rush4PhoneApp', { format: 'json',userId:userId, redbagId: rid }, function (data) {
+		        if (data.code == 0) {
+		            showDialog("领取成功","优惠券已发放到你的账户中","分享给好友",function () {
+		        		iDialog.close();
+		        		shareFriend();
+		        	}); 
+		        	getRedbagList();
+		        } else if (data.code == -200) {
+		        	//请登录
+		        	toApp.login();
+		        } else if (data.code == 602) {
+		        	showDialog("","您来晚了，已领光","我知道了");
+		        } else if (data.code == 603) {
+		        	showDialog("","红包已过期","我知道了");
+		        } else if (data.code == 653) {
+		        	showDialog("","手机号注册失败","我知道了");
+		        } else if (data.code == 607) {
+		        	showDialog("已领过","这张券你已经领过啦，再领我们发不起了~","我知道了");
+		        } else {
+		            showDialog("",data.msg,"我知道了");
+		        }
+		    },
+		    function () {
+		        showDialog("","优惠券领取失败","我知道了");
+		    });
+		}
+        		
+        var showDialog=function(title,content,btntext,func){
+        	iDialog.show($("#msgtip").html(), { width: 260, height: 180 }, function () {
+        		if(!title) title="提示";
+        		$(".confirmmsg .ftitle").html(title);
+        		$(".confirmmsg .fcontent").html(content);
+        		if(!btntext) btntext="确定";
+        		$(".confirmmsg .ffoot").html(btntext);
+                $(".confirmmsg .ffoot").on("click", function () {
+                	if(func){
+	                    func();
+                	}
+                	iDialog.close();
+                });
+            });
+        }
+        var shareFriend=function(){
+    		var sharedata=["http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg","汽车超人发红包啦！你领，或不领，我就在那里，等你来领！","http://market.qccr.com/wechat/getRedbagList4wechat"];
+			toApp.sharered(sharedata[0]+"?"+Math.random().toFixed(10),sharedata[1],sharedata[2]);
+        }
+    </script>
+    <script type="text/javascript" src="../js/traffics.js"></script>
+
+</body>
+</html>

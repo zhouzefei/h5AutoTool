@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en" style="width:100%;overflow-x: hidden;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+	<!-- HTTP 1.1 -->  
+	<meta http-equiv="pragma" content="no-cache">  
+	<!-- HTTP 1.0 -->  
+	<meta http-equiv="cache-control" content="no-cache">  
+	<!-- Prevent caching at the proxy server -->  
+	<meta http-equiv="expires" content="0">  
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+	<title>汽车超人抽奖活动</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/shuoming.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/zhuanpan.css" />
+	<script  src="js/jquery-1.10.2.min.js"></script>
+	<style>
+		body{background:#f4f4f4;}
+		.clearfix {*zoom: 1;}
+		.clearfix:before, .clearfix:after {display: table;content: "";}
+		.heard{height:40px; text-align:center;font-size:18px; color:#fff; line-height:50px;}	
+		.heard a,.backBtn span{display:inline-block; float:left; font-size:20px;width:80px; background:url(images/enter.png) no-repeat center center; height:30px; background-size:auto 100%;margin-top: 10px;}
+		.cjrecord{padding:0px 10px 10px 10px;  background:#f4f4f4;}
+		.cjrecord .jp{ width:100%; background:#ee443a; border-radius: 5px; height:74px;position: relative;margin-top:10px;}
+		.twenty{ width:54px;
+				 height:54px;
+				 background-size:cover;
+				 margin-top:10px;
+				 margin-left:10px;
+				 position: absolute;
+				 left:0;
+				 top:0;
+				 }
+		.twenty img{width:100%;height:100%;}
+		.fontbox{padding-left:74px;padding-right:20px;}
+		.fontbox p{color:#fff;}
+		.fontbox p.h1{height:30px;line-height:30px;}
+		.fontbox p.h1 span{float:right;}
+		.fontbox p.h2{padding-right:40px;}
+		.nojl{width:100%; padding-top:40px;}
+		.nojl img{width:100%;}
+		.win{width:100%;}
+		.backBtn span{background-image:url(images/backBtn.png);}
+		.prizeWrap{width:100%;position: relative;}
+		.prizeWrap img{width:100%;}
+		.prizeWrap .backBtn{width:100%;height:40px;position:absolute;}
+		.prizeList{position: absolute;color:#564000;padding-top: 1px;}
+		.prizeList p{height:15px; }
+		.ly{left:22.5%;top:34%;}
+		.bwb{left:57.5%;top:34%;}
+		.czbx{left:13.5%;top:78%;}
+		.appleWatch{left:39.5%;top:78%;}
+		.kqjhj{left:66.5%;top:78%;}
+		@media only screen and (min-width: 0px) and (max-width: 320px){
+			.prizeList p{height:14px;}			
+		}
+		@media only screen and (min-width: 321px) and (max-width: 641px){
+			.ly{left:24%;top:34.5%;}
+			.bwb{left:59%;top:34.5%;}
+			.czbx{left:15%;top:78.5%;}
+			.appleWatch{left:41%;top:78.5%;}
+			.kqjhj{left:68%;top:78.5%;}
+		}
+		.winListTltTbDiv img{width:100%;}
+		.winListMesg td{height:33%;padding-top:15px;}
+		.WinningRecord{position: absolute;right: 4.3%;width: 17%;top:4.4%;height: 18%;}
+		.WinningRecord img{width:100%;}
+		.winListMesgDiv{height:80%;overflow-y: scroll;background:url(images/winListBg.png) repeat-y #cbcbcb;    background-size: 100% 100%;}
+		.winListMesgDiv table{width:100%;}
+		.load{padding:10px 0;}
+		.load img{display:block;margin:0 auto;}
+		
+		
+	</style>
+</head>
+<body style="width:100%">
+	
+	<div class="pages zhuanpan" >
+		<div class="inner">
+			<span class="rules">
+				<img width="100%" src="images/guizhe_03.png" />
+			</span>
+			<div class="col1">
+				<img src="images/wenzi_03.png" width="75%" />
+			</div>
+			<div class="col2" style="position:relative;">		
+
+				<div class="zhuanpanneirong">
+					
+					<img src="images/zhuanpan2_03.png" class="panzi" width="100%" />
+					<img src="images/zhuanpanbtn_03.png" class="zhizhen"  width="100%" />
+					<span class="zhizheng"></span>
+				</div>
+			</div>
+			<div class="col3">
+				<div class="zhongjiang1">
+					<img src="images/fotter_021.png" width="100%" />
+					<p class="cishu">您还有<span>0</span>次机会！</p>
+					<a id="recode"  style="width: 17%;position: absolute;left: 4.4%;top:4.4%;z-index: 1;height: 18%;"></a>
+					<div class="WinningRecord"></div>
+					<div class="mingdanlist" >
+						<table >
+							
+						</table>
+					
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	
+
+<div class="warpprize"  style="display:none;">
+	<div class="swarp"></div>
+	<div class="zhongjiang">
+	  <h1 class="prizename">车载冰箱</h1>
+	  <div class="jpic"><img src="images/coupons.png"/></div>
+	  <p class="goodluck">恭喜您！抽中<span class="prizename">20元优惠券</span>。</p>
+	  <p class="youhuiquan">您可以到“我的优惠券”中查看 记得使用哦!</p>
+	  <p class="over" >抽奖机会用完啦！分享给好友再获得1次抽奖机会哦！</p>
+	  <p class="tishi">（温馨提示：客服将在5个工作日内联系您安排发奖，请保持手机畅通）</p>
+	  <a  class="cj-bton">继续抽奖</a>
+	  <span class="close1"><img src="images/close.png" width="32px;"/></span>
+	</div>
+
+</div>
+	
+	
+<div class="warpnoprize" style="display:none;" >
+	<div class="swarp"></div>
+	<div class="sorry-box">
+	<span class="sclose" style="top: -19px;right: -14px;" ><img src="images/close2.png" width="32px;"></span>
+	<div class="s-title"></div>
+	<p class="again try-hard">哎哟~刚刚跟大奖擦肩而过！<br>
+	一定是点击的姿势不对，调整好再来一次！
+	</p>
+	<p class="jihui" style="display:none">抽奖机会用完啦！分享给好友再获得1次抽奖机会哦！</p>
+	<a  class="cj-bton go-on">继续抽奖</a>
+	</div>
+</div>	
+	
+	
+	
+	
+<div class="warpguizhe" style="display:none;">	
+	<div class="swarp"></div>
+	<div class="srule">
+	<div class="stitle"><img src="images/guize.png"/></div>
+	<div class="textbox">
+	<div class="hdtime"><img src="images/time.png"/></div>
+	<p class="sdate">活动起止时间敬请关注汽车超人官网预告</p>
+		<div class="hdtime"><img src="images/hd-rule.png"/></div>
+			<p>
+				1、	此活动所有奖品由汽车超人提供，与苹果公司无关；
+			</p>
+		   <p>2、	注册登陆汽车超人APP，进入转盘抽奖区进行抽奖，按提示操作即可（参与本活动无需支付任何费用）；</p>
+			<P>3、	每个账户每日最多可获得6次抽奖机会，包括汽车超人官网1次抽奖，汽车超人APP端3次抽奖，汽车超人微信服务号1次抽奖，通过汽车超人APP分享可获得一次抽奖；
+</P>
+			<P>4、	有Apple Watch、车载冰箱、空气净化器、蓝牙耳机、保温杯，随机优惠劵等丰厚奖品；</P>
+			<P>5、	优惠券自动发放到账户后台；
+</P>
+			<P>6、	抽奖产品颜色、规格随机发货，以实物为准，图片仅供参考；
+</P>
+			<P>7、	除apple watch外，其他中奖奖品将在客服确认用户信息及收货地址后5个工作日内寄出；apple watch在客服确认用户信息及收货地址后一个月内送出；
+</P>
+			<P>8、	如果用户出现违规行为（包括但不限于利用系统漏洞、黑客工具等非正常方式参与），将被撤销中奖资格，活动主办方有权要求用户退还所抽奖得到的商品；
+</P>
+			<p>9、	本次活动的最终解释权归特维轮网络科技（杭州）有限公司所有。</p>
+			<div class="hdtime"><img src="images/sh-rule.png"/></div>
+		   <p>1、抽奖产品颜色随机发放，不支持换货；</p>
+			<p>2、奖品如果因为质量问题换货，请联系汽车超人工作人员以便及时帮您处理，汽车超人承担来回运费；</p>		
+		   <span class="sclose"><img src="images/close.png" width="32px;"/></span>
+		</div>
+
+	</div>
+</div>
+
+<div  id="recoder" style="width:100%;display:none;"  > 
+		<div class="heard"><a id="recodes" ></a></div>
+		<div class="cjrecord">
+			<div class="nojl"><img src="images/nozj.png"></div>
+		</div>
+	</div>
+
+<div class="win" style="display:none;">		
+		<div class="prizeWrap">
+			<div class="backBtn"><span class="recodes"></span></div>
+			<img src="images/prizeBg.png" alt="">
+				<div class="ly prizeList">
+					<p>总 数:1000台</p>
+					<p>中奖数:<span></span>人</p>
+				</div>
+				<div class="bwb prizeList">
+					<p>总 数:1000台</p>
+					<p>中奖数:<span></span>人</p>
+				</div>
+				<div class="czbx prizeList">
+					<p>总 数:300台</p>
+					<p>中奖数:<span></span>人</p>
+				</div>
+				<div class="appleWatch prizeList">
+					<p>总 数:199台</p>
+					<p>中奖数:<span></span>人</p>
+				</div>
+				<div class="kqjhj prizeList">
+					<p>总 数:1000台</p>
+					<p>中奖数:<span></span>人</p>
+				</div>
+		</div>
+		<div class="winListTltTbDiv">
+			<img src="images/winTlt.png" alt="">
+		</div>
+		<div class="winListMesgDiv">
+			<table class="winListMesg">
+				<tbody>
+					
+				</tbody>
+			</table>
+			<p class="load"><img src="images/loader.gif" alt=""></p>
+		</div>
+	</div>
+</body>
+<script>
+	var ajaxurl="http://market.qccr.com";
+	// 添加Cookie
+	function addCookie(name, value, options) {
+		if (arguments.length > 1 && name != null) {
+			if (options == null) {
+				options = {};
+			}
+			if (value == null) {
+				options.expires = -1;
+			}
+			if (typeof options.expires == "number") {
+				var time = options.expires;
+				var expires = options.expires = new Date();
+				expires.setTime(expires.getTime() + time * 1000);
+			}
+			if (options.path == null) {
+				options.path = "/";
+			}
+			if (options.domain == null) {
+				options.domain = ".csqccr.com";
+			}
+			document.cookie = encodeURIComponent(String(name)) + "=" + encodeURIComponent(String(value)) + (options.expires != null ? "; expires=" + options.expires.toUTCString() : "") + ("; path=/") + (";") + (options.secure != null ? "; secure" : "");
+		}
+	}
+
+	// 获取Cookie
+	function getCookie(name) {
+		if (name != null) {
+			var value = new RegExp("(?:^|; )" + encodeURIComponent(String(name)) + "=([^;]*)").exec(document.cookie);
+			return value ? decodeURIComponent(value[1]) : null;
+		}
+	}
+	//转码方法
+	function EncodeUtf8(s1)  
+	{  
+		// escape函数用于对除英文字母外的字符进行编码。如“Visit W3School!”->"Visit%20W3School%21"  
+		var s = escape(s1);  
+		var sa = s.split("%");//sa[1]=u6211  
+		var retV ="";  
+		if(sa[0] != "")  
+		{  
+			retV = sa[0];  
+		}  
+		for(var i = 1; i < sa.length; i ++)  
+		{  
+			if(sa[i].substring(0,1) == "u")  
+			{  
+				retV += Hex2Utf8(Str2Hex(sa[i].substring(1,5)));  
+				if(sa[i].length>=6)  
+				{  
+					retV += sa[i].substring(5);  
+				}  
+			}  
+			else retV += "%" + sa[i];  
+		}  
+		return retV;  
+	}  
+	//$(".mingdanlist")
+	if(getQueryString("userId"))
+	{
+		var userNick=getQueryString("userId");
+		
+	}else
+	{
+		alert("请先登录");
+	}
+	if(getQueryString("isIPhone"))
+	{
+		var isIPhone=getQueryString("isIPhone");
+		
+	}
+	//var userNick=107002842;
+	getJsonData(ajaxurl+"/lottery/queryTotalPrize?format=json&app=applottery",{},function(data){
+			var ned=data,str;
+			for(var i=0;i<ned.userPrizeList.length;i++)
+			{
+				str+="<tr><td width='30%'>"+ned.userPrizeList[i].userNick+"</td><td width='50%' align='center'>"+ned.userPrizeList[i].prizeName+"</td><td width='20%' align='right'>"+(i+2)+"秒前</td></tr>";
+				
+			}
+			$(".mingdanlist table").html(str);
+			startmarquee(25,80,0,1); 
+	});
+	//获取浏览器参数
+	function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+	} 
+	//发送请求接口
+	function getJsonData(url,data,callfunc,errfunc)
+	{
+		$.ajax({
+				url: url,
+				data:data,
+				dataType: "jsonp",
+				jsonp: "callback",
+				success: function (data) {
+				  
+					callfunc(data);
+		
+				},
+				error:function(data)
+				{
+					if(errfunc)
+					errfunc(data);
+					else
+					callfunc(data);
+				}
+					
+			});
+		
+	}
+	var wheight=document.documentElement.clientHeight;
+	var isActive=false;
+	$(".swarp").css("height",wheight+"px");
+	$(".textbox").css("height",(wheight-81)+"px");
+	var positions=[0,36,72,108,144,180,216,252,288,324];
+	var prizes=["再试试","车载冰箱","20元保养抵用券","空气净化器","50元保养抵用券","不锈钢保温杯","20元商品抵用券","蓝牙耳机","10元美容优惠券","Apple Watch"];
+	var prizesimg=["再试试","couponsBX.png","coupons.png","couponsXICQ.png","coupons50.png","couponsSBEI.png","coupons.png","couponsEJI.png","coupons10.png","couponsiwath.png"];
+	function is_weixn(){  
+		var ua = navigator.userAgent.toLowerCase();  
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			return true;  
+		} else {  
+			return false;  
+		}  
+	}  
+	$(function(){
+		wheight=document.documentElement.clientHeight;
+		isActive=false;
+		$(".swarp").css("height",wheight+"px");
+		$(".textbox").css("height",(wheight-81)+"px");
+		$(window).bind("load",function(){
+			wheight=document.documentElement.clientHeight;	
+			isActive=false;
+			$(".swarp").css("height",wheight+"px");
+			$(".textbox").css("height",(wheight-81)+"px");
+		
+		});
+		if(!getCookie("requestTime")||getCookie("reloadTime"))
+		{
+			addCookie("requestTime", "1", {expires:1}); 
+			getJsonData(ajaxurl+"/lottery/appLotteryNum?format=json",{"userId":userNick,"app":"applottery"},function(data){
+				if(data.lotteryChance)
+				{
+					$(".cishu span").html(data.lotteryChance);
+				}		
+			});
+		
+		}else
+		{
+			setTimeout(function(){
+				addCookie("reloadTime", "2", {expires:10});
+				window.location.reload();
+			},1100);
+		}
+		
+		$(window).bind("load",function(){
+			wheight=document.documentElement.clientHeight;
+			$(".zhongjiang1").css("height",$(".zhongjiang1 img").height()+"px");
+			if($(".zhuanpan").height()<wheight)
+			{
+				
+				$(".zhuanpan").css("height",wheight+"px");
+				$(".zhuanpan .col3").css({"position":"absolute","width":"100%","bottom":"0px"});
+			}
+		});
+		
+		$(".sclose").bind("touchend",function(){
+			$(this).parents(".warpguizhe").hide();	
+			$(this).parents(".warpnoprize").hide();	
+			
+		});
+		$(".close1").bind("touchend",function(){
+	
+			$(this).parents(".warpprize").hide();
+		});
+		$(".warpprize").on("touchend",".cj-bton",function(){
+			$(this).parents(".warpprize").hide();
+		
+		});
+		
+		$(".zhizheng").bind("touchend",function(){
+			//var prizes=["再试试","车载冰箱","20元保养抵用券","空气净化器","50元保养抵用券","不锈钢保温杯","20元商品抵用券","蓝牙耳机","10元美容优惠券","Apple Watch"]	
+			if(isActive)
+			return false;
+			isActive=true;
+			getJsonData(ajaxurl+"/lottery/lotteryForApp.jhtml?format=json",{"userId":userNick,"app":"applottery"},function(data){
+				if(data.info)
+				var b=data.info;
+				else
+				var b={};
+				b.code=data.code;
+				b.info=b.prizeName
+				//b={code:"200",info:"再试试",addChance:0,lotteryChance:0}
+				var prizeUnm;
+				if(b.code==-108)
+				{
+					isActive=false;
+					return false;
+				}
+				if(b.code==0)
+				{
+					if(b.info=="再试试")
+					{
+						$(".warpnoprize .s-title").css("background","");
+						if(b.lotteryChance>0)
+						{
+							$(".warpnoprize .s-title").css("background","");
+							$(".warpnoprize .try-hard").attr("class","again try-hard").html("哎哟~刚刚跟大奖擦肩而过！<br>一定是点击的姿势不对，调整好再来一次！");
+							$(".warpnoprize .jihui").hide();		
+							$(".warpnoprize .cj-bton").attr("class","cj-bton go-on").html("再抽一次");
+						}else 
+						{
+							if(b.addChance>0)
+							{
+								$(".warpnoprize .try-hard").attr("class","again try-hard").html("真遗憾！您刚和大奖擦肩而过。<span style='display:block;'>调整一下心情，明天再来哈！</span>");
+								$(".warpnoprize .jihui").hide();		
+								$(".warpnoprize .cj-bton").attr("class","cj-bton go-on").html("确定");
+							}else
+							{
+								$(".warpnoprize .s-title").css("background","");
+								$(".warpnoprize .try-hard").attr("class","again try-hard").html("抽奖机会用完啦！");
+								$(".warpnoprize .jihui").html("分享给好友再获得1次抽奖机会哦！").show();
+								$(".warpnoprize .cj-bton").attr("class","cj-bton go-on fengxiangbtn").html("立即分享");
+								
+							}
+							
+						}
+						if(b.lotteryChance)
+						$(".cishu span").html(b.lotteryChance);
+						else
+						{
+							$(".cishu span").html(0);
+						}
+						$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+									isActive=false;//避免重复点击	
+									$(".warpnoprize").show();
+							},2000);
+							
+						return false;
+					}
+					//中了
+					for(var i=0;i<prizes.length;i++)
+					{	
+						if(b.info==prizes[i])
+						{
+							prizeUnm=i;
+								
+						}
+					 }
+					 if(!prizeUnm)
+					 {
+						$(".warpnoprize .s-title").css("background","");
+						$(".try-hard").attr("class","again try-hard").html("哎哟~刚刚跟大奖擦肩而过！<br>一定是点击的姿势不对，调整好再来一次！");
+						$(".cj-bton").attr("class","cj-bton").html("继续抽奖");
+						$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+									setTimeout(function(){
+										$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+										$(".jihui").hide();		
+										$(".warpnoprize").show();
+										isActive=false;//避免重复点击	
+								},2000);
+						
+							if(b.lotteryChance)
+							$(".cishu span").html(b.lotteryChance);
+							else
+							{
+								$(".cishu span").html(0);
+							}
+						   return false;		
+					 }else
+					{
+						if(prizeUnm%2==0)
+						{
+							$(".warpprize .tishi").hide();
+							$(".youhuiquan").show();
+						}else
+						{
+							$(".warpprize .tishi").show();
+							$(".youhuiquan").hide();
+						}
+					 }
+					 if(b.lotteryChance>0)
+						{
+							$(".warpprize .over").hide();
+							$(".warpprize .cj-bton").attr("class","cj-bton ").html("继续抽奖");	
+						}else 
+						{
+							if(b.addChance>0)
+							{
+								$(".warpprize .over").hide();
+								
+								$(".warpprize  .cj-bton").attr("class","cj-bton overdown").html("机会已用完，明天再试吧~");
+							}else
+							{
+								
+								$(".warpprize .over").show();
+								$(".warpprize  .cj-bton").attr("class","cj-bton  fengxiangbtn ").html("立即分享");
+								
+							}
+						}
+							$(".warpprize .prizename").html(b.info);
+							$(".warpprize .jpic img").attr("src","images/"+prizesimg[prizeUnm]);
+							$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[prizes.length-prizeUnm])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[prizes.length-prizeUnm])+"deg)"});
+									$(".warpprize").show();
+									isActive=false;//避免重复点击	
+							},2000);
+						
+							if(b.lotteryChance)
+							$(".cishu span").html(b.lotteryChance);
+							else
+							{
+								$(".cishu span").html(0);
+							}
+								
+						
+				}else 
+				{
+					if(b.code==601){
+						$(".warpnoprize .s-title").css("background","");
+						if(b.lotteryChance>0)
+						{
+							$(".warpnoprize .s-title").css("background","");
+							$(".warpnoprize .try-hard").attr("class","again try-hard").html("哎哟~刚刚跟大奖擦肩而过！<br>一定是点击的姿势不对，调整好再来一次！");
+							$(".warpnoprize .jihui").hide();		
+							$(".warpnoprize .cj-bton").attr("class","cj-bton go-on").html("再抽一次");
+						}else 
+						{
+							if(b.addChance>0)
+							{
+								$(".warpnoprize .try-hard").attr("class","again try-hard").html("真遗憾！您刚和大奖擦肩而过。<span style='display:block;'>调整一下心情，明天再来哈！</span>");
+								$(".warpnoprize .jihui").hide();		
+								$(".warpnoprize .cj-bton").attr("class","cj-bton go-on").html("确定");
+							}else
+							{
+								$(".warpnoprize .s-title").css("background","");
+								$(".warpnoprize .try-hard").attr("class","again try-hard").html("抽奖机会用完啦！");
+								$(".warpnoprize .jihui").html("分享给好友再获得1次抽奖机会哦！").show();
+								$(".warpnoprize .cj-bton").attr("class","cj-bton go-on fengxiangbtn").html("立即分享");
+								
+							}
+							
+						}
+						if(b.lotteryChance)
+						$(".cishu span").html(b.lotteryChance);
+						else
+						{
+							$(".cishu span").html(0);
+						}
+						
+						$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+									setTimeout(function(){
+										$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+										isActive=false;//避免重复点击										
+										$(".warpnoprize").show();											
+						},2000);
+						
+					}else if(b.code==602){
+						isActive=false;
+						if(b.addChance>0)
+						{
+							//$(".warpnoprize .s-title").css("background","url(images/over.png) no-repeat)");
+							
+							$(".warpnoprize .s-title").css({"background":"url(images/over.png) no-repeat","background-size":"100% 100%"});
+							$(".try-hard").attr("class","again try-hard").html("<span style='display:block;height:20px'></span>太努力啦~抽奖次数用完了！明天再来吧~");
+							$(".jihui").hide();		
+							$(".cishu span").html(b.lotteryChance);
+							$(".cj-bton").attr("class","cj-bton go-on").html("确定");
+							$(".warpnoprize").show();
+							return false;
+							
+						}else if(b.addChance==0)
+						{
+							//$(".warpnoprize .s-title").css("background","");
+							$(".warpnoprize .s-title").css({"background":"url(images/over.png) no-repeat","background-size":"100% 100%"});
+							$(".try-hard").attr("class","again try-hard").html("抽奖机会用完啦！");
+							
+							$(".jihui").html("分享给好友再获得1次抽奖机会哦！").show();
+							$(".cishu span").html(b.lotteryChance);
+							$(".cj-bton").attr("class","cj-bton go-on fengxiangbtn").html("立即分享");
+							$(".warpnoprize").show();
+							return false;
+									
+						}
+					}								
+					else if(b.code==-200)
+					{
+						isActive=false;
+						$(".warpnoprize .s-title").css("background","");
+						$(".warpnoprize .try-hard").attr("class","again try-hard").html("还没有登录哦<br>只有登录用户才能中奖哦！");
+						$(".warpnoprize .jihui").hide();		
+						$(".warpnoprize .cj-bton").attr("class","cj-bton go-on login").html("去App登录");
+						$(".warpnoprize").show();
+						return false;					
+					}		
+				}
+			},function(data)
+			{
+				//为中奖
+				$(".try-hard").attr("class","again try-hard").html("哎哟~服务器太忙了！<br>一定是点击的姿势不对，调整好再来一次！");
+					$(".cj-bton").attr("class","cj-bton go-on").html("继续抽奖");
+					$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+									$(".jihui").hide();		
+									$(".warpnoprize").show();
+									isActive=false;//避免重复点击
+							},2000);
+			});
+			
+		});
+		var sharedata=["http://static.qichechaoren.com/thumb/twl/shop/weixinsharea,r_0.jpeg","汽车超人九月疯狂大抽奖199台AppleWatch任性送，快去抢啊","http://sale.qccr.com/share/"];
+		$("body").on("touchend",".fengxiangbtn",function(){
+			try{
+				
+				toApp.share2(sharedata[0]+"?"+Math.random().toFixed(10),sharedata[1],sharedata[2]);
+			
+			}catch(e){
+			}
+			try{
+				toApp.share("dd");
+				
+			}catch(e){
+			}
+			try{
+				 if(getQueryString("isIPhone")=="true")
+				 location.href="objc://share:/"+encodeURIComponent(sharedata[0])+":/"+encodeURIComponent(sharedata[1])+":/"+encodeURIComponent(sharedata[2]);
+			}catch(e){
+			}
+				
+		});
+		$("body").on("touchend",".login",function(){
+			try{
+				toApp.login();
+			
+			}catch(e){
+			}
+			try{
+				 if(getQueryString("isIPhone")=="true")
+				 location.href="objc://login";
+			}catch(e){
+			}
+		});
+		
+		$(".rules").bind("touchend",function(){
+			$(".warpguizhe").show();
+		});
+		$(".go-on").bind("touchend",function(){
+			$(this).parents(".warpnoprize").hide();	
+		});	
+var isload;
+$('#recode').click(function(){
+	
+		$(".pages").hide();
+			$('.win').show();
+			var winListMesgDivH=document.documentElement.clientHeight-$('.winListTltTbDiv').outerHeight(true) ;
+			$('.winListMesgDiv').height(winListMesgDivH);
+})
+$('.recodes').bind("touchend",function(){
+	$('.win').hide();
+	$(".pages").show();
+	if($(".zhongjiang1").height()==0)
+	{
+
+		wheight=document.documentElement.clientHeight;
+		$(".zhongjiang1").css("height",$(".zhongjiang1 img").height()+"px");
+		if($(".zhuanpan").height()<wheight)
+		{
+			
+			$(".zhuanpan").css("height",wheight+"px");
+			$(".zhuanpan .col3").css({"position":"absolute","width":"100%","bottom":"0px"});
+		}
+	}
+	
+
+});	
+getJsonData(ajaxurl+"/lottery/prizesView.jhtml?format=json",{},function(data){
+	var ned=data,str;
+	var arrPrize=['蓝牙耳机','不锈钢保温杯','车载冰箱','Apple Watch','空气净化器'];
+	for(var j=0;j<arrPrize.length;j++)
+	{
+		for(var i=0;i<ned.PrizeList.length;i++){
+			if(ned.PrizeList[i].prizeName==arrPrize[j]){
+				str = ned.PrizeList[i].prizeNum;
+				break;
+			}
+			else{
+				str=0;
+			}
+			//console.log(ned.PrizeList[i].prizeName + '--' + arrPrize[j])
+			//console.log(ned.PrizeList[i].prizeName == arrPrize[j]);
+		}
+		$('.prizeList').eq(j).find('span').html(str)
+	}
+});
+var page=1,
+	isLoad=true;
+getwinMesg(1);
+$('.winListMesgDiv').scroll(function(){
+	var scrollTop=$('.winListMesgDiv').scrollTop(),
+		h=$('.winListMesgDiv').height();
+	if ($('.winListMesg').height() <= scrollTop+h && !isLoad) {
+		$('.load').show();
+		page++;
+		isLoad=true;
+		getwinMesg(page);
+	}
+	
+})
+
+function getwinMesg(page){
+	getJsonData(ajaxurl+"/lottery/queryTotalUserPrize?format=json&app=applottery",{"page":page},function(data){
+		var ned=data,str;
+		for(var i=0;i<ned.userPrizeList.length;i++)
+		{
+			str+="<tr><td width='32%' align='center'>"+ned.userPrizeList[i].userNick+"</td><td width='35%' align='center'>"+ned.userPrizeList[i].prizeName+"</td><td width='33%' align='center'>"+formatDate(new Date(ned.userPrizeList[i].createTime))+"</td></tr>";
+			
+		}
+		$(".winListMesg").append(str);
+		$('.load').hide();
+		isLoad=false;
+	});
+}
+function   formatDate(now)   {     
+  var   month=now.getMonth()+1;     
+  var   date=now.getDate();     
+  var   hour=now.getHours();     
+  var   minute=now.getMinutes();     
+  var   second=now.getSeconds();     
+  return month+"-"+(date>=10 ? date:("0"+date))+"   "+(hour>=10 ? hour:("0"+hour))+":"+(minute>=10 ? minute:("0"+minute))+":"+(second>=10 ? second:("0"+second));     
+} 
+		
+		
+		
+	})
+	function startmarquee(lh,speed,delay){ 
+		var t; 
+		var p=false; 
+		var o=$(".mingdanlist").eq(0)[0]; 
+		o.innerHTML+=o.innerHTML; 
+		o.onmouseover=function(){p=true} 
+		o.onmouseout=function(){p=false} 
+		o.scrollTop = 0; 
+		function start(){ 
+		t=setInterval(scrolling,speed); 
+		if(!p){ o.scrollTop += 1;} 
+		} 
+		function scrolling(){ 
+		if(o.scrollTop%lh!=0){ 
+		o.scrollTop += 1; 
+		if(o.scrollTop>=o.scrollHeight/2) o.scrollTop = 0; 
+		}else{ 
+		clearInterval(t); 
+		setTimeout(start,delay); 
+		} 
+		} 
+		setTimeout(start,delay); 
+	} 
+(function($){
+		$(function(){
+			function updateRecode()
+			{
+				$(".jp").remove();
+				var prizes=["再试试","车载冰箱","20元保养抵用券","空气净化器","50元保养抵用券","不锈钢保温杯","20元商品抵用券","蓝牙耳机","10元美容优惠券","Apple Watch"]
+				var prizesimg=["再试试","couponsBX.png","coupons.png","couponsXICQ.png","coupons50.png","couponsSBEI.png","coupons.png","couponsEJI.png","coupons10.png","couponsiwath.png"]
+				var jg=["个","张"];
+				var tx=["（客服将在5个工作日内联系您安排发奖，请保持手机畅通)","（仅限汽车美容时使用）","（仅限购买商品使用）","（仅限汽车保养时使用）"];
+				$.ajax({
+					dataType: "jsonp",
+					jsonp: "callback",
+					url: ajaxurl+"/lottery/myPrizes4App.jhtml",
+					data:{"format":"json","app":"applottery","userId":userNick},
+					success: function (data) {			
+						if(data.code==0){
+							if(data.PrizeList.length>0){
+								$(".nojl").hide();
+								for(var i=0;i<data.PrizeList.length;i++)
+								{	var imgname,tixing,jging;
+
+									for(var m=0;m<prizes.length;m++){
+										if(data.PrizeList[i].prizeName==prizes[m]){
+											imgname=prizesimg[m];
+											if(m==1 || m==3 || m==5 || m==7 || m==9){
+												tixing=tx[0];
+												jging=jg[0];
+											}else if(m==2 || m==4){
+												tixing=tx[3];
+												jging=jg[1];
+											}else if(m==6){
+												tixing=tx[2];
+												jging=jg[1];
+											}else if(m==8){
+												tixing=tx[1];
+												jging=jg[1];
+											}
+										}
+									}
+									var strVar = "";
+										strVar += "<div class=\"jp clearfix\">";
+										strVar += "			<div class=\"twenty\">";
+										strVar += "			 <img src=\"images/"+imgname+"\">";
+										strVar += "			<\/div>";
+										strVar += "			<div class=\"fontbox\">";
+										strVar += "				<p class=\"h1\">"+data.PrizeList[i].prizeName+" <span>"+data.PrizeList[i].prizeNum+jging+"<\/span><\/p>";
+										strVar += "				<p class=\"h2\">"+tixing+"<\/p>";
+										strVar += "			<\/div>";
+										strVar += "			<div><\/div>";
+										strVar += "		<\/div>";
+									//$(".jp").remove();	
+									$(".cjrecord").append(strVar);
+								}
+								contenth=$(".heard").height()+$(".cjrecord").height();
+								if(document.documentElement.clientHeight>=contenth){
+									$("body").height(document.documentElement.clientHeight);
+								}
+							
+							}else{
+								$(".nojl").show();
+								$("body").height(document.documentElement.clientHeight);
+							}
+							
+					
+						}else{
+							$(".nojl").show();
+							$("body").height(document.documentElement.clientHeight);
+						}
+						
+					}
+						
+				})
+			}
+			//userNick=parseInt(userNick);
+		updateRecode();
+			
+		$("#recodes").bind("touchend",function(){
+			$(".pages").show();
+			$(recoder).hide();
+			if($(".zhongjiang1").height()==0)
+			{
+
+				wheight=document.documentElement.clientHeight;
+				$(".zhongjiang1").css("height",$(".zhongjiang1 img").height()+"px");
+				if($(".zhuanpan").height()<wheight)
+				{
+					
+					$(".zhuanpan").css("height",wheight+"px");
+					$(".zhuanpan .col3").css({"position":"absolute","width":"100%","bottom":"0px"});
+				}
+			}
+		
+		})
+		$('.WinningRecord').bind("touchend",function(){
+			$(recoder).show();
+			$(".pages").hide();
+			updateRecode();
+
+		
+		});
+	})
+
+})(jQuery)
+    		
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>
+</html>

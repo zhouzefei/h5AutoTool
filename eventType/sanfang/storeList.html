@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta charset="utf-8">
+		<title>汽车超人</title>
+		<link rel="stylesheet" type="text/css" href="css/mobile-select-area.css">		
+		<link rel="stylesheet" href="css/order.css">
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/store.js"></script>		
+		<script type="text/javascript" src="js/dialog.js"></script>	
+		<script type="text/javascript" src="js/mobile-select-area.js"></script>	
+	</head>
+	<body>
+		<div class="pages storeBox">
+			<div class="area">
+				<p id="txt_area" data-value="" data-area="浙江省 杭州市 西湖区" data-type="">区域<b></b></p>
+				<select name="" id="" class="select">
+					<option value="0">离我最近</option>
+					<option value="1">好评优先</option>
+				</select>
+			</div>
+			<div class="orderNumberWrap">
+				<select name="" id="" class="orderShopList">
+					<option value="0">地址</option>
+					<option value="1">门店</option>
+				</select>						
+				<input type="text" placeholder="请输入您要搜索的内容" class="input orderNum">
+				<a href="javascript:;" class="searchStore" id="searchStore">搜索</a>	
+			</div>
+			<div class="storeMesgBox">
+				
+			</div>
+			<p class="load"><img src="images/loader.gif" alt=""></p>							
+		</div>
+		<input type="hidden" id="hd_area" value="21,22,23">
+		<script src="../js/traffics.js"></script>
+	</body>	
+	<script>		
+		var selectArea = new MobileSelectArea();
+		selectArea.init({trigger:'#txt_area',value:$('#hd_area').val(),data:ajaxUrl+'/user/allareanocheck'});
+		
+	</script>
+	<script>
+		/*shareWeixin([{title:"汽车超人发红包啦！你领，或不领，我就在那里，等你来领！",content:"主银，我等你来领我，都快等成望夫石了！",url:"",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}},{title:"据说常点此链接，汽车超人让你变富翁",content:"主银，我等你来领我，都快等成望夫石了！",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}}]);*/
+	</script>
+</html>

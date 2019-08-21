@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta charset="utf-8">
+		<title>汽车超人</title>		
+	<link rel="stylesheet" href="css/order.css">	
+	</head>
+	<body>
+		<div class="pages noChoose">
+			<div class="logo">
+				<p><span></span><em>汽车超人APP，下载就送100元养车券</em></p>
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404" class="download">立即下载</a>
+			</div>	
+			<div class="orderMesgWrap">				
+			</div>			
+			<div class="serviceTel">
+				<p>客服电话:<a href="tel:400-699-0000">400-699-0000</a></p>
+				<p>（8:30~23:30)</p>
+			</div>						
+		</div>
+		<div class="storeMask"></div>
+		<div class="appointmentSucc">
+			<h2>预约成功</h2>
+			<p>
+				<span>凭消费码短信到店体验服务</span>
+				<span>现在下载汽车超人APP再送1分钱洗车</span>
+			</p>
+			<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404" class="goDown">去下载</a>
+			<a href="javascript:;" class="close">关闭</a>
+		</div>
+		<script src="../js/traffics.js"></script>
+		<script src="js/zepto.min.js"></script>
+		<script src="js/common.js"></script>
+	</body>
+	<script>		
+		var orderNo=getQueryString('orderNo'),
+			placeMobileNo=getQueryString('orderTel'),
+			sourceFrom=getQueryString('sourceFrom'),
+			appointState=getQueryString('appointState'),
+			isShow=getQueryString('isShow');
+		getJsonData(ajaxUrl+'/order/appointmentDetail?orderNo='+orderNo+'&placeMobileNo='+placeMobileNo+'&sourceFrom='+sourceFrom,'',function(data){
+			if(data.code==0){
+				//console.log(data)
+				appendHtml(data);
+				//console.log(appointState==2)
+			}
+		})
+		function appendHtml(data){
+			var orderShtml='',
+				isChooseHtml='';
+				appointState=data.info.appointState;
+			var orderHtml='';
+				if(sourceFrom=='TM'){
+					orderHtml='天猫';
+				}
+				else if(sourceFrom=='TB'){
+					orderHtml='淘宝';
+				}
+				else if(sourceFrom=='JD'){
+					orderHtml='京东';
+				}
+				else if(sourceFrom=='OTHER'){
+					orderHtml='其他';
+				}
+			orderShtml ='<h2>'+orderHtml+'订单编号：'+orderNo+'</h2>'
+				  + '<div class="check">'
+				  + '<p><b></b>'+(data.info.serviceOrder.sts==3 ? '交易完成' : '待验证')+'</p>'
+				  + '<p>订单金额（含运费）：￥'+data.info.orderPrice+'</p>'
+				  + '</div>'
+				  +'<div class="productMesg">'
+				  + '<p class="productImg"><img src="images/xc.png" alt=""></p>'
+				  + '<p class="productName">'+data.info.serviceOrder.snm +'</p>'
+				  + '<p class="productPrice">'
+				  + '<span class="price">￥'+data.info.serviceOrder.rct+'</span>'
+				  + '<span class="num">X'+data.info.serviceOrder.saleNum +'</span>'
+				  + '</p>'					
+				  + '</div>'
+				  + '<div class="address" style="display:none">'
+				  + '<p>配送至：</p>'
+				  + '<p>'+data.info.address+'</p>'
+				  + '</div>'
+			$('.orderMesgWrap').html(orderShtml);
+			if(!data.info.serviceOrder.sid){
+				isChooseHtml='<div class="goStore">'
+				         +'<a href="javascript:;" class="goLink" data-id="'+data.info.serviceOrder.id+'">'
+					     +'<span><b class="chooseIcon"></b>选择门店</span>'
+					     +'<b class="arrow"></b>'
+				         +'</a>'
+			             +'</div>'
+			}
+			else{ // if(appointState==0 || appointState==2)
+				if(data.info.serviceOrder.sts!=3){
+					isChooseHtml +='<p class="storeSuccTlt">预约门店成功</p>'
+				}
+				isChooseHtml +='<div class="storeSucc">'
+				         +'<span class="chooseIcon"></span>'
+				         +'<p>'
+					     +'<span>服务门店：'+data.info.store.sn+'</span>'
+					     +'<span>地址：'+data.info.store.sa+'</span>'
+				         +'</p>'
+				         +'<a href="tel:'+data.info.store.st+'" class="callTel"></a>'
+			             +'</div>'
+			    if(!isShow){
+			    	$('.appointmentSucc,.storeMask').show();
+			    }
+			    //$('.appointmentSucc,.storeMask').show();
+			}
+			//console.log(appointState)
+			$('.orderMesgWrap').after(isChooseHtml);
+		}
+		$('.noChoose').delegate('.goLink','click',function(){
+			var sId=$(this).attr('data-id');
+			window.location.href='storeList.html?orderNo='+orderNo+'&orderTel='+placeMobileNo+'&sourceFrom='+sourceFrom+'&serverOder='+sId
+		})
+		$('.close').click(function(){
+			$('.appointmentSucc,.storeMask').hide();
+		})	
+	</script>
+	<script>
+		/*shareWeixin([{title:"汽车超人发红包啦！你领，或不领，我就在那里，等你来领！",content:"主银，我等你来领我，都快等成望夫石了！",url:"",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}},{title:"据说常点此链接，汽车超人让你变富翁",content:"主银，我等你来领我，都快等成望夫石了！",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}}]);*/
+	</script>
+</html>

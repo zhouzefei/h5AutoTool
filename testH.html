@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>工具测试页</title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    *{margin:0;padding:0;font-family:"Microsoft YaHei" Arial} html,body{height: 100%; width: 100%;overflow-x: hidden;} #wrap{ -webkit-transition: all 500ms ease;} .wrapContent{height: 100%;} ol,li,ul{list-style: none;}.afterState::-webkit-scrollbar{
+        display: none;}.page1,.page2,.page3{position: relative; height: 100%; width: 100%;}
+  </style>
+ <script type="text/javascript">
+        (function(win) {
+            var timeout,
+                doc = win.document, 
+                html = doc.documentElement;
+            function setFontSize() {
+                var htmlWidth = html.getBoundingClientRect().width;
+                var ratio = htmlWidth / 640;
+                if(htmlWidth < 640) {
+                    win.rem = ratio * 100;
+                } else {
+                    win.rem = 100;
+                }
+                win.responseRatio = ratio;
+                html.style.fontSize = win.rem + "px";
+            }
+            win.addEventListener("resize", function() {
+                clearTimeout(timeout), timeout = setTimeout(setFontSize, 300);
+            }, false);
+            setFontSize();
+        })(window);
+    </script>
+</head>
+<body>
+  <div id='wrap'>
+    <div id='wrapContent'>
+    </div>
+  </div>
+  <script type="text/javascript" src='js/zepto.min.js'></script> 
+  <script type="text/javascript" src='js/mobileCommon.js'></script>
+  <script type="text/javascript" src='js/business/dzp/dzp.js'></script>
+  <script type="text/javascript" src='js/business/dzp/dzpInterface.js'></script>
+  <!-- 登录app弹出框 -->
+  <script type="text/javascript" src='js/business/share.js'></script>
+  <script type="text/javascript" src='js/business/dialog/appDialog.js'></script>
+
+  <!-- 实物领奖弹出框 -->
+  <script type="text/javascript" src='js/business/dialog/goodsDialog.js'></script>
+  <!-- 数据动态滚动 -->
+  <script type="text/javascript" src='js/business/dataScroll/dataScroll.js'></script>
+  <!-- 领券 -->
+  <script type="text/javascript">
+    var userId = getQueryString('userId');
+    var reg = /^1[3|4|5|7|8]\d{9}$/; //手机号码正则
+    var redbagCode = '9d8963029aaf4f0e9a8f890b8dfa61d7';
+    var redbagId = '1634279';
+    var ajaxurl='http://market.qccr.com';
+    if (/\.qccr\.com/.test(location.href))
+        ajaxurl = 'http://market.qccr.com';
+    if (getQueryString("redbagId")) {
+        redbagId = getQueryString("redbagId");
+    }
+  </script>
+  <script type="text/javascript" src='js/business/getQuan/appGetQuan.js'></script>
+  <script type="text/javascript" src='js/business/getQuan/getQuanInterface.js'></script>
+
+  <script type="text/javascript">
+      var wHei=$(window).height();
+      var wWid=$(window).width();
+      var wBl=wWid/640;
+      var hBl=wHei/1008;
+      var jz=0;
+      var bl='';
+      if(wBl<hBl){
+         bl=wBl;
+      }else{
+        //高度为准
+        bl=hBl;
+        jz=(wWid-wHei*(640/1008))/2;
+      }
+      $('#wrapContent,.page1,.wrapContent').css({'height':wHei,'width':wWid});
+     var obj=[{"child":[{"nodeName":"DIV","className":"detailPage1","content":"","styleCss":{"width":"100%","height":"100%","position":"relative","overflow":"hidden"},"child":[{"nodeName":"DIV","className":"bgColor","content":"","styleCss":{"height":"100%"," width":"100%","position":"absolute","top":"0","left":"0","background-color":"#fff","background-size":"100% 100%"},"child":[]},{"nodeName":"DIV","className":"wrapContent","content":"","styleCss":{"position":" relative"," top":" 0px"," left":" 0px"," overflow":" hidden"," background-color":" transparent"," background-size":" 100% 100%"},"child":[{"nodeName":"DIV","className":"panelProto panelWrap panel_wid100 beforeQuanState","content":"","styleCss":{"position":" absolute"," height":" 400px"," z-index":" 0"," width":" 640px"," font-size":" 0.2rem"," text-align":" left"," top":" 0px"," left":" 0px"," word-wrap":" break-word"," line-height":" normal"," cursor":" move"," display":" block"},"dataProto":"true","child":[{"nodeName":"DIV","className":"panelContain","content":"","styleCss":{"height":" 100%"," width":" 100%"," position":" relative"," background-image":" url(images/pres/top_bg.jpg)"," background-color":" rgb(255, 255, 255)"," background-size":" 100% 100%"," background-repeat":" no-repeat"},"child":[{"nodeName":"DIV","className":"dragImg box panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 228px"," height":" 303.716px"," cursor":" move"," text-align":" center"," top":" 44.2236px"," left":" 2.06rem"," line-height":" normal"," margin-left":" 0px"},"dataProto":"true","child":[{"nodeName":"IMG","className":"","content":"","styleCss":{"height":" 100%"," width":" 100%","display":"block"},"src":"images/pres/red_bg.png","child":[]}]}]}]},{"nodeName":"DIV","className":"panelProto panelWrap getCouponBtnWrap","content":"","styleCss":{"position":" absolute"," height":" 122px"," z-index":" 0"," width":" 649px"," font-size":" 0.2rem"," text-align":" left"," top":" 396.923px"," left":" -4.5px"," word-wrap":" break-word"," line-height":" normal"," cursor":" move"," margin-left":" 0px"},"dataProto":"true","child":[{"nodeName":"DIV","className":"panelContain","content":"","styleCss":{"height":" 100%"," width":" 100%"," position":" relative"," background-color":" rgba(0, 0, 0, 0)"," background-size":" 100% 100%"," background-repeat":" no-repeat"},"child":[{"nodeName":"DIV","className":"buttonProto box panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 530.385px"," height":" 63px"," cursor":" move"," text-align":" center"," top":" 55px"," left":" 59.5px"," line-height":" normal"," margin-left":" 0px"},"dataProto":"true","child":[{"nodeName":"DIV","className":"btnOpera getBigGift","content":"\t\t\t领取大礼包\t\t\t","styleCss":{"font-family":" Microsoft YaHei"," height":" 100%"," width":" 100%"," font-size":" 0.26rem"," cursor":" move"," line-height":" 2.5"," color":" rgb(255, 255, 255)"," border-radius":" 0.17rem"," background-color":" rgb(245, 17, 17)"," background-size":" 100% 100%"},"child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.26rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 8.84256px"," left":" 63.0613px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru callbackState","content":"","styleCss":{"height":"100%","min-height":"0.3rem","width":"100%","background-color":" #ccc"},"child":[]}]},{"nodeName":"DIV","className":"buttonProto box myWalletBtnWrap panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 253.846px"," height":" 58.4615px"," cursor":" move"," text-align":" center"," top":" 133.44px"," left":" 61.506px"," line-height":" normal"},"dataProto":"true","child":[{"nodeName":"DIV","className":"btnOpera","content":"\t\t我的超人钱包\t","styleCss":{"font-family":" Microsoft YaHei"," height":" 100%"," width":" 100%"," font-size":" 0.26rem"," cursor":" move"," line-height":" 2.5"," color":" rgb(102, 102, 102)"," border-radius":" 0.15rem"," background-color":" rgb(255, 208, 0)"," background-size":" 100% 100%"},"child":[]}]},{"nodeName":"DIV","className":"buttonProto box shareBtnWrap clone panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 253.846px"," height":" 58.4615px"," cursor":" move"," text-align":" center"," top":" 133.829px"," left":" 335.373px"," line-height":" normal"},"dataProto":"true","child":[{"nodeName":"DIV","className":"btnOpera","content":"\t\t分享\t","styleCss":{"font-family":" Microsoft YaHei"," height":" 100%"," width":" 100%"," font-size":" 0.26rem"," cursor":" move"," line-height":" 2.5"," color":" rgb(102, 102, 102)"," border-radius":" 0.15rem"," background-color":" rgb(255, 208, 0)"," background-size":" 100% 100%"},"child":[]}]}]}]},{"nodeName":"DIV","className":"panelProto panelWrap rulerWrap","content":"","styleCss":{"position":" absolute"," height":" 359.462px"," z-index":" 0"," width":" 100%"," font-size":" 0.2rem"," text-align":" left"," top":" 631.59px"," left":" 0px"," word-wrap":" break-word"," line-height":" normal"," cursor":" move"," margin-left":" 0px"},"dataProto":"true","child":[{"nodeName":"DIV","className":"panelContain","content":"","styleCss":{"height":" 100%"," width":" 100%"," position":" relative"," background-color":" rgba(0, 0, 0, 0)"," background-size":" 100% 100%"," background-repeat":" no-repeat"},"child":[{"nodeName":"DIV","className":"dragImg box panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 232px"," height":" 64.566px"," cursor":" move"," text-align":" center"," top":" 18.0769px"," left":" 204px"," line-height":" normal"," margin-left":" 0px"},"dataProto":"true","child":[{"nodeName":"IMG","className":"","content":"","styleCss":{"height":" 100%"," width":" 100%","display":"block"},"src":"images/pres/rule.png","child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 90.3438px"," left":" 30.7284px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(0, 0, 0)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t活动时间\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 125.703px"," left":" 29.1659px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(153, 153, 153)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t2016年1月18日-2月1日\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 171.882px"," left":" 27.6586px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(0, 0, 0)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t活动内容\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 211.851px"," left":" 24.5817px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(153, 153, 153)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t1，使用手机号码登录汽车超人APP即可领取\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 247.21px"," left":" 24.589px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(153, 153, 153)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t2，每位用户(同一手机号、同一微信号、同一设备等)<br>限领1份\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[{"nodeName":"BR","className":"","content":"","child":[]}]}]},{"nodeName":"DIV","className":"box txtProto panelChild","content":"","styleCss":{"position":" absolute"," min-height":" 0.3rem"," z-index":" 0"," font-size":" 0.24rem"," height":" auto"," width":" auto"," text-align":" left"," top":" 319.547px"," left":" 23.0228px"," max-width":" 100%"," word-wrap":" break-word"," cursor":" move"," color":" rgb(153, 153, 153)"},"dataProto":"true","child":[{"nodeName":"DIV","className":"txtShuru","content":"\t\t\t3，红包自动放到账户中，登录汽车超人APP即可使用\t\t","styleCss":{"height":" 100%"," min-height":" 0.3rem"," width":" 100%"," background-color":" transparent"},"child":[]}]}]}]},{"nodeName":"DIV","className":"panelProto panelWrap panel_wid100 afterQuanState","content":"","styleCss":{"position":" absolute"," height":" 400px"," z-index":" 0"," width":" 640px"," font-size":" 0.2rem"," text-align":" left"," top":" 0px"," left":" 0px"," word-wrap":" break-word"," line-height":" normal"," cursor":" move"," display":" none"},"dataProto":"true","child":[{"nodeName":"DIV","className":"panelContain","content":"","styleCss":{"height":" 100%"," width":" 100%"," position":" relative"," background-image":" url(images/pres/top_bg.jpg)"," background-color":" rgb(255, 255, 255)"," background-size":" 100% 100%"," background-repeat":" no-repeat"},"child":[{"nodeName":"DIV","className":"panelProto panelWrap panelChild","content":"","styleCss":{"height":" 75px","margin":"0 auto"," z-index":" 0"," width":" 5rem"," font-size":" 0.2rem"," text-align":" left"," word-wrap":" break-word"," line-height":" normal"," cursor":" move"},"dataProto":"true","child":[{"nodeName":"DIV","className":"panelContain afterStateUrl","content":"","styleCss":{"height":" 100%"," width":" 100%"," background-image":" url(images/pres/quanBg.png)"," background-color":" rgba(0, 0, 0, 0)"," background-size":" 100% 100%"," background-repeat":" no-repeat"},"child":[]}]},{"nodeName":"DIV","className":"dragImg box panelChild","content":"","styleCss":{"z-index":" 0"," position":" absolute"," width":" 176.923px"," height":" 232.527px"," cursor":" move"," text-align":" center"," top":" 88.8438px"," left":" 218.458px"," line-height":" normal"},"dataProto":"true","child":[{"nodeName":"IMG","className":"afterOneInfo","content":"","styleCss":{"height":" 100%"," width":" 100%","display":"block"},"src":"images/pres/red_qiangguang.png","child":[]}]}]}]}]}]}]}];
+        var html='';
+        for(var i=0;i<obj.length;i++){
+            var presentObJ=obj[i];
+            var htmlStr='';
+            strToHtml(presentObJ);
+            html+=htmlStr;
+        }
+        $('#wrapContent').html($(html));
+
+        function styleTrans(childObj){
+            var styleStr='';
+            if(childObj.dataProto){
+              for(var n in childObj.styleCss){
+                  switch($.trim(n)){
+                    case 'width':
+                      if(childObj.className.indexOf('panel_wid100')>-1){
+                        styleStr+='width:100%;';
+                      }else{
+                        if(childObj.styleCss[n].indexOf('px')>-1){
+                           styleStr+=n+':'+childObj.styleCss[n].substring(0,childObj.styleCss[n].length-2)*bl+'px;';
+                        }else{
+                           styleStr+=n+':'+childObj.styleCss[n]+';';
+                        }
+                      };
+                      break;
+                    case 'left':
+                      if(childObj.className.indexOf('panel_wid100')>-1){
+                        styleStr+='left:0;';
+                      }else{
+                        if(childObj.styleCss[n].indexOf('px')>-1){
+                          var leftX=parseInt(childObj.styleCss[n].substring(0,childObj.styleCss[n].length-2));
+                          if(!leftX>0 || childObj.className.indexOf('panelChild')>-1){
+                            styleStr+=n+':'+leftX*bl+'px;';
+                          }else{
+                            styleStr+=n+':'+(leftX*bl+jz)+'px;';
+                          }
+                        }else{
+                           styleStr+=n+':'+childObj.styleCss[n]+';';
+                        }
+                      };
+                      break;
+                    case 'bottom':
+                      if(childObj.className.indexOf('panel_btm0')>-1){
+                        styleStr+='bottom:0px;top:;';
+                      }else{
+                        if(childObj.styleCss[n].indexOf('px')>-1){
+                           styleStr+=n+':'+childObj.styleCss[n].substring(0,childObj.styleCss[n].length-2)*bl+'px;';
+                        }else{
+                           styleStr+=n+':'+childObj.styleCss[n]+';';
+                        }
+                      };
+                      break;
+                    case 'top':
+                      if(childObj.className.indexOf('panel_btm0')>-1){
+                        styleStr+='top:;bottom:0px;';
+                      }else{
+                        if(childObj.styleCss[n].indexOf('px')>-1){
+                           styleStr+=n+':'+childObj.styleCss[n].substring(0,childObj.styleCss[n].length-2)*bl+'px;';
+                        }else{
+                           styleStr+=n+':'+childObj.styleCss[n]+';';
+                        }
+                      };
+                      break;
+                    case 'height':
+                    case 'right':
+                      if(childObj.styleCss[n].indexOf('px')>-1){
+                         styleStr+=n+':'+childObj.styleCss[n].substring(0,childObj.styleCss[n].length-2)*bl+'px;';
+                      }else{
+                         styleStr+=n+':'+childObj.styleCss[n]+';';
+                      };
+                      break;
+                    default:
+                    styleStr+=n+':'+childObj.styleCss[n]+';';
+                  }
+              }
+            }else{
+              for(var n in childObj.styleCss){
+                if(childObj.styleCss.hasOwnProperty(n)){
+                  styleStr+=n+':'+childObj.styleCss[n]+';';
+                }
+              }
+            }
+            return styleStr;
+        }
+        function strToHtml(childObj){
+          for(var k=0;k<childObj.child.length;k++){
+            var childTemp=childObj.child[k];
+            var styleStr=styleTrans(childTemp);
+            var className=childTemp.className||'';
+            var id=childTemp.id||'';
+            var content=childTemp.content;
+            if(childTemp.nodeName=='IMG'){
+              if(childTemp.src){
+                htmlStr+='<'+childTemp.nodeName+' class="'+className+'" id="'+id+'" style="'+styleStr+'" src="'+childTemp.src+'"/>';
+              }
+            }else{
+              htmlStr+='<'+childTemp.nodeName+' class="'+className+'" id="'+id+'" style="'+styleStr+'">'+content;
+            }
+            strToHtml(childTemp);
+            if(childTemp.nodeName !='IMG'){
+              htmlStr+='</'+childTemp.nodeName+'>';
+            }
+          }
+        }
+   </script>
+</body>
+</html>

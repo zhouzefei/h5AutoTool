@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta charset="utf-8">
+		<title>汽车超人抢红包</title>
+		<link rel="stylesheet" href="css/ordercoupon.css" />
+		<script>
+			function resize() {
+			window.remFontSize = document.documentElement.clientWidth / 10;
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px"
+		}
+		var b = null;
+		window.addEventListener("resize", function() {
+			clearTimeout(b), 
+			b = setTimeout(resize, 300)
+		}, !1);
+		resize();
+		</script>
+		<style id="dynamic">
+			@-webkit-keyframes flipInX{
+				0%{
+					height: 2.19rem;
+				}
+				40%{
+					height: 6.97rem;
+				}
+				70%{
+					
+					height: 6.17rem;
+				}
+				100%{
+					 height: 6.57rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pages wlq" >			
+			<div class="productsList">				
+				<ul class="moreList">
+					
+				</ul>
+				<p class="moon"><img src="images/moon.png" alt=""></p>
+			</div>					
+			<div class="RedEnvelope haveReceived" >
+				
+			</div>
+			<div class="hysq">
+				<p class="hysqTlt"><img src="images/hysq.png" alt=""></p>
+				<ul class="hysqList">
+					
+				</ul>
+			</div>
+			<div class="hyzl">
+				<p class="hyzlCon"><input type="text" placeholder="相见时难别亦难，红包记得要用完"></p>
+			</div>
+		</div>
+		<div class="tipMask"></div>
+		
+	</body>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/ordercoupon.js"></script>
+	<script>
+		
+		page.init();
+	</script>
+</html>

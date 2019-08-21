@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汽车超人福利不停</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<script src="../../js/getquerystring.js"></script>
+	<script>
+		function resize() {
+			window.remFontSize = document.documentElement.clientWidth / 10;
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px"
+		}
+	var b = null;
+	window.addEventListener("resize", function() {
+		clearTimeout(b), 
+		b = setTimeout(resize, 300)
+	}, !1);
+	resize();
+	</script>
+    <style>
+		html{color:#666;-ms-text-size-adjust:100%;_text-overflow:ellipsis;background:#e5e5e5;}
+		body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,select,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+		body,button,input,select,textarea{font:12px/1.5 hiragino sans gb,microsoft yahei,simsun}
+		h1,h2,h3,h4,h5,h6{font-weight:normal;}
+		a{text-decoration:none;}
+		a:active{outline:0 none}
+		@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){a:active{background-color:transparent}}
+		small,cite,code,em,th,i,b{font-size:1em;font-style:normal;font-weight:500}
+		input,select,textarea,button{font-size:1em;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+		button,input[type=button],input[type=submit]{cursor:pointer}
+		button::-moz-focus-inner,button::-moz-focus-outer,input::-moz-focus-inner,input::-moz-focus-outer{border:0 none;padding:0;margin:0}
+		input[type=search]{-webkit-appearance:textfield}
+		input:focus::-webkit-input-placeholder{color:transparent}
+		img{display:inline-block;vertical-align:bottom;-ms-interpolation-mode:bicubic}
+		ul,ol{list-style:none}
+		li{vertical-align:top}
+		.af-clear{ zoom:1;}
+		.af-clear:after{
+		content: '\20';
+		display: block;
+		height: 0;
+		clear: both;
+		}
+		.clear{ clear:both; height:0px; overflow:hidden; width:100%; display:block;}
+		
+		/*body{background:url(images/bg2.jpg) no-repeat;background-size:100% 100%;width:100%;}
+		.box{background:url(images/bg1.png) no-repeat;background-size:100% auto;width:100%;}*/
+		.box{background:url(images/bg.jpg) no-repeat;background-size:100% 100%;width:100%;}
+		.box img{width:100%;}
+		.redBag{overflow:hidden;}
+		.redBag .w60{width:60%;}
+		.redBag p{width:5rem;margin:0 auto;margin-top:20%;position:relative;}
+		.redBag .redBagName{display:block;width:100%;color:#fff;font-size:0.45rem;font-weight:bold;position:absolute;top:50%;margin-top:-0.5rem;text-align: center;height: 1rem;line-height: 1rem;}
+		.redBagCon{width:84%;border-top:1px dashed #ddd;margin:0 auto;margin-top:13%;padding:0 3%;}
+		.redBagCon p{color:#999;font-size:0.38rem;margin-top:5%;}
+		.redBagCon p span{display:block;text-align:center;}
+		.redBagCon p b,.tx b{color:#ff3044;margin-left:5px;}
+		.redBagCon .mar10{margin:10% 0;}
+		.redBagCon .telNum{width:93%;border:1px solid #999;border-radius: 5px;height:1.112rem;line-height:1.112rem;padding-left:2%;margin-top:10px;}
+		.redBagCon .getBtn,.download{display:block;background:#ff3044;height:1.112rem;line-height:1.112rem;width:95%;text-align:center;color:#fff;font-size:0.45rem;font-weight:bold;border-radius: 5px;margin-top:5%;-webkit-box-shadow:2px 2px 0px 0px #db0015;box-shadow:2px 2px 0px 0px #db0015;-moz-box-shadow:2px 2px 0px 0px #db0015;}
+		
+		.mask{width:100%;background:#000;opacity: 0.5;position:absolute;top:0px;display:none;}
+		.winBox{width:86%;position:absolute;top:20%;left:7%;background:#fff;display:none;-webkit-animation: bounceIn 0.5s ease-in-out 0s;-webkit-animation-fill-mode: backwards;}
+		.winBox p{width:95%;margin:0 auto;font-size:0.37rem;color:#666;}
+		.winBox p span{display:block;}
+		.winBox .tx{margin-top:10%;}
+		.winBox .mesgCheck{height:1.148rem;line-height:1.148rem;border-radius: 5px;position:relative;margin:10% auto;font-size:0.37rem;border:1px solid #999;border-radius: 5px;}
+		.mesgCheck input{width:63%;height:1.148rem;line-height:1.148rem;border:none;text-align:left;padding-left:2%;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+		.mesgCheck .getCode{position:absolute;right:0px;top:0px;width:35%;height: 1.148rem;line-height: 1.148rem;text-align: center;background:#33cc00;margin:0px;border-top-right-radius:5px;border-bottom-right-radius:5px;color:#fff;}
+		.mesgCheck .cur{background:#d7d7d7;color:#ff3044;}
+		.winBox .btnCon{overflow:hidden;width:100%;}
+		.btnCon .btn{display:block;float:left;width:50%;height:1.2rem;line-height:1.2rem;color:#fff;text-align:center;font-size:0.45rem;}
+		.btnCon .cancleBtn{background:#999;}
+		.btnCon .sureBtn{background:#ff3044;}
+		.box .logo{ position: absolute;bottom: 0.7rem;left: 21%;
+    width: 58%;}
+		 @-webkit-keyframes bounceIn {
+		  0% {
+		  
+		    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+		  }		  
+		  100% {
+		    opacity: 1;
+		    -webkit-transform: scale3d(1, 1, 1);
+
+		  }
+		}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<div class="redEnvelope">
+			<div class="redBag">
+				<p><img src="images/banner.png" alt=""></p>
+			</div>
+			<div class="redBagCon">
+				<p>智慧汽车携手汽车超人给你发代金券啦</p>
+				<input type="text" placeholder="请输入手机号" class="telNum">
+				<a href="javascript:;" class="getBtn">领取</a>
+			</div>
+		</div>
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+		</div>		
+	</div>
+	<div class="mask"></div>
+	<div class="winBox">
+		<p class="tx">
+			<span>请输入短信验证码，以确保您能正常绑定优惠券</span>
+			<span>验证码将发送到手机号：<b></b></span>
+		</p>
+		<p class="mesgCheck">
+			<input type="text" placeholder="请输入短信验证码" />
+			<a href="javascript:;" class="getCode">获取验证码</a>
+		</p>
+		<p class="btnCon">
+			<a href="javascript:;" class="btn cancleBtn">取  消</a>
+			<a href="javascript:;" class="btn sureBtn">确  定 </a>
+		</p>
+	</div>
+	<script src="js/zepto.min.js"></script>
+	<script>
+		$('.box,.mask').height(document.documentElement.clientHeight);
+		var reg=/^[1]\d{10}$/;
+		//var ajaxUrl='http://market.yfbqccr.com';
+		var ajaxUrl='http://market.csqccr.com';	
+		if(/\.qccr\.com/.test(location.href))
+		 ajaxUrl='http://market.qccr.com';			
+		var redbagCode='7b0ad27cf0b94fe4b1b05be849226a36';
+		if(getQueryString("redbagCode"))
+		{
+			redbagCode=getQueryString("redbagCode");
+		}
+		$('.cancleBtn').click(function(){
+			$('.mask,.winBox').hide();
+			$('.mesgCheck input').val('');
+		})
+		function getJsonData(url,data,callfunc,errfunc){
+		  $.ajax({
+		      url: url,
+		      data:data,
+		      dataType: "jsonp",
+		      jsonp: "callback",
+		      success: function (data) {
+		        callfunc(data);
+		      },
+		      error:function(data)
+		      {
+		        if(errfunc)
+		        errfunc(data);
+		      }
+		    });
+		}		
+		function timeout(num,obj){
+			var timer=null;
+			timer=setInterval(function(){
+				num--;
+				obj.html('('+num+'s)后重新获取')
+				if(num<=0){
+					obj.html('获取验证码');
+					obj.removeClass('cur');
+
+					clearInterval(timer);
+				}
+			},1000)
+		}
+		function getTelCode(){
+			$('body').delegate('.getCode','click',function(){
+				var _this=$(this);
+				if($(this).hasClass('cur')){
+					return false;
+				}
+				else{
+					var sTel=$('.tx b').html();
+						getJsonData(ajaxUrl+'/redbag/sendAuthCode4Redbag?format=json&phone='+sTel,{},function(data){
+							if(data.code==0){
+								_this.addClass('cur')
+								_this.html('(30s)后重新获取');
+								timeout(30,_this);
+							}
+							else{
+								alert('验证码发送失败')
+							}
+						})
+				}					
+			})
+		}
+		function isGet(tel){
+			$('.mask,.winBox').show();
+			$('.winBox .tx b').html(tel)
+			$('.sureBtn').off();
+			$('.sureBtn').on('click',function(){
+				var sCode=$('.mesgCheck input').val();
+				if(sCode){
+					getredBagMesg(tel,sCode);
+				}
+				else{
+					alert('请输入短信验证码')
+				}																
+			})
+		}
+		function getredBagMesg(tel,code){
+			getJsonData(ajaxUrl+'/redbag/rush4Phone?format=json',{redbagCode:redbagCode,authCode:code,phone:tel},function(data){
+				if(data.code==0){
+					//console.log(data.info)
+					var redBagName='';
+					if(data.info && data.info.length>0){
+						redBagName=data.info[0].couponName;
+					}
+					var shtml='<div class="redBag">'
+							 + '<p class="w60">'
+							 + '<img src="images/redBagBg.png" alt="">'
+							 + '<span class="redBagName">'+redBagName+'</span>'
+							 + '</p>'
+							 + '</div>'
+							 + '<div class="redBagCon">'
+							 + '<p class="mar10">'
+							 + '<span>代金券已放至账户<b>'+tel+'</b></span>'
+							 + '<span>登录APP即可使用</span>'
+							 + '</p>'
+							 + '<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404" class="download">下载汽车超人客户端</a>'
+							 + '</div>'
+					$('.redEnvelope').html(shtml);
+					$('.mask,.winBox').hide();
+				}
+				else if(data.code==604 || data.code==-603){
+					alert('红包已过期');
+					$('.mask,.winBox').hide();
+					$('.mesgCheck input').val('');
+				}
+				else if(data.code==-2031){
+					alert('验证码错误');
+				}				
+				else if(data.code==607){
+					alert('领取过');
+					$('.mask,.winBox').hide();
+					$('.mesgCheck input').val('');
+				}
+				else if(data.code==602){
+					alert('已抢光');
+				}
+				else{
+					alert('领取失败');
+				}
+			})
+		}
+		getTelCode();
+		$('.getBtn').click(function(){
+			var sTel=$('.telNum').val();
+			if(reg.test(sTel)){
+				isGet(sTel);
+			}
+			else{
+				alert('请输入正确的手机号码')
+			}
+		})
+	</script>
+	<script type="text/javascript" src="../../js/traffics.js"></script>
+</body>
+</html>

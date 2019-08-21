@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>汽车超人问答活动</title>
+	<style type="text/css">
+		*{margin:0px;padding:0px;}
+		img{border:none;}
+		.pages{height:100%;position: relative;width: 100%;}
+		.p1{text-align:center;background: url(images/bg.jpg);background-size: 100% 100%;}
+		.p1 img{  max-width: 100%;}
+		.start_btn{background: url(images/btn4.png) no-repeat;background-size: 100% auto;width:65%;position:absolute;  left: 18%;top: 53%;}
+		/*.start_btn:hover{background: url() no-repeat;background-size: 100% auto;}*/
+		.p1,.p2,.p3,.p4,.p5,.p6,.p7{background: url(images/bg.jpg) no-repeat;background-size: 100% 100%;}
+		.p2_1{/*width: 79.6%;*/margin:0 auto;/*padding-top:11.75%;*//*position: relative;*/
+			margin-bottom: 15%;
+			}
+		.p2_1 img{display:block}
+		.p2_2{width: 73.7%;margin:0 auto;
+		/*background:#eeeeee;margin-top:-10px;position:relative;z-index:1;  margin-top: -2.1%;
+  		box-shadow: 0px 0px 33px rgba(100,100,100,0.6);*/
+  		}
+		.p2_2 img{display:block;  margin-bottom: 15%;}
+		.p2_3{width:55%;margin:5% auto 0 auto;padding-top:25%;}
+		.qus{position: absolute;bottom:0px;left: 0px;}
+		
+		.result .sloution{position:relative;width: 100%;background: url(images/qusbg_09.png) no-repeat;background-size: 100% 100%;margin: 0 auto;  margin-top: 15%;color: #000;}
+		.result .special01{position:relative;width: 100%;background: url(images/ques_03a.png) no-repeat;background-size: 100% 100%;margin: 0 auto;  margin-top: 15%;color: #000;}
+		.result .special02{position:relative;width: 100%;background: url(images/ques_03b.png) no-repeat;background-size: 100% 100%;margin: 0 auto;  margin-top: 15%;color: #000;}
+
+		.result .sloution span{  padding-left: 14%;line-height: 2em;  line-height: 2.5em;
+  font-size: 16px;font-weight: bold;}
+  		.result .sloution .specilque01{
+  			background: url(images/que03a.png) no-repeat;
+  		}
+		.result .on:after{content:" " ;display: block;width: 14.6%;height: 100%;background: url(data:image/png;base64,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) no-repeat;  background-size: 100% 100%;right: 0px;bottom: 0%;position: absolute;}
+		
+		.p3_2{width: 100%;margin: 0 auto;position:relative;z-index:1;}
+		.p3_2 img{display: block;}
+		.p3_3{width: 55%;margin: 0 auto;padding-top: 10%;padding-bottom: 8%;}
+		@media only screen and (max-height:460px ) {
+			.p3_3{width: 76.9%;margin: 0 auto;padding: 4%;}
+		}
+		.p3_3 img{width: 100%;}
+		.p3_4{width: 100%;height: 23%;text-align:center; /*margin-top: 5%;*/}
+		.p3_4 img{height: 100%;max-width: 100%;}
+		
+		/*.overtitle{margin-top: 5%;}*/
+		.p4_2{padding-top: 1%;}
+		.p4_2 p{text-align: center;padding-bottom: 3%;}
+		.p4_2 img{width: 52%;display: block;margin: 0 auto;}
+		.chaoren{position: absolute;top: 0px;left: 0px;}
+		.chaorenwarp{position: relative;display: inline-block;height: 100%;}
+		.p5 .p3_4,.p6 .p3_4{
+			width: 60%;
+			margin:0 auto;
+			margin-top: 8%;
+		}
+		.p5 .p3_4 img,.p6 .p3_4 img{
+			height: auto;
+			max-width: 100%;
+		}
+		.p5 .p4_2,.p6 .p4_2{
+			padding-top: 15%;
+		}
+		.p5 .p4_2 p,.p6 .p4_2 p{
+			padding-bottom: 5%;
+		}
+		.p1 .rule{
+			position: absolute;
+  			left: 22%;
+  			bottom: 3%;
+  			width: 60%;
+		}
+		.tc{
+			position: absolute;
+  			left: 0;
+  			top: -1px;
+		}
+		.tc .tanchuang{
+			width: 100%;
+  			height: 100%;
+  			
+		}
+		.tc .close{
+			position: absolute;
+  			width: 20%;
+  			height: 15%;
+  			right: 0px;
+  			top: 6%; 
+		}
+		.qus{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 0s;
+			-webkit-animation-fill-mode: backwards;
+		}
+		.result .sloution:nth-child(1)
+		{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 0.3s;
+			-webkit-animation-fill-mode: backwards;
+		}
+		.result .sloution:nth-child(2)
+		{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 0.6s;
+			-webkit-animation-fill-mode: backwards;
+		}
+		.result .sloution:nth-child(3)
+		{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 0.9s;
+			-webkit-animation-fill-mode: backwards;
+		}
+		.result .sloution:nth-child(4)
+		{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 1.2s;
+			-webkit-animation-fill-mode: backwards;
+		}
+		.chaorenwarp img:nth-child(1)
+		{
+			-webkit-animation: fadeIRight 0.3s ease-in-out 0.4s;
+			-webkit-animation-fill-mode: backwards;
+			
+		}
+		.chaorenwarp img:nth-child(2)
+		{
+			-webkit-animation: fadeILeft 0.3s ease-in-out 0.4s;
+			-webkit-animation-fill-mode: backwards;
+			
+		}
+		@-webkit-keyframes fadeIRight {
+			0% {
+				opacity: 0;
+				-webkit-transform: translateX(30px)
+			}
+			100% {
+				opacity: 1;
+				-webkit-transform: translateX(0)
+			}
+		}
+		@-webkit-keyframes fadeILeft {
+			0% {
+				opacity: 0;
+				-webkit-transform: translateX(-30px)
+			}
+			100% {
+				opacity: 1;
+				-webkit-transform: translateX(0)
+			}
+		}
+		input#name {
+		  -webkit-appearance: none;
+		  position: absolute;
+		  top: 38.2%;
+		  left: 22%;
+		  background: none;
+		  width: 68%;
+		  height: 15%;
+		  border: 0px;
+		  outline: none;
+		}
+		input#phone {
+			-webkit-appearance: none;
+		  position: absolute;
+		  top: 77%;
+		  left: 12%;
+		  background: none;
+		  width: 75%;
+		  height: 15%;
+		  border: 0px;
+		  outline: none;
+		  font-size: 15px;
+		}
+		#con {
+			opacity: 0;	
+		  -webkit-transition: all 700ms ease;
+		  position: relative;
+		  width: 100%;
+		    
+		}
+		body{overflow: hidden;}
+		.share_img{position:fixed;background: rgba(0,0,0,0.8);height: 100%;width: 100%;left: 0px;top: 0px;text-align: right;  z-index: 100;}
+		/*jiazai*/
+		.loadingbg{  position: fixed; top:0px; width: 100%; height: 100%;  background:rgba(0,0,0,0.2); filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000); z-index: 101;}
+		#loading{ text-align: center;  position:absolute; margin-top: -100px;top:50%;left: 50%;margin-left: -100px;}
+		#loading span{ color: #dd5c01; line-height: 200px; font-size: 18px; display: block;}
+		/*动画*/
+		.spinner {margin: 0px auto; width: 200px; height: 200px; position: relative;-webkit-transform: scale(0.2);}
+		.container1 > div, .container2 > div, .container3 > div { width: 36px; height: 36px; background-color: #fc7512; border-radius: 100%; position: absolute;
+		  -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+		  animation: bouncedelay 1.2s infinite ease-in-out;
+		  -webkit-animation-fill-mode: both;
+		  animation-fill-mode: both;}
+		.spinner .spinner-container { position: absolute; width: 100%; height: 100%;}
+		.container2 { -webkit-transform: rotateZ(45deg); transform: rotateZ(45deg);}
+		.container3 {-webkit-transform: rotateZ(90deg); transform: rotateZ(90deg);}
+		.circle1 { top: 0; left: 0; }
+		.circle2 { top: 0; right: 0; }
+		.circle3 { right: 0; bottom: 0; }
+		.circle4 { left: 0; bottom: 0; }
+		.container2 .circle1 {-webkit-animation-delay: -1.1s; animation-delay: -1.1s;}
+		.container3 .circle1 {-webkit-animation-delay: -1.0s; animation-delay: -1.0s;}
+		.container1 .circle2 {-webkit-animation-delay: -0.9s;animation-delay: -0.9s;}
+		
+		.container2 .circle2 {
+		  -webkit-animation-delay: -0.8s;
+		  animation-delay: -0.8s;
+		}
+		
+		.container3 .circle2 {
+		  -webkit-animation-delay: -0.7s;
+		  animation-delay: -0.7s;
+		}
+		
+		.container1 .circle3 {
+		  -webkit-animation-delay: -0.6s;
+		  animation-delay: -0.6s;
+		}
+		
+		.container2 .circle3 {
+		  -webkit-animation-delay: -0.5s;
+		  animation-delay: -0.5s;
+		}
+		
+		.container3 .circle3 {
+		  -webkit-animation-delay: -0.4s;
+		  animation-delay: -0.4s;
+		}
+		
+		.container1 .circle4 {
+		  -webkit-animation-delay: -0.3s;
+		  animation-delay: -0.3s;
+		}
+		
+		.container2 .circle4 {
+		  -webkit-animation-delay: -0.2s;
+		  animation-delay: -0.2s;
+		}
+		
+		.container3 .circle4 {
+		  -webkit-animation-delay: -0.1s;
+		  animation-delay: -0.1s;
+		}
+		
+		@-webkit-keyframes bouncedelay {
+		  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+		  40% { -webkit-transform: scale(1.0) }
+		}
+		
+		@keyframes bouncedelay {
+		  0%, 80%, 100% { 
+		    transform: scale(0.0);
+		    -webkit-transform: scale(0.0);
+		  } 40% { 
+		    transform: scale(1.0);
+		    -webkit-transform: scale(1.0);
+		  }
+		}
+		
+		/*media*/
+
+		@media only screen and (max-height:490px ) {
+			.p2_1 {
+
+				padding-top: 3.75%;
+				margin-bottom: 8%;
+			}
+			.p2 .p2_3{
+				padding-top: 1%;
+			}
+			.p2 .p4_2 {
+			padding-top: 2%;
+			}
+			.p2 .p4_2 p {
+			padding-bottom: 2%;
+			}
+
+			.chaorenwarp{
+				position: relative;
+    			top: 2%;
+			}
+			.chaorenwarp img{
+				width: 100%;
+				height: 55%;
+			}
+			.start_btn{
+				background-size: 100% 80%;
+			}
+			.p5 .p3_1,.p6 .p3_1{
+				height: 62%;
+			}
+			.overtitle{
+				height: 100%;
+				margin-top: 0;
+			}
+			.p5 .p4_2, .p6 .p4_2{
+				padding-top: 2%;
+			}
+			.p5 .p3_4, .p6 .p3_4{
+				margin-top: 2%;
+			}
+			.p5 .p4_2 p, .p6 .p4_2 p {
+    			padding-bottom: 3%;
+			}
+			.p3 .p3_2{
+				height: 55%;
+			}
+			.p3 .p3_2 img,.p5 .p3_2 img,.p6 .p3_2 img{
+				padding-top: 0px;
+				height: 100%;
+			}
+			.p3 .p3_3 {
+    			width: 50%;
+    			margin: 0 auto;
+    			padding: 5%;
+			}
+			.p4 .p3_1{
+				height:55%;
+			}
+			.p4 .p4_2 img {
+				width:40%;
+			}
+			.p4 .p3_4{
+				height: 20%;
+			}
+			.p4 .p4_2 {
+			padding-top: 0;
+			}
+		}
+		/*@media only screen and (max-height:400px ) {
+			.p2_1 {
+			    width: 64.6%;
+			    padding-top: 6.75%;
+			}
+			.p2_2 {
+			    width: 60.7%;
+			    
+			}
+			.p2_3 {
+				    width: 60.75%;
+				}
+			.p3_1 {
+			    width: 80%;
+			    margin: 0 auto;
+			    position: relative;
+			}
+			.p3_2 {
+			    width: 73.7%;
+			}	
+			.p3_3 {
+			    width: 66.9%;
+			
+			}
+			.p4_2 {
+			    padding-top: 3%;
+			    width: 80%;
+			    margin: 0 auto;
+			}
+		}*/
+	</style>
+</head>
+<body>
+<div style="width:0px;height:0px;overflow: hidden;">
+	<img src="http://sale.qccr.com/wenda/images/share.jpg" />
+</div>
+<div class="tc" style="display:none;z-index:11;">
+	<img src="images/tanchuang.png" alt="" class="tanchuang">	
+	<span class="close"></span>
+</div>
+	<div class="loadingbg">
+			<div id="loading">
+				<div class="spinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<span class="showtxt"></span>
+				</div>
+			</div>
+	</div>
+	<div id="con">
+
+	<div class="pages p1">
+		<span class="chaorenwarp" style="position: relative;top:2%;">
+			<img src="images/p1content_02.png" / >
+			<!-- <img class="chaoren" src="images/p1content_021.png" height="100%" / > -->
+		</span>
+		<span class="start_btn"><img src="images/btn4.png" style="opacity: 0;" /></span>
+		<span class="rule"><img src="images/rule.png" alt=""></span>	
+	</div>
+	<div class="pages p2">
+		<div class="q1 quswarp">
+			<div class="p2_1">
+				<img src="images/qus1_04.png" width="100%" />
+				<!-- <img class="qus" src="images/qus1_04.png" width="100%"> -->
+			</div>
+			<div class="p2_2">
+				<!-- <img width="100%" src="images/blank1.png"/> -->
+				<div class="result">
+					<p class="sloution" >
+						<span>A. 打怪兽拯救地球</span>
+					</p>
+					<p class="sloution" data-ok="true">
+						<span>B. 汽车养护平台</span>
+					</p>
+				</div>	
+			</div>
+			<div class="p2_3">
+				<img class="nextqus" src="images/btn1.png"  width="100%">
+			</div>
+		</div>
+		<div class="q2 quswarp" style="display: none;">
+			<div class="p2_1">
+				<img src="images/qus2_04.png" width="100%" />
+				<!-- <img class="qus" src="images/qus2_04.png" width="100%"> -->
+			</div>
+			<div class="p2_2">
+				<!-- <img width="100%" src="images/blank1.png"/> -->
+				<div class="result">
+					<p class="sloution" data-ok="true" >
+						<span>A. 汽车养护，超人一步</span>
+					</p>
+					<p class="sloution" >
+						<span>B.  因为超人，所以超人</span>
+					</p>
+				</div>	
+			</div>
+			<div class="p2_3">
+				<img  class="nextqus" src="images/btn1.png" width="100%">
+			</div>
+		</div>
+		<div class="q3 quswarp" style="display: none;">
+			<div class="p2_1">
+				<img src="images/qus3_04.png" width="100%" />
+				<!-- <img class="qus" src="images/qus3_04.png" width="100%"> -->
+			</div>
+			<div class="p2_2">
+				<!-- <img width="100%" src="images/blank1.png"/> -->
+				<div class="result">
+					<p class="sloution special01" data-ok="true">
+						<span></span>
+						<!-- <span><img src="images/que03a.png" alt="" style="width: 54%;position: absolute;left: 14%;top: 17%;"></span> -->
+					</p>
+					<p class="sloution special02"  >
+						<span></span>
+						<!-- <span><img src="images/que03b.png" alt="" style="width: 35%;position: absolute;left: 14%;top: 10%;"></span> -->
+					</p>
+				</div>
+			</div>
+			<div class="p2_3">
+				<img  class="nextqus" src="images/btn1.png" width="100%">
+			</div>
+		</div>
+		<div class="q4 quswarp" style="display: none;">
+			<div class="p2_1">
+				<img src="images/qus4_04.png" width="100%" />
+				<!-- <img class="qus" src="images/qus4_04.png" width="100%"> -->
+			</div>
+			
+			<div class="p2_2">
+				<!-- <img width="100%" src="images/blank1.png"/> -->
+				<div class="result">
+					<p class="sloution"  >
+						<span>A. 超人内裤</span>
+					</p>
+					<p class="sloution" data-ok="true" style="background-image:none;" >
+						<span style="padding-left:0px;"><img src="images/que04b.png" alt="" style="width:100%;margin-bottom:0px;"></span>
+					</p>
+				</div>	
+			</div>
+			<div class="p2_3">
+				<img  class="nextqus" src="images/btn1.png" width="100%">
+			</div>
+		</div>
+		<div class="q5 quswarp" style="display: none;">
+			<div class="p2_1">
+				<img src="images/qus5_04.png" width="100%" />
+				<!-- <img class="qus" src="images/qus5_04.png" width="100%"> -->
+			</div>
+			<div class="p2_2">
+				<!-- <img width="100%" src="images/blank1.png"/> -->
+				<div class="result">
+					<p class="sloution"  >
+						<span>A. 凹凸曼星球</span>
+					</p>
+					<p class="sloution"  data-ok="true">
+						<span>B.  地球杭州</span>
+					</p>
+				</div>	
+			</div>
+			<div class="p2_3">
+				<img   class="surequs" src="images/btn51.png" width="100%">
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="pages p3">
+		<!-- <div class="p3_1">
+			<img src="images/overheadbg_03.png" width="100%" />
+			<img class="overtitle" src="images/overheadinfo_03.png" width="100%" />
+			
+		</div> -->
+		<div class="p3_2">
+			<img src="images/userinfobg_07.png" width="100%" style="padding-top: 0%;"/>
+			<!-- <input type="text" id="name" /> -->
+			<input type="text" id="phone" maxlength="11" />
+		</div>
+		<div class="p3_3">
+			<img id="infoSubmit" src="images/btn5.png" />
+		</div>
+		<div class="p3_4">
+			<img src="images/successinfo_30.png" />
+		</div>
+	</div>
+	<div class="pages p4">
+		<div class="p3_1">
+			<!-- <img src="images/overheadbg_03.png" width="100%" /> -->
+			<img class="overtitle" src="images/overnocount_03.png" width="100%" />
+		</div>
+		<div class="p3_2">
+			<!-- <img src="images/overt3.png" width="100%" /> -->
+		</div>
+		<div class="p4_2">
+			<p>
+				<img class="reque requ1" src="images/btn2-1.png" />
+			</p>
+			<p>
+				<img class="share_btn" src="images/btn3.png" />
+			</p>
+		</div>
+		<div class="p3_4">
+			<img src="images/successinfo_30.png" />
+		</div>
+	
+	</div>
+	<div class="pages p5">
+		<div class="p3_1">
+			<!-- <img src="images/overheadbg_03.png" width="100%" /> -->
+			<img class="overtitle" src="images/tijiao.png" width="100%" />
+		</div>
+		<div class="p3_2">
+			<!-- <img src="images/overt3.png" width="100%" /> -->
+		</div>
+		<div class="p4_2">
+			<p>
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404"><img class="reque" src="images/download.png" /></a>
+			</p>
+			<p>
+				<img class="share_btn" src="images/btn3.png" />
+			</p>
+		</div>
+		<div class="p3_4">
+			<img src="images/sousuo.png" />
+		</div>
+	
+	</div>
+	<div class="pages p6">
+		<div class="p3_1">
+			<!-- <img src="images/overheadbg_03.png" width="100%" /> -->
+			<img class="overtitle" src="images/lingguo.png" width="100%" />
+		</div>
+		<div class="p3_2">
+			<!-- <img src="images/overt3.png" width="100%" /> -->
+		</div>
+		<div class="p4_2">
+			<p>
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404"><img class="reque" src="images/download.png" /></a>
+			</p>
+			<p>
+				<img class="share_btn" src="images/btn3.png" />
+			</p>
+		</div>
+		<div class="p3_4">
+			<img src="images/sousuo.png" />
+		</div>
+	
+	</div>
+	
+	</div>
+	<div class="share_img" style="display:none;" >
+		<img src="images/ios_share.png" width="80%" style="padding-top: 15%;">
+		
+	</div>
+	<script type="text/javascript" src="http://www.qccr.com/resources/shop/default/js/jquery.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	// 添加Cookie
+function addCookie(name, value, options) {
+	if (arguments.length > 1 && name != null) {
+		if (options == null) {
+			options = {};
+		}
+		if (value == null) {
+			options.expires = -1;
+		}
+		if (typeof options.expires == "number") {
+			var time = options.expires;
+			var expires = options.expires = new Date();
+			expires.setTime(expires.getTime() + time * 1000);
+		}
+		if (options.path == null) {
+			options.path = "/";
+		}
+		if (options.domain == null) {
+			options.domain = ".qccr.com";
+		}
+		document.cookie = encodeURIComponent(String(name)) + "=" + encodeURIComponent(String(value)) + (options.expires != null ? "; expires=" + options.expires.toUTCString() : "") + ("; path=/") + ("; domain="+options.domain) + (options.secure != null ? "; secure" : "");
+	}
+}
+// 获取Cookie
+function getCookie(name) {
+	if (name != null) {
+		var value = new RegExp("(?:^|; )" + encodeURIComponent(String(name)) + "=([^;]*)").exec(document.cookie);
+		return value ? decodeURIComponent(value[1]) : null;
+	}
+}
+	function urlEcode(str)
+	{
+		str=str.replace(/\s/g,"%2B").replace(/\+/g,"%20").replace(/\//g,"%2F").replace(/\?/g,"%3F").replace(/\%/g,"%25").replace(/\#/g,"%23").replace(/\&/g,"%26").replace(/\=/g,"%3D");
+		return str;
+	}
+	var ajaxurl="http://market.csqccr.com";
+	var redbagId=1453;
+	var url=location.href;
+	if(/\.qccr\.com/.test(url))
+	{
+		redbagId=909600;
+		ajaxurl="http://market.qccr.com";
+	}
+	var h=document.documentElement.clientHeight,
+		w=document.documentElement.clientWidth,
+		qusStep=0,
+		okCount=0; 	
+	var reslutA=[3,2,1,1,0];
+	$(".pages,body").css({"height":h,
+						  "width":w
+						});	
+	if(getCookie("shuangse"))
+	{
+	
+		//$(".loadingbg").hide();
+		$(".p1,.p2,.p3,.p4,.p5,.loadingbg").remove();
+		$(".loadingbg").hide();
+		$("#con").css("opacity","1");
+		$(".pages").show();
+	}else
+	{
+		var start_btn=document.querySelectorAll('.start_btn')[0];
+		$(".result").on("touchend",".sloution",function(){
+			if($(this).hasClass("on"))
+			{
+				$(this).toggleClass("on");
+			}else
+			{
+				$(this).parents(".result").find("p").removeClass("on");
+				$(this).toggleClass("on");
+			}
+			
+		});
+		function btnactive(ele)
+		{
+			if(0)
+			{
+				var oldSrc=ele.src;
+				var activeSrc=oldSrc.replace(".png","h.png");
+				ele.src=activeSrc;
+				setTimeout(function(){
+					ele.src=oldSrc;
+				},300);
+			}
+			
+		}
+		
+		start_btn.addEventListener("touchend",function(){
+			toPage(1);
+		},false);
+		
+		$(".nextqus").bind("touchstart",function(){
+			if($(this).parents(".quswarp").find(".on").length<1)
+			{
+				btnactive(this);
+				alert("请至少选择一个答案！");
+				
+			}else
+			{
+				if($(this).parents(".quswarp").find(".on").attr("data-ok")=="true")
+				{
+					
+					okCount++;
+				}
+				qusStep++;
+				btnactive(this);
+				setTimeout(function(){
+					$(".quswarp").hide();	
+					$(".quswarp").eq(qusStep).show();
+				},300);
+			}
+			
+			
+		});
+		$(".surequs").bind("touchstart",function(){
+			if($(this).parents(".quswarp").find(".on").length<1)
+			{
+				
+				btnactive(this);
+				alert("请至少选择一个答案！");
+				
+			}else
+			{
+				btnactive(this);
+				if($(this).parents(".quswarp").find(".on").attr("data-ok")=="true")
+				{
+					
+					okCount++;
+				}
+				setTimeout(function(){
+					if(okCount==5)
+					{
+						$(".p4,.p5,.p6").hide();
+					}else
+					{
+						$(".p3,.p5,.p6").hide();
+						$.ajax({
+									url:ajaxurl+"/hit/add.jhtml?format=json&app=answers",
+									dataType:"jsonp",
+									success:function(hitdata){
+										if(hitdata.code==0)
+										{
+											//localStorage.Phone="1111";
+										}
+									}
+								});
+						//localStorage.Phone="111";
+						
+						$(".p4").show();
+					}
+					toPage(2);
+				},300);
+			}
+		});
+		function toPage(i)
+		{
+			$("#con").css("webkitTransform","translate3d(0px, -"+i*h+"px, 0px)");
+		}
+		var isactive=false;
+		$("#infoSubmit").bind("touchstart",function(){	
+			var phone=$("#phone").val();
+			if(!/^1\d{10}$/.test(phone))
+			{
+				alert("请填写正确的手机号码!");
+				return false;
+			}
+			if(isactive)return false;
+			isactive=true;
+			$.ajax(
+				{
+					url:ajaxurl+"/activity/receiveRewards4wechat?format=json&app=answers&phone="+phone+"&redbagId="+redbagId,
+					dataType:"jsonp",
+					success:function(data)
+					{	
+						isactive=false;
+						if(data.code==0&&data.rewardStatus==1)
+						{
+							$(".p5").show();
+							toPage(3);
+							addCookie("shuangse", $("#phone").val(),{expires:3600*24*365});
+							$.ajax({
+								url:ajaxurl+"/hit/queryHits.jhtml?format=json&app=answers",
+								dataType:"jsonp",
+								success:function(hitdata){
+									if(hitdata.code==0)
+									{
+										addCookie("shuangse", $("#phone").val(),{expires:3600*24*365});
+										//localStorage.Phone=$("#phone").val();
+									}
+								}
+							});
+						}else if(data.code==0&&data.rewardStatus==0)
+						{
+							addCookie("shuangse", $("#phone").val(),{expires:3600*24*365});
+							alert("一个手机号码只能提交一次！");
+						}else
+						{
+							alert("领取失败！");
+						}
+					},
+					error: function () {
+						alert("领取失败！");
+					}
+				}
+			)
+		});
+		$(".pages").hide();
+		$(window).bind("load",function(){
+			setTimeout(function(){
+				
+				$(".loadingbg").hide();
+				$(".tc").css({width:document.documentElement.clientWidth+"px",height:document.documentElement.clientHeight+1+"px"});
+				$("#con").css("opacity","1");
+				$(".pages").show();
+			},1000);
+		})
+	}
+	function is_weixn(){  
+		var ua = navigator.userAgent.toLowerCase();  
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			return true;  
+		} else {  
+			return false;  
+		}  
+	}  
+	if(!is_weixn())
+	{
+	}else
+	{
+		url = encodeURIComponent(location.href.split('#')[0]);
+		$.ajax({
+	        
+	        dataType: "jsonp",
+	        url: "http://market.qccr.com/weixin/share?url="+url,
+	        success: function (data) {
+		   	  data=data.info;	
+			  wx.config({
+		   			debug:false,
+		    		appId: data.appId, // 必填，公众号的唯一标识
+		   			timestamp:data.timestamp, // 必填，生成签名的时间戳
+		    		nonceStr: data.nonceStr, // 必填，生成签名的随机串
+		    		signature: data.signature,// 必填，签名，见附录1
+				     jsApiList: ['onMenuShareTimeline',
+				                 'onMenuShareAppMessage',
+				                 'onMenuShareQQ',
+				                 'onMenuShareWeibo'
+				                 ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					});
+					
+					wx.ready(function(){
+						var imgUrl="http://sale.qccr.com/ssycx/wenda/images/share.jpg?"+Math.random().toFixed(10);
+					 	//分享朋友圈
+					 	wx.onMenuShareTimeline({
+					 	    title: "我在汽车超人领到了70元红包，你也来试试手气吧。", 
+					 	    desc:"专业汽车养护平台，双十二大促期间（12.7~12.12）红包抵扣更优惠!",
+					 	    link: location.href, // 分享链接
+					 	    imgUrl: imgUrl, // 分享图标
+					 	    success: function () {
+					 	    	$(".share_img").hide();
+					 	    },
+					 	    cancel: function () { 
+					 	        // 用户取消分享后执行的回调函数
+					 	    }
+					 	});
+					 	//分享给朋友
+					 	wx.onMenuShareAppMessage({
+					 	    title: "我在汽车超人领到了70元红包，你也来试试手气吧。",
+					 	    desc:"专业汽车养护平台，双十二大促期间（12.7~12.12）红包抵扣更优惠！",
+					 	    link: location.href, // 分享链接
+					 	    imgUrl: imgUrl, // 分享图标
+					 	    success: function () {
+					 	    	$(".share_img").hide();
+					 	    },
+					 	    cancel: function () { 
+					 	    }
+					 	});
+					}); 
+					wx.error(function(res){
+			
+					});
+	
+	        },
+	        error: function () {}
+	  	  });
+	}
+	$(".share_btn").bind("touchend",function(){
+		$(".share_img").show();
+		
+	});
+	
+	$(".requ1").bind("touchend",function(){
+		// window.location.reload();
+		location.reload();
+		
+	});
+	$(".share_img").bind("touchend",function(){
+		
+		$(this).hide()
+	});
+	$(".close").bind("touchend",function(){
+		
+		$(".tc").hide();
+	});
+	$(".rule").bind("touchend",function(){
+		$(".tc").css("display","block");
+	});
+	$("#con,.tc").bind("touchmove",function(e){
+		e.preventDefault();
+	});
+	$("input").bind("blur",function(){
+		window.scrollTo(0,0);
+	});
+	$(".share_img").css({height:document.documentElement.clientHeight,"width":document.documentElement.clientWidth});
+	</script>
+	
+</body>
+</html>

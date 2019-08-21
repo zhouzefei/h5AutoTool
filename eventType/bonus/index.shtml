@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>口令红包</title>
+    <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v1"> 
+</head>
+
+<body>
+   <div class="container_bonus">
+      <div class="content">
+          <img src="images/top.png">
+           <div class="bonus_keywarp"> <input style="color:#000;" type="text" class="bonus_key"></div>
+          <a class="exchange" >兑换红包</a>
+      </div>
+      <!-- <div class="bottom"></div> -->
+      <img class="bottomimg" src="images/bottom.png">
+      <div class="rule">使用说明</div>
+   </div>
+    <div class="ruleContent">
+      <img src="images/close.png" alt="" class="close">    
+      <div class="font">
+        <h3 class="title">中石化用户口令兑换及优惠券使用教程：</h3>
+        <p class="time">时间段：2015年9月26日~10月7日.</p>
+        <p>方法论：</p>
+        <p>1.点击“开始制作”后，10秒内迅速点击月饼，可获得相应的月饼数.</p>
+        <p> 2.每位用户每天可玩3次，分享给好友帮忙制作月饼，同一好友每天可以帮做1次.</p>
+        <p>小金库：</p>        
+        <p>1.累计制作50个可获1分钱商品券：燃油宝，买买买.</p>  
+        <p>2.制作100个可获100元商品抵价券：哇，100元，够我买个汽车养护四件套啦.</p>  
+        <p>3.累计制作200个可获200元加油卡：这个月，加油都不用钱了耶.</p> 
+        <p>领奖台：关注汽车超人服务号（qichechaoren888）
+          10月5日~9日进入服务号界面下方“领取奖品”填写.联系方式：
+          奖品于10月10日-15日统一发放.</p>  
+        <p>碎碎念：</p>  
+        <p>1.如果用户出现违规行为（包括但不限于利用系统漏洞、黑客工具等非正常方式参与），则获得的月饼无效，活动主办方有权将礼品作废.</p>  
+         <p>2.特维轮网络科技（杭州）有限公司在法定范围内对本活动享有解释权.</p>
+      </div>   
+    </div>
+    <div class="g-body">
+            <div class="bj"></div>
+            <div class="g-dialog">
+                <div class="succe">
+                    <p class="success">领取成功！</p>
+                    <p class="yunqi">客官，运气不错嘛！</p>
+                    <p class="tips">（优惠券已放入您的超人红包）</p>
+                    <div class="check">
+                       <a href="">查看我的优惠券</a> 
+                    </div>                    
+                </div>   
+            </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js" ></script>
+<script src="js/index.js?v1"></script>
+<script type="text/javascript">
+
+ var w = document.documentElement.clientWidth,
+     h = document.documentElement.clientHeight;
+        $(".container_bonus,.g-body,.ruleContent").css({
+            "height": h,
+            "width": w
+        });
+        $(".ruleContent .font").height(h-150+"px");
+var mpt = function(text,fun){
+        $('body').append('<div id="mpt-full"><div id="mpt"><p>' + text + '</p></div></div>');
+        setTimeout('$("#mpt-full").hide()',1500);
+        setTimeout('$("#mpt-full").remove()',2500);
+    };
+
+$(".exchange").bind("touchend",function(){
+    var command = $(".bonus_key").val();
+    if(getQueryString('userId')){
+       if(command){
+            getKouLingBag(command,userId);
+        }else{
+            mpt("请输入口令");
+        } 
+    }else{
+        toApp.login();
+    }
+        
+});
+
+$(".m-btn").bind("touchend",function(){
+    $(".g-body").hide();
+});
+$(".check").bind("touchend",function(){
+    $(".g-body").hide();
+    toApp.wallet();
+});
+
+$(".rule").bind("touchend",function(){
+    $(".ruleContent").show();
+});
+$(".ruleContent .close").bind("touchend",function(){
+    $(".ruleContent").hide();
+});
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>

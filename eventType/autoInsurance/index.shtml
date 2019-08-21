@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>车险</title>
+  <meta charset="UTF-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="banner">
+      
+    </div>
+    <div class="content">
+    </div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  var autoInsurance = {
+    id: 1,
+    initData: function(){
+      try{
+        autoInsurance.id=toApp.getCityId();
+      }catch(e){
+        autoInsurance.id=22;
+      }
+      //alert(autoInsurance.id);
+      signCreate("Channel",'{"insurance_id": "1","service_id":"getChannelList","cregion_id": '+ autoInsurance.id +'}',autoInsurance.getIndexInfo);
+      
+    },
+    getIndexInfo: function(data){
+      if(data.info.code==1){
+        signCreate("MyCar",'{"insurance_id": "1","service_id":"getMyCar","user_id": '+ userId +'}',autoInsurance.initView);
+        signCreate("Advert",'{"insurance_id":"2","service_id":"getBannerInfo","cregion_id":'+ autoInsurance.id +'}',autoInsurance.getAd);
+      }else if(data.info.code==0){
+        var strVar = "";
+        strVar +="<div class=\"mqad\">";
+        strVar += "<div><img  src=\"images/carsafe_font.png\"><\/div>";
+        strVar += "<div ><img  src=\"images/carsafe_img.png\"><\/div>";
+        strVar += "<\/div>";
+        $("html").css("background","#009cff");
+        $(".container").html(strVar);
+      }
+    },
+    initView: function(data){
+      var strVar = "";
+      if(data.info && data.info.length>0){
+        strVar += "<table class=\"carList\" cellspacing=\"0\">";
+        for(var i=0;i<data.info.length;i++){
+          strVar += "<tr>";
+          strVar += " <td class=\"con_td1\"><a href=\"carInfo.shtml?model=" + encodeURI(encodeURI(data.info[i].model)) +"&carNum=" + encodeURI(encodeURI(data.info[i].code)) +"&phone=" + data.info[i].phone + "&userName=" + encodeURI(encodeURI(data.info[i].truename)) + "&newCarFlag="+ data.info[i].is_new +"&uid=" + data.info[i].user_id + "&area=" + encodeURI(encodeURI(data.info[i].region_name)) + "&cityCode=" + data.info[i].region_id + "\">";
+          strVar += "   <img src=\"images/icon_car.png\">";
+          strVar += "   <p class=\"carName\" title=\" "+ data.info[i].model +"\">";
+          strVar +=   data.info[i].model;
+          strVar += "   <\/p>";
+          strVar += "   <p class=\"carInfo\">";
+          strVar +=     (data.info[i].code?data.info[i].code:"新车未上牌") + "<span>"+ data.info[i].region_name +"<\/span>";
+          strVar += "   <\/p>";
+          strVar += " <\/a><\/td>";
+          strVar += " <td class=\"con_td2\">";
+          strVar += "   <a href=\"http://123.57.7.50:8080/m/baojia/channel?from=m_app_chaoren&newCarFlag="+ data.info[i].is_new +"&cityCode="+ data.info[i].region_id +"&licenseNo="+ data.info[i].code +"&ownerMobile="+ data.info[i].phone +"&uid="+ userId +"\">立即报价</a>";
+          strVar += " <\/td>";
+          strVar += "<\/tr>";
+        }
+        strVar += "<\/table>";
+        strVar += "<div class=\"addBottom\"><a href=\"http://123.57.7.50:8080/m/channel/default?from=m_app_chaoren&uid="+ userId +"\">继续添加爱车<\/a><\/div>";
+      }else{
+        strVar += "<img class=\"con_nocar\" src=\"images/car.png\">";
+        strVar += "<p class=\"con_t1\">您还没有爱车呦！<\/p>";
+        strVar += "<p class=\"con_t2\"><a class=\"goYibaoxian\" href=\"http://123.57.7.50:8080/m/channel/default?from=m_app_chaoren&uid="+ userId +"\">添加爱车<\/a><\/p>";
+      }
+      $(".content").html(strVar);
+    },
+    getAd: function(data){
+      if(data.code == 0) {
+        var strVar = "";
+        if(data.info.goto_url && data.info.goto_url!=""){
+          strVar += "<a href=\"" + data.info.goto_url + "\"><img src=\"" + data.info.img_url +"\"><\/a>";
+        }else{
+          strVar += "<a href=\"javascript:void(0);\"><img src=\"" + data.info.img_url +"\"><\/a>";
+        }
+        $(".banner").html(strVar);
+      }
+    }
+  }
+  autoInsurance.initData();
+  //autoInsurance.initView(0)
+</script>

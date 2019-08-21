@@ -1,0 +1,63 @@
+html{color:#666;-ms-text-size-adjust:100%;_text-overflow:ellipsis;background:#e5e5e5;}
+			body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,select,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+			body,button,input,select,textarea{font:12px/1.5 hiragino sans gb,microsoft yahei,simsun}
+			h1,h2,h3,h4,h5,h6{font-size:1em}
+			body{background:#e5e5e5;}
+			a{text-decoration:none; cursor:pointer;}
+			a:active{outline:0 none}
+			@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){a:active{background-color:transparent}}
+			small,cite,code,em,th,i,b{font-size:1em;font-style:normal;font-weight:500}
+			input,select,textarea,button{font-size:1em;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+			button,input[type=button],input[type=submit]{cursor:pointer}
+			button::-moz-focus-inner,button::-moz-focus-outer,input::-moz-focus-inner,input::-moz-focus-outer{border:0 none;padding:0;margin:0}
+			input[type=search]{-webkit-appearance:textfield}
+			input:focus::-webkit-input-placeholder{color:transparent}
+			textarea{resize:vertical;overflow-y:auto}
+			table{border-collapse:collapse;border-spacing:0}
+			th{text-align:inherit}
+			fieldset,img,iframe{border:0 none}
+			img{display:inline-block;vertical-align:bottom;-ms-interpolation-mode:bicubic}
+			iframe{display:block}
+			ul,ol{list-style:none}
+			li{vertical-align:top}
+			.af-clear{ zoom:1;}
+			.af-clear:after{
+			content: '\20';
+			display: block;
+			height: 0;
+			clear: both;
+			}
+			.clear{ clear:both; height:0px; overflow:hidden; width:100%; display:block;}
+			body{ overflow-x:hidden; /*font-size: 20px;*/ }
+			/*网站公用部分*/
+			.pages{overflow:auto;}
+			.living{background: url(../images/bg_01.jpg) no-repeat 0px 0px  #ffd85d; background-size: 100% auto;position:relative;}
+			.receiveRedEnvelope a,.receiveRedEnvelope input,.RedEnvelope a,.guoqi a{width:7.7rem;height:1.148rem;line-height:1.148rem;text-align:center;font-size:0.37rem;border-radius: 5px;display:block;}
+			.receiveRedEnvelope a,.guoqi a{background:url(../images/btnbg_08.png) no-repeat;background-size: 100% 100%;margin-top:0.6rem;color:#5a4600;}
+			.receiveRedEnvelope .enterTel{color:#bababa;background:#fff;border:none;}
+			
+			.RedEnvelope{width:7.7rem;margin:0 auto;margin-top:5.5rem;}
+			.RedEnvelope .RedEnvelopeCon{width:100%;/*height:3.8rem;*/background:rgba(34,23,66,0.6);border-radius: 10px;padding:0.31rem 0;}
+			.RedEnvelopeCon p{text-align:center;}
+			.RedEnvelopeCon .coupon{background:url(../images/haongbaobg_05.png)no-repeat;background-size:100%;width:5.6rem;height:2.22rem;font-size:0.55rem;margin:0 auto;margin-top:10px;color:#5a4600;}
+			.grabCoupons .coupon,.noneRedEnvelope .coupon{line-height:2.22rem;}
+			.coupon span{margin-left:1.1rem;display:block;}
+			.RedEnvelope .account,.RedEnvelope .appuse{color:#d7d7d7;font-size:0.296rem;padding-top:5px;}
+			.account span{color:#ffd85d;}			
+			.haveReceived .coupon{overflow:hidden;}
+			.haveReceived .coupon span:nth-child(1){font-size:0.555rem;margin-top:0.36rem;}
+			.haveReceived .coupon span:nth-child(2){font-size:0.46rem;}
+			.RedEnvelope a{background:url(../images/btnbg_08.png) no-repeat;background-size: 100% 100%;margin-top:0.6rem;color:#5a4600;}
+
+			.activityRule{width:95%;margin:0 auto;margin-top:3%;}
+			.activityRule img{width:100%;}
+			.guoqi{
+				background: -moz-linear-gradient(top,  #ffffff 0%, #dddddd 100%, #7db9e8 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dddddd), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #ffffff 0%,#dddddd 100%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #ffffff 0%,#dddddd 100%,#7db9e8 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #ffffff 0%,#dddddd 100%,#7db9e8 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #ffffff 0%,#dddddd 100%,#7db9e8 100%); /* W3C */
+			}
+			.guoqi p img{width:100%;}
+			.guoqi a{margin:20px auto;}

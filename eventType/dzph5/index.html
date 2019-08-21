@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" style="width:100%;overflow-x: hidden;">
+<head>
+	<meta charset="UTF-8">
+	<title>汽车超人抽奖活动</title>
+		<!-- HTTP 1.1 -->  
+	<meta http-equiv="pragma" content="no-cache">  
+	<!-- HTTP 1.0 -->  
+	<meta http-equiv="cache-control" content="no-cache">  
+	<!-- Prevent caching at the proxy server -->  
+	<meta http-equiv="expires" content="0">  
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link rel="stylesheet" type="text/css" href="css/shuoming.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/zhuanpan.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/shuoming.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/zhuanpan.css" />
+	<script  src="js/jquery-1.10.2.min.js"></script>
+	<style>
+		.clearfix {*zoom: 1;}
+		
+		.clearfix:before, .clearfix:after {display: table;content: "";}
+		.heard{height:40px; text-align:center;font-size:18px; color:#fff; line-height:50px;}	
+		.heard a{display:inline-block; float:left; font-size:20px;width:80px; background:url(images/enter.png) no-repeat center center; height:30px; background-size:auto 100%;margin-top: 10px;}
+		.cjrecord{padding:0px 10px 10px 10px;  background:#f4f4f4;}
+		.cjrecord .jp{ width:100%; background:#ee443a; border-radius: 5px; height:74px;position: relative;margin-top:10px;}
+		.twenty{ width:54px;
+				 height:54px;
+				 background-size:cover;
+				 margin-top:10px;
+				 margin-left:10px;
+				 position: absolute;
+				 left:0;
+				 top:0;
+				 }
+		.twenty img{width:100%;height:100%;}
+		.fontbox{padding-left:74px;padding-right:20px;}
+		.fontbox p{color:#fff;}
+		.fontbox p.h1{height:30px;line-height:30px;}
+		.fontbox p.h1 span{float:right;}
+		.fontbox p.h2{padding-right:40px;}
+		.nojl{width:100%; padding-top:40px;}
+		.nojl img{width:100%;}
+		.suoyoutable{width:100%;margin-top:10px;}
+		.suoyoutable td,.suoyoutable th{padding:5px;text-align:center;border-bottom:1px solid #DBDBDB;}
+		.suoyoutable th {background:#DBDBDB;}
+		.zhongjiangjil{position:relative;}
+		.recoderclose{position:absolute;}
+		
+		.youli {
+		 position: fixed;
+		  left: 50%;
+		  margin-left: -148px;
+		  top: 50%;
+		  margin-top: -148px;
+		  z-index: 2;
+		  display:none;
+		}
+		.noli {
+		 position: fixed;
+		  left: 50%;
+		  top: 50%;
+		  margin-left: -148px;
+		  margin-top: -110px;
+		  z-index: 2;
+		  display:none;
+		}
+		.zhizhen {z-index: 1;}
+		.zhizheng { z-index: 2;}
+	</style>
+</head>
+<body style="width:100%">
+	<div class="pages zhuanpan" >
+		<div class="inner">
+			<div class="col1">
+				<img src="images/wenzi_03.png" width="75%" />
+			</div>
+			<div class="col2">
+				
+				<div class="zhuanpanneirong">
+					
+					<img src="images/zhuanpan2_03.png?id=1" class="panzi" width="100%" />
+					<img src="images/zhuanpanbtn_03.png" class="zhizhen"  width="100%" />
+					<span class="zhizheng"></span>
+				</div>
+			</div>
+			<div class="col3">
+				<div class="zhongjiangjil" style="height: 136px;">
+					<a id="recode" style="width: 82%;position: absolute;left: 9%;z-index: 1;height: 32%;top: 36%;"></a>
+					<img src="images/fotter.png" width="100%" >
+					
+				</div>
+			</div>
+			
+			
+		</div>
+	
+	</div>
+	
+<div class="warpprize"  style="display:none;">
+
+	<div class="swarp"></div>
+	<div class="zhongjiang">
+	  <h1 class="prizename">Macbook 512G</h1>
+	  <div class="jpic"><img src="images/couponsSBEI.png"/></div>
+	  <p class="goodluck">恭喜您！抽中<span class="prizename">Macbook</span>。</p>
+	  <a  class="cj-bton">确定</a>
+	  <span class="close1"><img src="images/close.png" width="32px;"/></span>
+	</div>
+
+</div>
+	
+<div class="login" style="display:none">
+	<div class="swarp"></div>
+	<div class="winbox">
+	  <div class="phonenum"><input id="phone" type="text" placeholder="请输入您的手机号码"/></div>
+	  <p class="text-num">请输入正确的手机号，让奖品准确到达您的账户.</p>
+	  <a  class="cj-bton submitPhone">提&nbsp;交</a>
+	</div>
+
+</div>
+
+	
+	
+<div class="warpnoprize" style="display:none;" >
+	<div class="swarp"></div>
+	<div class="sorry-box">
+	<span class="sclose" style="top: -19px;right: -14px;" ><img src="images/close2.png" width="32px;"></span>
+	<div class="s-title"></div>
+	<p class="again try-hard">哎哟~刚刚跟大奖擦肩而过！<br>
+	一定是点击的姿势不对，调整好再来一次！
+	</p>
+	<p class="jihui" style="display:none">抽奖机会用完啦！</p>
+	<a  class="cj-bton go-on">确定</a>
+	</div>
+</div>	
+	
+<div  id="recoder" style="width:100%;display:none;"  > 
+		<div class="swarp"></div>
+		<div class="youli">
+			<span class="recoderclose" style="right: 0px;top: 12px; width: 27px; height: 27px;display: block;" ></span>
+			<img src="images/youli.png" width="296" />
+		</div>
+		<div class="noli">
+			<span class="recoderclose" style="right: 0px;top: 12px; width: 27px; height: 27px;display: block;" ></span>
+			<img src="images/noli.png" width="296" />
+			<span class="go-on ">确定</span>
+		</div>
+	</div>	
+	
+</body>
+<script>
+var ajaxurl="http://market.qccr.com/lottery/",lottery=1;
+// 添加Cookie
+function addCookie(name, value, options) {
+	if (arguments.length > 1 && name != null) {
+		if (options == null) {
+			options = {};
+		}
+		if (value == null) {
+			options.expires = -1;
+		}
+		if (typeof options.expires == "number") {
+			var time = options.expires;
+			var expires = options.expires = new Date();
+			expires.setTime(expires.getTime() + time * 1000);
+		}
+		if (options.path == null) {
+			options.path = "/";
+		}
+		if (options.domain == null) {
+			options.domain = ".csqccr.com";
+		}
+		document.cookie = encodeURIComponent(String(name)) + "=" + encodeURIComponent(String(value)) + (options.expires != null ? "; expires=" + options.expires.toUTCString() : "") + ("; path=/") + (";") + (options.secure != null ? "; secure" : "");
+	}
+}
+
+// 获取Cookie
+function getCookie(name) {
+	if (name != null) {
+		var value = new RegExp("(?:^|; )" + encodeURIComponent(String(name)) + "=([^;]*)").exec(document.cookie);
+		return value ? decodeURIComponent(value[1]) : null;
+	}
+}
+ function EncodeUtf8(s1)  
+            {  
+                // escape函数用于对除英文字母外的字符进行编码。如“Visit W3School!”->"Visit%20W3School%21"  
+                var s = escape(s1);  
+                var sa = s.split("%");//sa[1]=u6211  
+                var retV ="";  
+                if(sa[0] != "")  
+                {  
+                    retV = sa[0];  
+                }  
+                for(var i = 1; i < sa.length; i ++)  
+                {  
+                    if(sa[i].substring(0,1) == "u")  
+                    {  
+                        retV += Hex2Utf8(Str2Hex(sa[i].substring(1,5)));  
+                        if(sa[i].length>=6)  
+                        {  
+                            retV += sa[i].substring(5);  
+                        }  
+                    }  
+                    else retV += "%" + sa[i];  
+                }  
+                return retV;  
+            }  
+//$(".mingdanlist")
+//addCookie(name, value, options)
+var zfu="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+if(getCookie("userId"))
+{
+	var userNick=getCookie("userId");
+	
+}else
+{
+	$(".login").show();
+	
+}
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+function getJsonData(url,data,callfunc,errfunc)
+{
+	
+	$.ajax({
+			url: url,
+			data:data,
+			dataType: "jsonp",
+			jsonp: "callback",
+			success: function (data) {
+			  
+			   	callfunc(data);
+	
+			},
+			error:function(data)
+			{
+				if(errfunc)
+				errfunc(data);
+
+			}
+				
+		});
+	
+}
+
+
+
+	var wheight=document.documentElement.clientHeight;
+	var isActive=false;
+	$(".swarp").css("height",wheight+"px");
+	$(".textbox").css("height",(wheight-81)+"px");
+	var positions=[0,36,72,108,144,180,216,252,288,324];
+	//var prizes=["再试试","车载冰箱","20元保养抵用券","空气净化器","50元保养抵用券","不锈钢保温杯","20元商品抵用券","蓝牙耳机","10元美容优惠券","Apple Watch"]
+	//var prizesimg=["再试试","couponsBX.png","coupons.png","couponsXICQ.png","coupons50.png","couponsSBEI.png","coupons.png","couponsEJI.png","coupons10.png","couponsiwath.png"]
+	//superpublic.style.height=wheight+"px";
+	$(function(){
+		wheight=document.documentElement.clientHeight;
+		isActive=false;
+		$(".swarp").css("height",wheight+"px");
+		$(".textbox").css("height",(wheight-81)+"px");
+		$(window).bind("load",function(){
+			wheight=document.documentElement.clientHeight;
+			
+			isActive=false;
+
+			$(".swarp").css("height",wheight+"px");
+			$(".textbox").css("height",(wheight-81)+"px");
+		
+		});
+		//$(".cishu span")
+		$(window).bind("load",function(){
+			wheight=document.documentElement.clientHeight;
+			$(".zhongjiang1").css("height",$(".zhongjiang1 img").height()+"px");
+			if($(".zhuanpan").height()<wheight)
+			{
+				
+				$(".zhuanpan").css("height",wheight+"px");
+				$(".zhuanpan .col3").css({"position":"absolute","width":"100%","bottom":"0px"});
+			}
+		});
+		
+		$(".sclose").bind("touchend",function(){
+			$(this).parents(".warpguizhe").hide();	
+			$(this).parents(".warpnoprize").hide();	
+			
+		});
+		$(".close1").bind("touchend",function(){
+	
+			$(this).parents(".warpprize").hide();
+		});
+		$(".warpprize").on("touchend",".cj-bton",function(){
+			$(this).parents(".warpprize").hide();
+		
+		});
+		$(".recoderclose").bind("touchend",function(){
+		
+			$("#recoder").hide();
+		
+		});
+		$(".zhizheng").bind("touchend",function(){
+			//if(toApp)
+			//toApp.share("func()");
+			//var prizes=["再试试","车载冰箱","20元保养抵用券","空气净化器","50元保养抵用券","不锈钢保温杯","20元商品抵用券","蓝牙耳机","10元美容优惠券","Apple Watch"]
+			if(getCookie("lottery")&&getCookie("lottery")==1)
+			{
+				$(".warpnoprize .s-title").css({"background":"url(images/over.png) no-repeat","background-size":"100% 100%"});
+				$(".try-hard").attr("class","again try-hard").html("<span style='display:block;height:20px'></span>太努力啦~抽奖次数用完了！");
+				$(".jihui").hide();		
+				$(".cj-bton").attr("class","cj-bton go-on").html("确定");
+				$(".warpnoprize").show();
+				return false;
+			}
+			if(isActive)
+			return false;
+			isActive=true;
+			//http://market.yfbqccr.com/lottery/qccrPrize?format=json&callback=jQuery110205426490975078195_1439452310739&phone=18058162133&app=linshi&_=1439452310740	
+			getJsonData(ajaxurl+"qccrPrize?format=json",{"phone":userNick,"app":"linshi"},function(data){
+				var b=data;
+				//lottery=b.lotteryChance;
+				addCookie("lottery",1,{expires:30*3600*24});
+				//b={code:"200",info:"车载冰箱",addChance:0,lotteryChance:0}
+				var prizeUnm;
+				if(b.code=="200")
+				{
+					
+					//中了
+					$(".warpprize .tishi").show()
+					
+				//	isActive=false;
+					$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[5])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[5])+"deg)"});
+									
+									isActive=false;//避免重复点击	
+									$(".warpprize").show();
+					},2000);
+														
+				}else 
+				{
+					isActive=false;//避免重复点击	
+						
+					$(".warpnoprize .s-title").css("background","");
+					$(".warpnoprize .try-hard").attr("class","again try-hard").html("哎哟~刚刚跟大奖擦肩而过！<br>一定是点击的姿势不对！");
+					$(".warpnoprize .jihui").hide();		
+					$(".warpnoprize .cj-bton").attr("class","cj-bton go-on").html("确定");	
+					$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+									
+									isActive=false;//避免重复点击	
+									$(".warpnoprize").show();
+					},2000);
+					
+					
+					
+				}	
+				
+				
+			},function(data)
+			{
+				//为中奖
+			
+					
+				$(".try-hard").attr("class","again try-hard").html("哎哟~服务器太忙了！<br>一定是点击的姿势不对！");
+					$(".cj-bton").attr("class","cj-bton go-on").html("继续抽奖");
+					$(".panzi").css({"webkitTransition":" all 2s ease-out","webkitTransform":"rotate("+(360*4+positions[0])+"deg)"});
+								setTimeout(function(){
+									$(".panzi").css({"webkitTransition":"all 0s ease-out","webkitTransform":"rotate("+(positions[0])+"deg)"});
+									$(".jihui").hide();		
+									$(".warpnoprize").show();
+									isActive=false;//避免重复点击
+							},2000);
+			});
+			
+		});
+
+		$(".go-on").bind("touchend",function(){
+			$(this).parents(".warpnoprize").hide();	
+			$(this).parents("#recoder").hide();	
+		});
+		
+		$(".submitPhone").bind("touchend",function(){
+			if(phone.value==""||!/^1\d{10}$/.test(phone.value))
+			{
+				alert("请填写正确的手机号码");
+				return false;
+			}
+				addCookie("userId",phone.value,{expires:30*3600*24});
+				userNick=phone.value;
+				$(".login").hide();
+		});
+		
+	});
+	
+	(function($){
+
+	
+		$(function(){
+			function updateRecode(flag)
+			{
+				$(".jp").remove();
+				
+				$.ajax({
+					dataType: "jsonp",
+					jsonp: "callback",
+					async: false,
+					url: ajaxurl+"myPrizes4wx.jhtml",
+					data:{"format":"json","app":"linshi","userNick":userNick},
+					success: function (data) {
+						if(data.code==0){
+						
+							if(data.PrizeList.length>0){
+								
+								$(".youli").show();
+								$(".noli").hide();
+							}else
+							{
+								$(".noli").show();
+								$(".youli").hide();
+							}
+						}
+						if(flag)
+						{
+							$(recoder).show();
+						}
+						
+						
+				}})
+			}
+			//userNick=parseInt(userNick);
+		updateRecode();
+			
+		$("#recodes").bind("touchend",function(){
+			//$(".pages").show();
+			$(recoder).hide();
+		
+		})
+		
+		$(recode).bind("touchend",function(){
+			
+		//	$(".pages").hide();
+			updateRecode(true);
+		});
+	})
+
+})(jQuery)
+	
+	
+	
+	
+
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>
+</html>

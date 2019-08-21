@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>年终憋BB，红包爽到你尖叫</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="first-screen">
+		<img src="images/first_font.png" alt="" class="font">
+		<img src="images/first_bottom.png" alt="" class="bottom">
+		<img src="images/first_snowball.png" alt="" class="snowball">
+	</div>
+	<div class="second-screen">
+		<img src="images/second_font.png" alt="" class="se-font">
+		<img src="images/second_bottom.png" alt="" class="se-bottom">
+	</div>
+	<div class="third-screen">
+		<img src="images/third_red.png" alt="" class="smalred">
+		<img src="images/third_font.png" alt="" class="thi-font">
+		<img src="images/third_bottom.png" alt="" class="thi-bottom">
+	</div>
+	<div class="app" >
+		<div class="redBagContent">
+			<!-- <div class="redBag1">
+			<div class="giftBag">大礼包</div>
+				多张券
+				<ul class="quanList">
+					<li>1分钱洗车券</li>
+					<li>1分钱洗车券</li>
+					<li>1分钱洗车券</li>
+					<li>1分钱洗车券</li>
+					<li>1分钱洗车券</li>
+					<li>1分钱洗车券</li>
+				</ul>
+				一张券
+				<div class="redBag">
+					<p class="w60">
+					<img src="images/redBagBg.png" alt="">
+					<span class="redBagName">1分钱洗车券</span>
+					</p>
+				</div>
+				一张券
+			</div> -->
+			<div class="redBag">
+				<div class="redcon">
+					<img src="images/red_bg.png" alt="" class="normal">
+					<!-- 多张券 -->
+						<!-- <div class="redBag1">
+							<ul class="quanList">
+								<li>1分钱洗车券</li>
+								<li>2分钱洗车券</li>
+								<li>3分钱洗车券</li>
+								<li>4分钱洗车券</li>
+								<li>5分钱洗车券</li>
+								<li>6分钱洗车券</li>
+							</ul>
+						</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="content">						
+			<div class="lingqu">
+				<div class="getBag">领取大礼包</div>
+				<div class="bagshare">
+					<span class="myBag">我的超人钱包</span>
+					<span class="sharebtn">分享</span>
+				</div>
+			</div>
+			<div class="qiangguang" style="display:none">
+				<p class="qingg">很遗憾，您来晚了</p>
+				<div class="qgbtn">已抢光</div>
+			</div>
+		</div>
+		<div class="redRule">
+			<div class="ruleCon">
+				<span class="line"></span>
+				<img src="images/rule.png" alt="" class="rule">
+			</div>					
+			<div class="rulecontent">
+				<h2>活动时间：</h2>
+				<p>2016年1月18日-1月25日</p>
+				<h2>活动规则：</h2>
+				<span>1</span><p>使用手机号码登录汽车超人APP即可领取</p>
+				<span>2</span><p>每位用户(同一手机号、同一微信号、同一设备等)限领1份</p>
+				<span>3</span><p>红包自动放到账户中，登录汽车超人APP即可使用</p>
+			</div>
+		</div>			
+	</div>
+	<div class="mask"></div>
+	<div class="dialogbox">
+		<div class="font">
+			很抱歉，您已参加过本次活动。
+		</div>
+		<div class="btn">
+			确 定
+		</div>
+	</div>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/weixinshare.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		//var ajaxUrl='http://market.qccr.com';
+		var ajaxUrl = 'http://market.csqccr.com';
+		if (/\.qccr\.com/.test(location.href))
+    		ajaxUrl = 'http://market.qccr.com';
+		// 设置各个div的高度
+		var w = document.documentElement.clientWidth,
+		    h = document.documentElement.clientHeight;
+		$(".first-screen,.second-screen,.third-screen,.app").css({
+		    "height": h,
+		    "width": w
+		});
+		$('.mask').height(document.documentElement.clientHeight * 4);
+
+		// 加载完后判断是否已经领过券并且绑定各个点击事件
+		$(document).ready(function() {
+			ifGetedGiftBag();     //判断用户是否领过券
+		    
+		    $(".getBag").on("touchend", function() {   //领券之前先判断是否登录
+		        if (!getQueryString("userId")) {
+		            // alert("请先登录！");
+		            toApp.login();
+		        } else {
+		            getGiftBag();
+		        }
+		    });
+		   
+		    $(".myBag").on("touchend", function() {    //查看超人钱包
+		        if (!getQueryString("userId")) {
+		            // alert("请先登录！");
+		            toApp.login();
+		        } else {
+		            toApp.wallet();
+		        }
+		    });
+		    
+		    $("body").on("touchend", ".app .sharebtn", function() {  // 分享按钮
+		        shareFriend();
+		    });
+        	
+        	$(".dialogbox .btn").on("touchend",function(){
+        		$(".dialogbox,.mask").hide();
+        	});
+		});
+
+	</script>
+</body>
+</html>

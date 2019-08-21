@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汽车超人h5配置页面</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/wrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jqueryui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/colorpicker.css"/>
+</head>
+<body>
+	<header>
+        <span class='qccrLogo'></span>
+        <div class='eleAdd'>
+            <ul class='eleChoose'>
+                <li class='freedom'><span class=' icon iconfont icon-qiehuan1'></span>自由模式</li>
+                <li class='newTxt'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-wenbenshuru'></i><i class='txt'>新建文本</i>
+                        </a>
+                    </div>
+                </li>
+                <li class='picCollection'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-iconset0149'></i><i class='txt'>图片库</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class='imgUpWrap'>
+                                    <div class='imgUp'>
+                                        <span class='icon iconfont icon-add addImg'></span>
+                                        <span class='upTxt'>上传图片</span>
+                                    </div>
+                                    <input type='file' class='upLoad' value=''/>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class='shapeType'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-wujiaoxing'></i><i class='txt'>添加面板</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- dropdown menu links -->
+                        </ul>
+                    </div>
+                </li>
+                <li class='eventType'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-lianjie'></i><i class='txt'>事件类型</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- dropdown menu links -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <span class='save'><i class='icon iconfont icon-baocun'></i>保存</span>
+    </header>
+    <div class='frameLeft'>
+        <div class='pagesBook'></div>
+        <span class='addPage icon iconfont icon-add'></span>
+    </div>
+   <!--主体内容-->
+   <div id='wrapContain'>
+       <div id='wrapContent' style='background-size:100% 100%;position:relative;'>
+           
+       </div>
+   </div>
+  
+    <div class='frameRight'>
+        <!-- 背景设置模块 -->
+        <section class='protoSet' id='wrapContentProto'>
+            <ul class='protoTitle'>
+                <li>背景</li>
+            </ul>
+            <div class='btnWrap'>
+                <button class='btn btn-red bgTooltip changeBg' data-role='picCollection' data-toggle="tooltip" data-placement="left" title="建议尺寸640*1008">更换背景</button>
+                <button class='btn greenBtn deleBg'>删除</button>
+            </div>
+            <div class='imgShow'>
+                 <img class='img' id="target" />
+            </div>
+            <ul class='colorSet'>
+                <li>
+                    <span class='txtDes'>主题颜色</span>
+                    <dl class='cirColor'>
+                        <dd class='cir-none'></dd>
+                        <dd class='cir-gray'></dd>
+                        <dd class='cir-red'></dd>
+                        <dd class='cir-yellow'></dd>
+                        <dd class='cir-green'></dd>
+                        <dd class='cir-blue'></dd>
+                        <dd class='cir-purple'></dd>
+                        <dd class='cir-allBoth'><input type='text' id='picker'/></dd>
+                    </dl>
+                </li>
+                <li>
+                    <span class='txtFloat'>透明</span>
+                    <div class="slider" id='bgSlider'></div>
+                    <input type='text' id='opcityBg' class='input-small'/>
+                </li>
+            </ul>
+        </section>
+        <!-- 文字设置模块 -->
+        <section class='protoSet TwoProto' id='txtProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>文本</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='txtSetting'>
+                    <div class='btnWrap'>
+                        <button class='btn btn-red'>文本内容</button>
+                    </div>
+                    <div class='txtInput fontBottom'>
+                         <textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="textKeyIn ng-pristine ng-untouched ng-valid"></textarea>
+                    </div>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>文字</td>
+                            <td><span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='fontColor'/></span></td>
+                            <td>字号</td>
+                            <td>
+                                <select class='margrinB0 fontSizeSet'>
+                                    <option value='18'>18px</option>
+                                    <option value='20'>20px</option>
+                                    <option value='22'>22px</option>
+                                    <option value='24'>24px</option>
+                                    <option value='26'>26px</option>
+                                    <option value='28'>28px</option>
+                                    <option value='30'>30px</option>
+                                    <option value='32'>32px</option>
+                                    <option value='34'>34px</option>
+                                    <option value='36'>36px</option>
+                                    <option value='38'>38px</option>
+                                    <option value='40'>40px</option>
+                                    <option value='48'>48px</option>
+                                    <option value='56'>56px</option>
+                                    <option value='60'>60px</option>
+                                    <option value='72'>72px</option>
+                                    <option value='96'>96px</option>
+                                    <option value='112'>112px</option>
+                                    <option value='128'>128px</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>风格</td>
+                            <td><button class='btn btn66 fontStyle' data-data='bold' data-prototype='fontWeight'>B</button></td>
+                            <td><button class='btn btn66 fontStyle' data-data='italic' data-prototype='fontStyle'>I</button></td>
+                            <td><button class='btn btn66 fontStyle' data-data='underline' data-prototype='textDecoration'>U</button></td>
+                        </tr>
+                        <tr>
+                            <td>背景</td>
+                            <td>
+                                <span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='fontBgColor' value='#000'/></span>
+                                <em class='noBgColor'>无</em>
+                            </td>
+                            <td>间距</td>
+                            <td>
+                                <select class='margrinB0 fontLineHei'>
+                                   <option value='1'>1倍</option>
+                                   <option value='1.5'>1.5倍</option>
+                                   <option value='1.35'>1.35倍</option>
+                                   <option value='2'>2倍</option>
+                                   <option value='2.5'>2.5倍</option>
+                                   <option value='3'>3倍</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>边框</td>
+                            <td><span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='borderColor' value='#000'/></span></td>
+                            <td>
+                                <select class='margrinB0 borderType'>
+                                   <option value='dotted'>点线</option>
+                                   <option value='solid'>实线</option>
+                                   <option value='double'>双线</option>
+                                   <option value='dashed'>虚线</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type='text' class='wid45 margrinB0 borderWid' placeholder='px'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='84%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>透明</td>
+                            <td>
+                                <div class="txtOpacity" id='bgSlider'></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>阴影</td>
+                            <td>
+                                <div class="txtShadow" id='bgSlider'></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>圆角</td>
+                            <td>
+                                <div class="txtRadius" id='bgSlider'></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class='animateWrap'>
+                <span class='building'>正在努力搬砖中……</span>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src='js/jquery-1.11.0.min.js'></script>
+    <script type="text/javascript" src='js/oprea/bgProto.js'></script>
+    <script type="text/javascript" src='js/oprea/txtProto.js'></script>
+    <script type="text/javascript" src='js/oprea/protoCommon.js'></script>
+    <script type="text/javascript" src='js/jquery-plus-ui.min.js'></script>
+    <script type="text/javascript" src='js/bootstrap.min.js'></script>
+    <script type="text/javascript" src='js/colorpicker.js'></script>
+    <script type="text/javascript" src='js/oprea/main.js'></script>
+</body>
+</html>

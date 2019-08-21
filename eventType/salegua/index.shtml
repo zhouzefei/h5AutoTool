@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>汽车超人—双十二</title>
+    <style>
+		html{background: url(images/bodybg.jpg);background-size:100% auto;}
+		body{background: url(images/lmm/guaguabg.jpg);background-size:100% auto;background-repeat: no-repeat; font-family: 微软雅黑;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+	<div class="page1">
+		<div class="zhuti">
+		</div>
+		<div class="remind">您有<span>1</span>次机会</div>
+		<div class="guagua">
+			<a class="clicka" style="top:12.55rem; bottom:0;"></a>
+			<canvas id="mycanvas"></canvas>
+			<div class="zjbg" id="zjbg"> <p class="fontzj"></p> <div class="butnz"><img src="images/regua.jpg"></div></div>
+		</div>
+		<p class="mygift"><span class="guize j_guize">活动规则 >></span>	<span class="gift j_gift">我的礼品包<i></i></span></p>
+		<h3 class="lmmTitle">注：黄山自驾游奖项由驴妈妈旅游网提供</h3>
+		<p class="hsPic"><img src="images/lmm/hsBg.jpg"/></p>
+		<div class="hsPic txtNormal">
+			<p>含黄山柏丽斯维登酒店1晚（175元/晚）</p>
+			<p>含黄山景区门票2张（150元/人）</p>
+			<p>含免费停车，早餐2份</p>
+		</div>
+		<a href="http://zt1.lvmama.com/template3/index/758?qccr" class="lmmBtn"></a>
+	</div>
+	<script src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/base.js" ></script>
+	<script type="text/javascript">
+	　"use strict";
+	var coverImg=[
+		($(".guagua").width()*0.93),
+		($(".guagua").height()*0.86)
+	];
+	var picConfig={
+		"guaMask":"images/cover_09.jpg",//刮刮层背景图
+		"noGift":"images/nozj.jpg",  //未中奖
+		"noChancenoGift":"images/anginGua.jpg", //未中奖没机会，下单有机会
+		"noChance":"images/meijihui.jpg" //没机会
+	};
+	var canvas = mycanvas;
+	var ctx=canvas.getContext('2d');
+	var w=coverImg[0]*2;
+	var h=coverImg[1]*2;
+	canvas.height=h;
+	canvas.width=w;
+	var guaguaka={
+		creatElement:function(){
+		},
+		init:function(){
+			var isactive=false;
+			var mousedown = false;
+			var bodyStyle = document.body.style;
+			bodyStyle.mozUserSelect = 'none';
+			bodyStyle.webkitUserSelect = 'none';
+			
+			zjbg.style.width=coverImg[0]+"px";
+			zjbg.style.height=coverImg[1]+"px";
+
+			
+			canvas.style.position = 'absolute';
+			canvas.style.backgroundColor='transparent';
+			canvas.style.height=coverImg[1]+"px";
+			canvas.style.width=coverImg[0]+"px";
+			ctx.fillStyle="transparent";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			var offsetX = canvas.offsetLeft,offsetY = canvas.offsetTop;
+
+			//图片预加载
+			var img = new Image();
+			var imgs = [picConfig.guaMask];
+			img.addEventListener('load',function(ev){
+				ctx.drawImage(img, 0,0, w, h);
+				ctx.globalCompositeOperation = 'destination-out';
+				canvas.addEventListener('touchstart', eventDown);
+			    canvas.addEventListener('touchend', eventUp);
+			    canvas.addEventListener('touchmove', eventMove);
+			});
+			img.src=imgs[0];
+			
+		    function eventDown(e){
+		       mousedown=true;
+		    }
+		    function eventUp(e){
+		        e.preventDefault();
+		        mousedown=false;
+				var transPixs=[];
+				var imgData=ctx.getImageData(0,0,w,h);
+		        var pixles = imgData.data;
+		            transPixs = [];
+		        for (var i = 3, j = pixles.length; i < j; i += 4) {
+		            var a = pixles[i + 3];
+		            if (a == 0) {
+		                transPixs.push(i);
+		            }
+		        }
+				var overs=(transPixs.length / (pixles.length /4) * 100).toFixed(2);
+				if(overs>20)
+				{
+					ctx.clearRect(0,0,w,h);
+				}
+		    }
+			function eventMove(e){
+		        e.preventDefault();
+		        if(mousedown) {
+		             if(e.changedTouches){
+		                 e=e.changedTouches[e.changedTouches.length-1];
+		             }
+		             var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+		                 y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+		                 ctx.fillStyle="#000";
+		                 ctx.fill();
+		                 ctx.beginPath();
+		                 ctx.arc(x*2, y*2, 20*1.5, 0, Math.PI * 2);
+		                 ctx.fill();
+					if(isactive)return;
+					isactive=true;
+					getJsonData(ajaxurl+"/lottery/lotteryForApp.jhtml?format=json",{"userId":userNick,"app":"appshuang"},function(data){
+						//var b={"msg":"未中奖","info":{"lotteryChance":9997,"addChance":0},"code":601}
+						//b={code:"200",info:"再试试",addChance:0,lotteryChance:0}
+						
+						var b=data;
+						// var b={"msg":"成功","info":{"lotteryChance":1,"addChance":0,"prizeName":"50元现金券"},"code":602}
+						//已登录无信息
+						if(b.info==null && b.code!=-200 ){
+							canvas.style.backgroundImage='';
+							$(".zjbg .fontzj").css("backgroundImage","url("+picConfig.noGift+")").addClass("fontzjno");
+							var count=parseInt($(".remind span").html());
+							if(count>0){
+								$(".clicka").show();
+								$(".zjbg").removeClass("nochange");
+								$(".remind span").html(count-1);
+							}else{
+								$(".clicka").hide();
+								$(".zjbg").addClass("nochange");
+								$(".remind span").html(0);
+							}
+							$("#zjbg").show();
+							canvas.style.width=coverImg[0]+"px";
+		                    canvas.style.height=coverImg[1]+"px";
+							return false;
+						}//未登录
+						if(b.code==-200)
+						{
+							try{toApp.login();}catch(e){}
+							
+						}//未中奖
+						if(b.code==601)
+						{
+							//未中奖，无次数
+						   if(!(b.info.lotteryChance>0) || parseInt($(".remind span").html())==1){
+						   		$("#zjbg").hide();
+								canvas.style.backgroundImage='url('+picConfig.noChancenoGift+')';
+						   }else{
+								canvas.style.backgroundImage='';
+								$(".zjbg .fontzj").css("backgroundImage","url("+picConfig.noGift+")").addClass("fontzjno");
+								if(b.info.lotteryChance>0){
+									$(".clicka").show();
+									$(".zjbg").removeClass("nochange");
+								}else{
+									$(".clicka").hide();
+									$(".zjbg").addClass("nochange");
+									$("#zjbg").hide();
+									canvas.style.backgroundImage='url('+picConfig.noChancenoGift+')';
+								}
+ 								$("#zjbg").show();
+						   }
+							
+							$(".remind span").html(b.info.lotteryChance);
+							
+							canvas.style.width=coverImg[0]+"px";
+		                    canvas.style.height=coverImg[1]+"px";
+							return false;
+						}else if(b.code==602)//没次数
+						{
+							$("#zjbg").hide();
+							canvas.style.backgroundImage='url('+ picConfig.noChance+')';
+							$(".remind span").html(b.info.lotteryChance);
+							canvas.style.width=coverImg[0]+"px";
+		                    canvas.style.height=coverImg[1]+"px";
+						}else if(b.code==0)
+						{	
+							if($(".zjbg .fontzj").hasClass("fontzjno")){
+								$(".zjbg .fontzj").removeClass("fontzjno");
+							}
+						
+							if(b.info.lotteryChance>0){
+								$(".clicka").show();
+								$(".zjbg").removeClass("nochange");
+							}else{
+								$(".clicka").hide();
+								$(".zjbg").addClass("nochange");
+							}
+							$(".remind span").html(b.info.lotteryChance);
+							canvas.style.backgroundImage="";
+							$("#zjbg").show();
+							$(".fontzj").html(b.info.prizeName)
+						}
+					},function(data)
+					{
+						//报错时
+						$("#zjbg").show();
+						$(".zjbg .fontzj").addClass("fontzjno");
+						$(".zjbg").addClass("nochange");
+						canvas.style.backgroundImage='';
+						canvas.style.width=coverImg[0]+"px";
+		                canvas.style.height=coverImg[1]+"px";
+						
+					});
+		        }
+			 }
+		}
+	}
+
+	var pages={
+		init:function(){
+			getJsonData(ajaxurl+"/lottery/appLotteryNum?format=json",{"userId":userNick,"app":"appshuang"},function(data){
+				$(".remind span").html(data.lotteryChance);
+			});
+			guaguaka.init();
+			rules.event();
+			mygift.event();
+		}
+	};
+	window.onload=function(){
+		pages.init();
+		$(".clicka").click(function(){
+			window.location.href=window.location.href;
+		});
+	}
+
+	</script>
+</body>
+</html>

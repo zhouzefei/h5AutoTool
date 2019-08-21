@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <title>抢月饼</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="container cakeList">
+    <img src="images/cakeListTop.png">
+    <div class="listOut">
+      <table class="list">
+          <thead>
+            <tr>
+              <th>排名</th>
+              <th class="addBorder">昵称</th>
+              <th>战斗力</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+      </table>
+    </div>
+    <p class="load"><img src="images/loader.gif" alt=""></p>
+  </div>
+  <div class="ads">
+    <img src="images/ads.png">
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+  var data=[{angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:36,words:"10元美容优惠券",image:"",bgimg:"price4.png",closeimg:"close2.png"},
+    {angle:71,words:"Apple Watch",image:"goods4.png",bgimg:"price2.png",closeimg:"close2.png"},
+    {angle:104,words:"5元美容优惠券",image:"",bgimg:"price4.png",closeimg:"close2.png"},
+    {angle:137,words:"蓝牙耳机",image:"goods1.png",bgimg:"price2.png",closeimg:"close2.png"},
+    {angle:172,words:"20元商品抵用券",image:"",bgimg:"price3.png",closeimg:"close2.png"},
+    {angle:203,words:"不锈钢保温杯",image:"goods2.png",bgimg:"price2.png",closeimg:"close2.png"},
+    {angle:238,words:"3元美容优惠券",image:"",bgimg:"price5.png",closeimg:"close2.png"},
+    {angle:269,words:"空气净化器",image:"goods5.png",bgimg:"price2.png",closeimg:"close2.png"},
+    {angle:299,words:"20元保养抵用券",image:"",bgimg:"price31.png",closeimg:"close2.png"},
+    {angle:331,words:"行车记录仪",image:"goods3.png",bgimg:"price2.png",closeimg:"close2.png"}];
+  var getCakeList ={
+    page:1,
+    lock:true,
+    getList: function(page){
+    //getJsonData("",{page:1},function(data){
+      var strVar = "";
+      for(var i=0;i<data.length;i++){
+        strVar += "<tr>";
+        strVar += "<td width=\"20%\">";
+        if(i==0 && page == 1){
+          strVar += "<img src=\"images/no1.png\">";
+        }else if(i==1 && page == 1){
+          strVar += "<img src=\"images/no2.png\">";
+        }else if(i==2 && page == 1){
+          strVar += "<img src=\"images/no3.png\">";
+        }else{
+          strVar += i + 1 + (getCakeList.page-1)*10;
+        }
+        strVar += "<\/td>";
+        strVar += "<td class=\"addBorder\" width=\"50%\">";
+        strVar += "<p class=\"theName\"><span><img class=\"headPic\" src=\"images/xiaoyuebing_07.png\">鱼的假想</span></p>";
+        strVar += "<\/td>";
+        strVar += "<td width=\"30%\">";
+        strVar += "<p class=\"num\">";
+        strVar += "<img src=\"images/xiaoyuebing_07.png\"><span class=\"multiply\">x<\/span><span class=\"count\">100<\/span>";
+        strVar += "<\/p>";
+        strVar += "<\/td>";
+        strVar += "<\/tr>";
+      }
+      getCakeList.lock = true;
+      $(".list tbody").append(strVar);
+    //})
+    },
+    init:function(){
+      var adsHeight = $(".ads").height();
+      $(window).scroll(function(){
+        var scrollTop=$(window).scrollTop(),
+            h=$(window).height(); 
+        if ($('.cakeList').height() <=scrollTop + h - adsHeight && getCakeList.lock) {
+          $('.load').show();
+          getCakeList.lock = false;
+          getCakeList.page++;
+          getCakeList.getList(getCakeList.page);
+        }
+      })
+      $(".cakeList").css("margin-bottom",adsHeight+"px");
+      getCakeList.getList(getCakeList.page);
+    }
+  }
+  getCakeList.init();
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>

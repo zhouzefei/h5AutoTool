@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>春季活动</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="banner">
+				<img src="images/banner01.jpg" alt="">
+				<img src="images/banner02.jpg" alt="">
+				<img src="images/coupons.jpg" alt="">
+			</div>
+			<div class="button">
+				<p class="getBag">领取大礼包</p>
+			</div>
+		</div>
+		<div class="redRule">					
+			<img src="images/rule.jpg" alt="">
+			<div class="rulCon">
+				<span>1.</span><p>每个ID只能领取1次优惠券，领取优惠券后自动发放到超人钱包内</p>
+				<span>2.</span><p>该优惠券仅限活动期间（2016.2.29-2016.3.11）使用。</p>
+				<span>3.</span><p>活动页面领取的优惠券仅限轮胎商品使用。</p>
+				<span>4.</span><p>特维轮网络科技（杭州）有限公司在法律规定的范围内对此活动有解释权。</p>
+			</div>		
+		</div>
+	</div>					
+	<script src="js/zepto.min.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	// var redbagId = '1867479';
+	var redbagId = '1707087';
+	var userId = getQueryString('userId');
+
+	// var ajaxUrl = 'http://market.qccr.com';
+	var ajaxUrl = 'http://market.yfbqccr.com';
+	if (/\.qccr\.com/.test(location.href))
+	    ajaxUrl = 'http://market.qccr.com';
+	if (getQueryString("redbagId")) {
+	    redbagId = getQueryString("redbagId");
+	}
+	var w = document.documentElement.clientWidth,
+	    h = document.documentElement.clientHeight;
+	$(".content").css({
+	    "height": h,
+	    "width": w
+	});
+	$(".getBag").on("touchend",function () {
+		getGiftBag();
+	});
+	ifGetedGiftBag();			
+	</script>
+<script src="http://sale.qccr.com/js/traffics.js"></script>
+</body>
+</html>

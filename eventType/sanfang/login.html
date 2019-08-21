@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta charset="utf-8">
+		<title>汽车超人</title>		
+	<link rel="stylesheet" href="css/order.css">	
+	</head>
+	<body>
+		<div class="pages">
+			<div class="orderBox">
+				<h2>感谢您选择“汽车超人”的养车服务，为了能给您更好的服务体验，请遵照本指引完成预约流程。</h2>
+				<div class="order">
+					<div class="orderNumberWrap">
+						<span class="orderShopList">订单编号:</span>
+						<!-- <select name="" id="" class="orderShopList">
+												<option value="TB">淘宝</option>
+												<option value="TM">天猫</option>
+												<option value="JD">京东</option>
+											</select>	 -->					
+						<input type="text" placeholder="请输入订单编号" class="input orderNum">		
+					</div>
+					<input type="text" placeholder="请输入手机号码" class="orderTel input">
+					<p>请核对您的订单编号和手机号</p>
+				</div>
+				<a href="javascript:;" class="next">下一步</a>
+			</div>
+		</div>
+		<script src="../js/traffics.js"></script>
+		<script src="js/zepto.min.js"></script>
+		<script src="js/common.js"></script>
+	</body>	
+	<script>		
+		var sOrderNum='',
+			sOrderTel='',
+			sourceFrom=0,
+			appointState='';
+		var orderNo=getQueryString('p') ? getQueryString('p') : '';	
+		if(orderNo){
+			getJsonData(ajaxUrl+'/order/prepOrderServiceAppoint?orderNo='+orderNo,'',function(data){
+				if(data.code==0){					
+					$('.orderNum').val(data.info.orderNo);
+					$('.orderTel').val(data.info.placeMobileNo);
+					appointState=data.info.appointState;
+					sourceFrom=data.info.sourceFrom;
+					if(sourceFrom=='TM'){
+						$('.orderShopList').html('天猫');
+					}
+					else if(sourceFrom=='TB'){
+						$('.orderShopList').html('淘宝');
+					}
+					else if(sourceFrom=='JD'){
+						$('.orderShopList').html('京东');
+					}
+					else if(sourceFrom=='OTHER'){
+						$('.orderShopList').html('其他');
+					}
+					/*for(var i=0;i<3;i++){
+						if(sourceFrom==$('.orderShopList option:eq('+i+')').val()){
+							$('.orderShopList option:eq('+i+')').attr('selected','selected');
+							break;
+						}						
+					}	*/		
+					$('.next').addClass('current')
+				}
+			})
+		}
+		$('.orderTel,.orderNum').on('change input',function(){
+			sOrderTel=$('.orderTel').val()=='请输入手机号码' ? '' : $('.orderTel').val() ;
+			sOrderNum=$('.orderNum').val()=='请输入订单编号' ? '' : $('.orderNum').val();
+			if(sOrderTel && sOrderNum){
+				$('.next').addClass('current');
+			}
+			else{
+				$('.next').removeClass('current');
+			}
+		})		
+		$('.next').on('click',function(){
+			if($('.next').hasClass('current')){
+				var orderTelVal=$('.orderTel').val(),
+					orderNumVal=$('.orderNum').val();
+					//sourceFrom=$('.orderShopList option:selected').val();
+					getJsonData(ajaxUrl+'/order/appointmentDetail?orderNo='+orderNumVal+'&placeMobileNo='+orderTelVal+'&sourceFrom='+sourceFrom,'',function(data){
+						if(data.code==0){
+							window.location.href='noChoose.html?orderNo='+orderNumVal+'&orderTel='+orderTelVal+'&sourceFrom='+sourceFrom+'&appointState='+appointState+'&isShow=1';
+							//console.log(appointState==2)
+						}
+						else{
+							alert('请核对您的订单编号和手机号!');
+							return false;
+						}
+					})
+					//if(appointState==1){
+						
+					//}
+					/*else if(appointState==2){
+						window.location.href='chooseStore.html?orderNo='+orderNumVal+'&orderTel='+orderTelVal+'&sourceFrom='+sourceFrom+'&appointState='+appointState;
+					}		*/	
+			}
+		})	
+		
+	</script>
+	<script>
+		/*shareWeixin([{title:"汽车超人发红包啦！你领，或不领，我就在那里，等你来领！",content:"主银，我等你来领我，都快等成望夫石了！",url:"",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}},{title:"据说常点此链接，汽车超人让你变富翁",content:"主银，我等你来领我，都快等成望夫石了！",imgUrl:"http://static.qichechaoren.com/upload/2015/08/sharelogo.jpeg"+Math.random().toFixed(10),success:function(){},cancel:function(){}}]);*/
+	</script>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <title>抢月饼</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<canvas id="mycanvas" ></canvas>
+  <div class="container mooncake">
+    <div class="mooncake_top">
+
+    </div>
+    <p class="time" id="time"><span>10</span>秒</p>
+    <p class="num">
+      <img  src="images/xiaoyuebing_07.png" />
+      <span class="multiply">x</span>
+      <span id="count" class="count">0</span>
+    </p>
+    <a class="startBtn" id="makecake"></a>
+  </div>
+  <div class="mask"></div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+    var chance = 2;
+    var makeCake ={
+
+      status: 0,//0是给自己，1是给好友
+
+      clickNum: -1,//点击的次数
+
+      makeCakeNum: 0,//制作的月饼数量
+
+      count: 10,//10秒倒计时
+
+      timeout:null,//倒计时方法
+
+      lock:true,
+
+      init:function(){
+
+        //状态重置
+        $(".mooncake_top").removeClass().addClass("mooncake_top");
+        $("#time span").text(10);
+        $("#count").text(0);
+        makeCake.count = 10;
+        makeCake.clickNum = -1;
+        makeCake.makeCakeNum = 0;
+        makeCake.lock = true;
+
+        makeCake.makeCakeFun();
+
+      },
+
+      makeCakeFun: function(){
+
+        if(makeCake.status == 0){
+
+         // var chance = getCookie("userChance");
+          
+          if(chance>0){
+
+            chance--;
+
+            if(chance==0) tipWindows.status=1;//如果这是最后一次机会，则改变弹框状态
+
+            makeCake.count = 10;
+
+            makeCake.clickFun();
+          }
+        }else if(makeCake.status == 1){
+
+          tipWindows.close = 1;
+
+          tipWindows.status = 2;
+
+          if(chance>0){
+
+            chance--;
+
+            makeCake.clickFun();
+
+          }
+
+        }
+
+      },
+      clickFun:function(){
+        $("#makecake").bind("click",function() {
+
+          console.log(chance);
+          //getJsonData("",{},function(data){
+
+          if(makeCake.count != 0) {
+          
+            makeCake.clickNum++;
+
+            switch (makeCake.clickNum){
+              case 1:makeCake.makeCakeNum=0.5;break;
+              case 5:$(".mooncake_top").addClass("bg1");break;
+              case 10:$(".mooncake_top").addClass("bg2");break;
+              case 15:$(".mooncake_top").addClass("bg3");break;
+              case 20:$(".mooncake_top").addClass("bg4");break;
+              case 21:makeCake.makeCakeNum=1;break;
+              case 25:$(".mooncake_top").addClass("bg5");break;
+              case 30:$(".mooncake_top").addClass("bg6");break;
+              case 35:$(".mooncake_top").addClass("bg7");break;
+              case 40:$(".mooncake_top").addClass("bg8");break;
+              case 45:$(".mooncake_top").addClass("bg9");break;
+              case 50:$(".mooncake_top").addClass("bg10");break;
+              case 51:makeCake.makeCakeNum=1.5;break;
+            }
+            $("#count").text(makeCake.makeCakeNum);
+
+            if(makeCake.lock){
+
+              makeCake.lock = false;
+
+              makeCake.timeout = setTimeout(makeCake.BtnCount, 1000); 
+
+            }
+          }
+
+          //});
+
+        });
+      },
+      BtnCount: function() {
+         // 启动按钮
+         if (makeCake.count == 0) {
+
+          tipWindows.data.counts = makeCake.makeCakeNum;
+          tipWindows.initState($(".mask"));
+          clearTimeout(makeCake.timeout);           // 可取消由 setTimeout() 方法设置的 timeout
+        }
+        else {
+            makeCake.count--;
+            $('#time span').text(makeCake.count.toString());
+            setTimeout(makeCake.BtnCount, 1000);
+        }
+      }
+
+    }
+    makeCake.init();
+		var textarray=["Ready","3","2","1","Go"];
+		var ctx1=mycanvas.getContext("2d");
+		var Countdown={
+			
+			init:function(){
+				
+				mycanvas.width=document.documentElement.clientWidth;
+				mycanvas.height=document.documentElement.clientHeight;
+			},
+			start:function(){
+				this.init();
+				
+				ctx1.font="normal 80px microsoft yahei";
+				ctx1.fillStyle="#ffcd32";
+				//ctx1.strokeStyle="#ffffff";
+				ctx1.textAlign="center";
+				ctx1.textBaseline="middle";
+				ctx1.fillText(textarray[0],document.documentElement.clientWidth/2,document.documentElement.clientHeight/2-10);
+				
+			},
+			paly:function(){
+				var k=0;
+				var ts=setInterval(function(){
+					k++;
+					if(k==(textarray.length))
+					{
+						clearInterval(ts);
+						Countdown.end();
+						$("#makecake").click();
+					}else
+					{
+						ctx1.clearRect(0,0,mycanvas.width,mycanvas.height);
+						ctx1.fillText(textarray[ k],document.documentElement.clientWidth/2,document.documentElement.clientHeight/2-10);
+						
+					}
+				},1000);
+				
+				
+			}
+			,
+			end:function(){
+				
+				$("#mycanvas").hide();
+			}
+			
+		}
+		Countdown.start();
+		$(window).bind("load",function(){
+			
+			Countdown.paly();
+		})
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>

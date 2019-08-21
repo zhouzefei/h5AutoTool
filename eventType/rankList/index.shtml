@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>排行榜</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		img{
+			border: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		li {
+    		vertical-align: top;
+		}
+		body{
+			background: url(images/bg.jpg);
+			background-size: 100% auto;
+    		font: 12px/1.5 hiragino sans gb,microsoft yahei,simsun;
+		}
+		.tab{
+			position: relative;
+			/*display: -webkit-flex;*/
+			width: 92%;
+			height: 1.3rem;
+			margin: 1rem auto 0.5rem auto;
+			border-radius: 50px;
+			background: #ef5454;		
+		}
+		.tab span{
+			display: inline-block;
+			/*-webkit-flex:1;*/
+			width: 48%;
+			text-align: center;
+			font-size: 16px;
+			line-height: 1.3rem;
+			color: #bcafaf;
+		}
+		.tab span.bg{
+			color: #fff;
+		}
+		.tab .tit-img{
+			position: absolute;
+		    left: 42%;
+		    top: -62%;
+		    width: 1.5rem;
+		}
+		.nav{
+			width: 90%;
+    		margin: 0 auto;
+		}
+		.nav .top,.nav .bottom{
+			overflow: hidden;
+			text-align: center;
+			vertical-align: middle;
+			margin-bottom: 2px;
+		}
+		.nav .date{
+			float: left;
+			width: 24%;
+			height: 1rem;
+			line-height: 1rem;
+			font-size: 13px;
+			color: #fff;
+		}
+		.nav .spe{
+			margin-left: 1%;
+			margin-right: 1%;
+		}
+		.nav .hover{
+			padding: 5px 15px;
+    		border-radius: 12px;
+			background: #ef5454;
+		}
+		.list {
+		    width: 92%;
+		    margin: 0 auto;
+		    padding-bottom: 15px;
+		    overflow-y: auto;
+		    -webkit-overflow-scrolling: touch;
+		    
+		}
+		.list li {
+		    height: 1.2rem;
+		    border-radius: 7px;
+		    padding-top: 0.1rem;
+    		padding-bottom: 0.1rem;
+    		margin-bottom: 0.1rem;
+		    position: relative;
+		    background: #3a3a6f;
+		}
+		.list p {
+		    color: #fff;
+		    font-size: 0.32rem;
+		}
+		.headPortrait {
+		    width: 1.2rem;
+		    position: absolute;
+		    left: 0.5rem;
+		    height: 1.2rem;
+		    border-radius: 1.2rem;
+		}
+		.headPortrait img {
+		    width: 1.2rem;
+		    height: 1.2rem;
+		    border-radius: 1.2rem;
+		    border-top-left-radius: 1.2rem;
+		    border-top-right-radius: 1.2rem;
+		    border-bottom-right-radius: 1.2rem;
+		    border-bottom-left-radius: 1.2rem;
+		}
+		.ranking {
+		    position: absolute;
+		    width: 0.9rem;
+		    right: 1rem;
+		}
+		.list .ranking span {
+			display: block;
+			margin: 0.3rem 0 0 0.1rem;		    
+		    width: 0.7333rem;
+		    height: 0.7333rem;
+		    line-height: 0.7333rem;
+		    background: #00797b;
+		    border-radius: 0.7333rem;
+		    font-weight: bold;
+		    font-size: 0.4rem;
+		    text-align: center;
+		}
+		.rankFisrt, .rankSecond, .rankThere {
+		    background: url(images/firstThreeBg.png) no-repeat;
+		    background-size: 100% auto;
+		}
+		.list .rankFisrt span {
+		    background: #f2e251;
+		}
+		.list .rankSecond span {
+		    background: #9b9b9b;
+		}
+		.list .rankThere span {
+		    background: #f2911a;
+		}
+		.listMdesg {
+		    width: 55%;
+		    text-align: left;
+		    position: absolute;
+		    left: 2rem;
+		    padding-top: 0.1rem;
+		}
+		.listMdesg span {
+		    font-size: 0.32rem;
+		    display: block;
+		    color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="tab">
+		<span>日榜</span>
+		<span>总榜</span>
+		<img class="tit-img" src="images/rank-title.png" alt="">
+	</div>
+	<div class="main">
+		<div class="content">
+			<div class="nav">
+				<div class="top">
+					<div class="date">
+						<span data-date="2015-12-18">12.18</span>
+					</div>
+					<div class="date spe">
+						<span data-date="2015-12-19">12.19</span>
+					</div>
+					<div class="date spe">
+						<span data-date="2015-12-20">12.20</span>
+					</div>
+					<div class="date">
+						<span data-date="2015-12-21">12.21</span>
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="date">
+						<span data-date="2015-12-22">12.22</span>
+					</div>
+					<div class="date spe">
+						<span data-date="2015-12-23">12.23</span>
+					</div>
+					<div class="date spe">
+						<span data-date="2015-12-24">12.24</span>
+					</div>
+					<div class="date">
+						<span data-date="2015-12-25">12.25</span>
+					</div>
+				</div>
+			</div>
+			<div class="listDiv">
+				<div class="list listOfDay">
+					<ul>
+						<!-- <li>
+							<p class="headPortrait">
+								<img src="images/01.png" alt="">
+							</p>							
+							<p class="listMdesg">
+								<span class="listName">刘晴</span>
+								<span class="listVantages">1965428积分</span>
+							</p>
+							<p class="ranking rankFisrt">
+								<span>1</span>
+							</p>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>	
+		<div class="content">
+			<div class="list listOfAll" style="display:none;">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+	</div>	
+<script src="js/jquery.min.js"></script>
+<script src="js/rem.js"></script>	
+<script src="js/index.js"></script>
+</body>
+</html>

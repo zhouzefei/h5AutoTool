@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>报价车辆</title>
+  <meta charset="UTF-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/mobile-select-area.css">
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/mobile-select-area.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="top">
+        <p><img src="images/icon_car.png"><span id="carType"></span></p>
+      </div>
+      <table class="formList">
+        <tr>
+          <td class="icon">
+            车牌号<span>*</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="info">
+              <!--<p class="carArea">浙</p>
+              <p class="letter">A</p-->
+              <input id="carNum" type="text" placeholder="请输入车牌号" readOnly="true" />
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            投保城市<span>*</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="info">
+            <p id="txt_area" data-value="" data-area="浙江省 杭州市 西湖区" data-type="" class="setArea">浙<b></b><p>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            车主姓名<span>*</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="info">
+            <input id="userName" type="text" placeholder="请填写车主姓名" readOnly="true" />
+          </td>
+        </tr>
+      </table>
+      <div class="goCompare">立即比价</div>
+    </div>
+  </div>
+  <input type="hidden" id="hd_area" value="21,22,23">
+  <input type="hidden" id="code_area" value="330000,330100,330106">
+</body>
+</html>
+<script> 
+    var selectArea = new MobileSelectArea();
+    var h5ajaxurl='/carmanH5';
+
+    signCreate("RegionInfo",'{"insurance_id": "1","service_id":"getRegionInfo","parentId": "0"}',function(data){
+      var oData=data.info;
+      var arrear=$("#hd_area").val().split(",");
+       signCreate("RegionInfo",'{"insurance_id": "1","service_id":"getRegionInfo","parentId": "'+ arrear[0] +'"}',function(city){
+          for(var i=0;i<oData.length;i++)
+          {
+            if(oData[i].areaId==arrear[0])
+            {
+              oData[i].subAreas=city.info;
+            }
+          }
+          /*signCreate("RegionInfo",'{"insurance_id": "1","service_id":"getRegionInfo","parentId": "'+ arrear[1] +'"}',function(area){
+            for(var i=0;i<city.info.length;i++)
+            {
+              if(city.info[i].areaId==arrear[1])
+              {
+                city.info[i].subAreas=area.info;
+              }
+            }
+            
+          });*/
+          //TODO 目前没有国标码参数，所以禁用选择功能
+            selectArea.init({trigger:'#txt_area',value:$('#hd_area').val(),areaCode:$('#code_area').val(),level: 2,data: oData});
+        });
+    });
+
+
+    var carNum = decodeURI(getQueryString("carNum"));
+    var txt_area = decodeURI(getQueryString("area"));
+    var userName = decodeURI(getQueryString("userName"));
+    var phone = getQueryString("phone");
+    var model = decodeURI(getQueryString("model"));
+    var cityCode = getQueryString("cityCode");
+    var newCarFlag = getQueryString("newCarFlag");
+    var uid = getQueryString("uid");
+
+    $("#txt_area").attr("areaCode",cityCode)
+
+    if(model) $("#carType").text(model);
+    else $("#carType").text("");
+    if(carNum) $("#carNum").attr("value",carNum);
+    else if((carNum)=="") $("#carNum").attr("value","新车未上牌");
+    else $("#carNum").attr("value","");
+    if(txt_area) $("#txt_area").text(txt_area);
+    else $("#txt_area").text("");
+    if(model) $("#userName").attr("value",userName);
+    else $("#userName").attr("value","");
+
+    $(".goCompare").bind("click",function(){
+      var realCode = $("#txt_area").attr("areaCode");
+      var theUrl ="http://123.57.7.50:8080/m/baojia/channel?from=m_app_chaoren&newCarFlag="+ newCarFlag +"&cityCode="+ realCode +"&licenseNo=" + carNum +"&ownerMobile=" + phone +"&uid=" + uid;
+      //console.log(theUrl)
+      window.location.href=theUrl;
+    });
+
+</script>

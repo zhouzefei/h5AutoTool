@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汽车超人h5配置页面</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link href="css/jquery.contextMenu.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/wrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jqueryui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/colorpicker.css"/>
+    <script type="text/javascript">
+        (function(win) {
+            var timeout,
+                doc = win.document, 
+                html = doc.documentElement;
+            function setFontSize() {
+                var htmlWidth = html.getBoundingClientRect().width;
+                var ratio = htmlWidth / 640;
+                if(htmlWidth < 640) {
+                    win.rem = ratio * 100;
+                } else {
+                    win.rem = 100;
+                }
+                win.responseRatio = ratio;
+                html.style.fontSize = win.rem + "px";
+            }
+            win.addEventListener("resize", function() {
+                clearTimeout(timeout), timeout = setTimeout(setFontSize, 300);
+            }, false);
+            setFontSize();
+        })(window);
+    </script>
+</head>
+<body>
+	<header>
+        <span class='qccrLogo'></span>
+        <div class='eleAdd'>
+            <ul class='eleChoose'>
+                <li class='freedom'>
+                     <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-qiehuan1'></i><i class='txt'>适配方式</i>
+                        </a>
+                         <ul class="dropdown-menu hei30 dapet">
+                            <li data-type='H'>
+                                高度适配
+                            </li>
+                            <li data-type='W'>
+                                宽度适配
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class='newTxt'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-wenbenshuru'></i><i class='txt'>新建文本</i>
+                        </a>
+                    </div>
+                </li>
+                <li class='picCollection'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-iconset0149'></i><i class='txt'>图片库</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li style='padding:0 10px;'>
+                                <div class='imgUpWrap'>
+                                    <div class='imgUp'>
+                                        <span class='icon iconfont icon-add addImg'></span>
+                                        <span class='upTxt'>上传图片</span>
+                                    </div>
+                                    <input type='file' class='upLoad' value=''/>
+                                </div>
+                                <div class='picOpera'>
+                                    <button class='btn' id='changeBg'>更换</button>
+                                    <button class='btn' id='addImg'>新增图片</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class='addPanelType' data-role='panelProto'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" href="#">
+                            <i class='icon iconfont icon-wujiaoxing'></i><i class='txt'>添加面板</i>
+                        </a>
+                        <!-- <ul class="dropdown-menu">
+                        </ul> -->
+                    </div>
+                </li>
+                <li class='buttonType'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-link'></i><i class='txt'>按钮链接</i>
+                        </a>
+                        <ul class="dropdown-menu hei30">
+                            <li data-role='buttonProto' class='buttonChoose'>添加按钮</li>
+                            <!-- <li>手机号</li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li class='eventType'>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class='icon iconfont icon-lianjie'></i><i class='txt'>已有组件</i>
+                        </a>
+                        <dl class="dropdown-menu hei30 commponent">
+                            <dt>领券</dt>
+                            <dd data-type='arrow'>下滑箭头</dd>
+                            <dd data-type='beforeGetState'>领券前状态</dd>
+                            <dd data-type='afterGetState'>领券后状态</dd>
+                            <dd data-type='getCouponBtn'>app领取优惠券按钮</dd>
+                            <dd data-type='wxGetBtn'>微信领券按钮</dd>                            
+                            <dd data-type='codeVerify'>短信验证</dd>
+                            <dd data-type='getCouponState'>领取优惠券状态</dd>                          
+                            <dd data-type='getCouponInput'>输入手机号</dd>                          
+                            <dd data-type='getCouponFailed'>领取优惠券失败</dd>                          
+                            <dd data-type='getCouponOk'>领取优惠券成功</dd>   
+                            <dd data-type='getQuanRuler'>领券规则</dd>                         
+                            <dt>大转盘</dt>
+                            <dd data-type='zp'>转盘</dd>
+                            <dd data-type='tck'>弹出框</dd>
+                            <dd data-type='ggl'>刮刮乐</dd>
+                            <dd data-type='yzm'>验证码</dd>
+                            <dd data-type='dataScroll'>数据轮播</dd>
+                            <dd data-type='goodsDialog'>实物弹出框</dd>
+                            <dd data-type='appLogin'>app登录弹出框</dd>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <span class='save'><i class='icon iconfont icon-baocun'></i>保存</span>
+        <span class='layerShow'><i class='icon iconfont icon-grid'></i>图层</span>
+        <span class='configShow'><i class='icon iconfont icon-tupianku'></i>参数配置</span>
+    </header>
+    <div class='frameLeft'>
+        <div class='pagesBook'>
+            <ul class='pagesShow'>
+                <li class='active'><div class="pageShowWrap"><div class='detailPage1' style="width:100%;height:100%;position:relative;overflow:hidden;"></div></div></li>
+            </ul>
+        </div>
+        <span class='addPage icon iconfont icon-add'></span>
+    </div>
+    <!--主体内容-->
+        <!-- <input type='hidden' id='arguments'/>
+        <input type='hidden' id='ajaxurl'/>
+        <input type='hidden' id='Id'/>
+        <input type='hidden' id='shareData'/> -->
+    <div id='wrapContain'>
+        <div id='wrap' style='height: 1008px; overflow: hidden;'>
+            <div style='height:100%; width:100%;position:absolute;top:0;left:0;background-color:#fff;background-size:100% 100%;' class='bgColor'>
+            
+            </div>
+            <div class='wrapContent' style='background-size:100% 100%;position:relative;top:0;left:0;background-color:transparent;' data-role='wrapContentProto'>
+
+            </div>
+            <span class="proxy coorBottomRight"></span>
+           <span class="proxy coorBottomLeft"></span>
+           <span class="proxy coorTopRight"></span>
+           <span class="proxy coorTopLeft"></span>
+       </div>
+    </div>
+    <!-- 右侧属性设置 -->
+    <div class='frameRight'>
+        <!-- 背景设置模块 -->
+        <section class='protoSet TwoProto ' id='wrapContentProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>背景</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='btnWrap'>
+                    <button class='btn btn-red bgTooltip changeBg' data-role='picCollection' data-toggle="tooltip" data-placement="right" title="建议尺寸640*1008">更换背景</button>
+                    <button class='btn greenBtn deleBg'>删除</button>
+                </div>
+                <div class='imgShow'>
+                     <img class='img' id="target" />
+                </div>
+                <ul class='colorSet'>
+                    <li>
+                        <span class='txtDes'>主题颜色</span>
+                        <dl class='cirColor'>
+                            <dd class='cir-none'></dd>
+                            <dd class='cir-gray'></dd>
+                            <dd class='cir-red'></dd>
+                            <dd class='cir-yellow'></dd>
+                            <dd class='cir-green'></dd>
+                            <dd class='cir-blue'></dd>
+                            <dd class='cir-purple'></dd>
+                            <dd class='cir-allBoth'><input type='text' id='picker'/></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span class='txtFloat'>透明</span>
+                        <div class="slider bgSlider"></div>
+                        <input type='text' id='opcityBg' class='input-small'/>
+                    </li>
+                </ul>
+            </div>
+            <div class='animateWrap'>
+               <span class='building'>努力搬砖中……</span>
+            </div>
+        </section>
+        <!-- 文字设置模块 -->
+        <section class='protoSet TwoProto' id='txtProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>文本</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='txtSetting'>
+                    <div class='btnWrap'>
+                        <button class='btn btn-red'>文本内容</button>
+                    </div>
+                    <div class='txtInput fontBottom'>
+                         <textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="textKeyIn ng-pristine ng-untouched ng-valid"></textarea>
+                    </div>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>文字</td>
+                            <td><span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='fontColor'/></span></td>
+                            <td>字号</td>
+                            <td>
+                                <select class='margrinB0 fontSizeSet'>
+                                    <option value='18'>18px</option>
+                                    <option value='20'>20px</option>
+                                    <option value='22'>22px</option>
+                                    <option value='24'>24px</option>
+                                    <option value='26'>26px</option>
+                                    <option value='28'>28px</option>
+                                    <option value='30'>30px</option>
+                                    <option value='32'>32px</option>
+                                    <option value='34'>34px</option>
+                                    <option value='36'>36px</option>
+                                    <option value='38'>38px</option>
+                                    <option value='40'>40px</option>
+                                    <option value='48'>48px</option>
+                                    <option value='56'>56px</option>
+                                    <option value='60'>60px</option>
+                                    <option value='72'>72px</option>
+                                    <option value='96'>96px</option>
+                                    <option value='112'>112px</option>
+                                    <option value='128'>128px</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>风格</td>
+                            <td><button class='btn btn66 fontStyle' data-data='bold' data-prototype='fontWeight'>B</button></td>
+                            <td><button class='btn btn66 fontStyle' data-data='italic' data-prototype='fontStyle'>I</button></td>
+                            <td><button class='btn btn66 fontStyle' data-data='underline' data-prototype='textDecoration'>U</button></td>
+                        </tr>
+                        <tr>
+                            <td>背景</td>
+                            <td>
+                                <span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='fontBgColor' value='#000'/></span>
+                                <em class='noBgColor'>无</em>
+                            </td>
+                            <td>间距</td>
+                            <td>
+                                <select class='margrinB0 fontLineHei'>
+                                   <option value='1'>1倍</option>
+                                   <option value='1.5'>1.5倍</option>
+                                   <option value='1.35'>1.35倍</option>
+                                   <option value='2'>2倍</option>
+                                   <option value='2.5'>2.5倍</option>
+                                   <option value='3'>3倍</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>边框</td>
+                            <td><span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='borderColor' value='#000'/></span></td>
+                            <td>
+                                <select class='margrinB0 borderType'>
+                                   <option value='dotted'>点线</option>
+                                   <option value='solid'>实线</option>
+                                   <option value='double'>双线</option>
+                                   <option value='dashed'>虚线</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type='text' class='wid45 margrinB0 borderWid' placeholder='px'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='84%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>透明</td>
+                            <td>
+                                <div class="txtOpacity bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>阴影</td>
+                            <td>
+                                <div class="txtShadow bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>圆角</td>
+                            <td>
+                                <div class="txtRadius bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                 <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='24%'></col>
+                            <col width='76%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>字体对齐</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <ul class='alignType'>
+                                    <li class='active' txtAlign='left'>左对齐</li>
+                                    <li txtAlign='center'>居中</li>
+                                    <li txtAlign='right'>右对齐</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>整体对齐</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul class="panelAlign">
+                                    <li class="active" data-align="left">左对齐</li>
+                                    <li data-align="center">居中</li>
+                                    <li data-align="right">右对齐</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class='animateWrap'>
+               <span class='building'>努力搬砖中……</span>
+            </div>
+        </section>
+        <!-- 图片设置模块 -->
+        <section class='protoSet TwoProto' id='imgProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>可替换图片</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='txtSetting'>
+                    <div class='btnWrap'>
+                        <button class='btn btn-red changeBg' data-role='picCollection'>更换图片</button>
+                    </div>
+                     <div class='imgShow'>
+                         <img class='img' id="target" />
+                    </div>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='84%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>透明</td>
+                            <td>
+                                <div class="imgOpacity bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>阴影</td>
+                            <td>
+                                <div class="txtShadow bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>圆角</td>
+                            <td>
+                                <div class="txtRadius bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable marginT20' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='18%'></col>
+                            <col width='32%'></col>
+                            <col width='18%'></col>
+                            <col width='32%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>宽度</td>
+                            <td><input type='text' class='wid45 margrinB0 widInput' value=''/></td>
+                            <td>高度</td>
+                            <td><input type='text' class='wid45 margrinB0 heiInput' value=''/></td>
+                        </tr>
+                    </table>
+                    <table class="setTable fontBottom" cellspacing="0" cellpadding="0" border="0">
+                    <colgroup>
+                        <col width="16%">
+                        <col width="84%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>对齐</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul class="panelAlign">
+                                    <li class="active" data-align="left">左对齐</li>
+                                    <li data-align="center">居中</li>
+                                    <li data-align="right">右对齐</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul class="panelVertical">
+                                    <li data-align="top">置顶</li>
+                                    <li data-align="bottom">置底</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class='animateWrap'>
+               <span class='building'>努力搬砖中……</span>
+            </div>
+        </section>
+        <!-- 按钮设置模块 -->
+        <section class='protoSet TwoProto' id='buttonProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>可替换图片</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='txtSetting'>
+                    <div class='btnWrap'>
+                        <button class='btn btn-red changeBg' data-role='picCollection'>更换图片</button>
+                        <button class='btn greenBtn deleBtnBg'>删除背景图</button>
+                    </div>
+                    <div class='txtInput fontBottom'>
+                         <textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="btnKeyIn ng-pristine ng-untouched ng-valid"></textarea>
+                    </div>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='84%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>透明</td>
+                            <td>
+                                <div class="txtOpacity bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>阴影</td>
+                            <td>
+                                <div class="txtShadow bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>圆角</td>
+                            <td>
+                                <div class="txtRadius bgSlider"></div>
+                                <input type='text' class='input-small'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable fontBottom' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='16%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                            <col width='28%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>文字</td>
+                            <td><span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='btnFontColor'/></span></td>
+                            <td>字号</td>
+                            <td>
+                                <select class='margrinB0 btnFontSizeSet'>
+                                    <option value='18'>18px</option>
+                                    <option value='20'>20px</option>
+                                    <option value='22'>22px</option>
+                                    <option value='24'>24px</option>
+                                    <option value='26'>26px</option>
+                                    <option value='28'>28px</option>
+                                    <option value='30'>30px</option>
+                                    <option value='32'>32px</option>
+                                    <option value='34'>34px</option>
+                                    <option value='36'>36px</option>
+                                    <option value='38'>38px</option>
+                                    <option value='40'>40px</option>
+                                    <option value='48'>48px</option>
+                                    <option value='56'>56px</option>
+                                    <option value='60'>60px</option>
+                                    <option value='72'>72px</option>
+                                    <option value='96'>96px</option>
+                                    <option value='112'>112px</option>
+                                    <option value='128'>128px</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>背景</td>
+                            <td>
+                                <span class='fontColor'><input type='text' class='wid45 hei20 fontColorBg' id='btnFontBgColor' value='#000'/></span>
+                                <em class='noBgColor'>无</em>
+                            </td>
+                            <td>间距</td>
+                            <td>
+                                <select class='margrinB0 BtnLineHei'>
+                                   <option value='1'>1倍</option>
+                                   <option value='1.5'>1.5倍</option>
+                                   <option value='1.35'>1.35倍</option>
+                                   <option value='2'>2倍</option>
+                                   <option value='2.25'>2.25倍</option>
+                                   <option value='2.5'>2.5倍</option>
+                                   <option value='3'>3倍</option>
+                                </select>
+                            </td>
+                        </tr>
+                       
+                    </table>
+                </div>
+                <div class='txtSetting'>
+                    <table class="setTable fontBottom" cellspacing="0" cellpadding="0" border="0">
+                    <colgroup>
+                        <col width="16%">
+                        <col width="84%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>对齐</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul class="panelAlign">
+                                    <li class="active" data-align="left">左对齐</li>
+                                    <li data-align="center">居中</li>
+                                    <li data-align="right">右对齐</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul class="panelVertical">
+                                    <li data-align="top">置顶</li>
+                                    <li data-align="bottom">置底</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class='animateWrap'>
+               <span class='building'>努力搬砖中……</span>
+            </div>
+        </section>
+        <!-- 面板属性 -->
+        <section class='protoSet TwoProto' id='panelProto'>
+            <ul class='protoTitle'>
+                <li class='active' data-role='txtWrap'>面板属性</li>
+                <li data-role='animateWrap'>动作</li>
+            </ul>
+            <div class='txtWrap'>
+                <div class='btnWrap fontBottom '>
+                    <button class='btn btn-red bgTooltip changeBg' data-role='picCollection'>更换背景</button>
+                    <button class='btn greenBtn deleBg'>删除</button>
+                    <div class='imgShow'>
+                         <img class='img' id="target" />
+                    </div>
+                    <ul class='colorSet'>
+                        <li>
+                            <span class='txtDes'>主题颜色</span>
+                            <dl class='cirColor'>
+                                <dd class='cir-none'></dd>
+                                <dd class='cir-gray'></dd>
+                                <dd class='cir-red'></dd>
+                                <dd class='cir-yellow'></dd>
+                                <dd class='cir-green'></dd>
+                                <dd class='cir-blue'></dd>
+                                <dd class='cir-purple'></dd>
+                                <dd class='cir-allBoth'><input type='text' id='panelPicker'/></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <span class='txtFloat'>透明</span>
+                            <div class="slider bgSlider"></div>
+                            <input type='text' id='opcityBg' class='input-small'/>
+                        </li>
+                        <li>
+                            <span class='txtFloat'>圆角</span>
+                            <div class="txtRadius" id='panelSlider'></div>
+                            <input type='text' class='input-small'/>
+                        </li>
+                    </ul>
+                </div>
+                <div class='txtSetting'>
+                    <table class='setTable marginT20' cellspacing='0' cellpadding='0' border='0'>
+                        <colgroup>
+                            <col width='18%'></col>
+                            <col width='32%'></col>
+                            <col width='18%'></col>
+                            <col width='32%'></col>
+                        </colgroup>
+                        <tr>
+                            <td>宽度</td>
+                            <td><input type='text' class='wid45 margrinB0 widInput' value='100%'/></td>
+                            <td>高度</td>
+                            <td><input type='text' class='wid45 margrinB0 heiInput' value='400px'/></td>
+                        </tr>
+                    </table>
+                    <table class="setTable fontBottom" cellspacing="0" cellpadding="0" border="0" style='margin-top:0;'>
+                        <colgroup>
+                            <col width="16%">
+                            <col width="84%">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>对齐</td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul class="panelAlign">
+                                        <li class="active" data-align="left">左对齐</li>
+                                        <li data-align="center">居中</li>
+                                        <li data-align="right">右对齐</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul class="panelVertical">
+                                        <li data-align="top">置顶</li>
+                                        <li data-align="bottom">置底</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class='animateWrap'>
+               <span class='building'>努力搬砖中……</span>
+            </div>
+        </section>
+    </div>
+    <!-- 显示图层 -->
+    <div class='frameLayer'>
+        <div class='protoSet layerInner'>
+        </div>
+    </div>
+    <!-- 系数配置 -->
+    <div class='frameConfig'>
+        <div class='protoSet'>
+            <span class="icon iconfont iconBack icon-chexiao"></span>
+            <div class='txtSetting'>
+                <table class='setTable' cellspacing='0' cellpadding='0' border='0'>
+                    <colgroup>
+                        <col width='25%'></col>
+                        <col width='75%'></col>
+                    </colgroup>
+                    <tr>
+                        <td>文字配置</td>
+                        <td>
+                            <textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="arguTxtArea ng-pristine ng-untouched ng-valid"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>接口地址</td>
+                         <td>
+                            <select class='interAdd'>
+                                <option>app大转盘初始化</option>
+                                <option>微信大转盘初始化</option>
+                            </select>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>id值</td>
+                         <td>
+                            <textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="idArea ng-pristine ng-untouched ng-valid"></textarea>
+                        </td>
+                    </tr>
+                    <tr class='pad10 linear'>
+                        <td colspan='2'>朋友圈&app分享</td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>主标题</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareMt ng-pristine ng-untouched ng-valid">红包不停 抢购不停</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>文案内容</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareSt ng-pristine ng-untouched ng-valid">超人春节不打烊 红包发不停，为你的爱车囤点货吧。</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>图片地址</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareImg ng-pristine ng-untouched ng-valid">http://sale.qccr.com/ssycx/springNoHome/images/wxShare.jpg</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>分享地址</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareUrl ng-pristine ng-untouched ng-valid">http://sale.qccr.com/ssycx/springNoHome/H5CouponWx.shtml</textarea></td>
+                    </tr>
+                     <tr class='pad10 linear'>
+                        <td colspan='2'>分享给好友</td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>主标题</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareMt ng-pristine ng-untouched ng-valid">红包不停 抢购不停</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>文案内容</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareSt ng-pristine ng-untouched ng-valid">超人春节不打烊 红包发不停，为你的爱车囤点货吧。</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>图片地址</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareImg ng-pristine ng-untouched ng-valid">http://sale.qccr.com/ssycx/springNoHome/images/wxShare.jpg</textarea></td>
+                    </tr>
+                    <tr class='pad10'>
+                       <td>分享地址</td>
+                       <td><textarea text-watcher="" placeholder="请输入文本" ng-trim="false" class="QshareUrl ng-pristine ng-untouched ng-valid">http://sale.qccr.com/ssycx/springNoHome/H5CouponWx.shtml</textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class='btn argumentsBind'>确定</button></td>
+                    </tr>
+                </table>    
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src='js/jquery-1.11.0.min.js'></script>
+    <script type="text/javascript" src='js/oprea/undo.js'></script>
+    <script type="text/javascript" src='js/oprea/layer.js'></script>
+    <script type="text/javascript" src='js/oprea/configSet.js'></script>
+    <script type="text/javascript" src='js/mobileCommon.js'></script>
+    <script type="text/javascript" src='js/oprea/protoCommon.js'></script>
+    <script type="text/javascript" src='js/jquery-plus-ui.min.js'></script>
+    <script type="text/javascript" src='js/bootstrap.min.js'></script>
+    <script type="text/javascript" src='js/colorpicker.js'></script>
+    <script type="text/javascript" src="js/jquery.contextMenu.min.js"></script>
+    <script type="text/javascript" src='js/oprea/leftAdd.js'></script>
+    <script type="text/javascript" src='js/oprea/main.js'></script>
+    <script type="text/javascript" src='js/component/newCompon.js'></script>
+    <script type="text/javascript" src='js/oprea/bgProto.js'></script>
+    <script type="text/javascript" src='js/oprea/txtProto.js'></script>
+    <script type="text/javascript" src='js/oprea/imgProto.js'></script>
+    <script type="text/javascript" src='js/oprea/panelProto.js'></script>
+    <script type="text/javascript" src='js/oprea/buttonProto.js'></script>
+
+    <!-- 组件模块开始 -->
+    <script type="text/javascript" src='js/component/component.js'></script>
+    <script type="text/javascript" src='js/component/dzp/dzp.js'></script>
+    <script type="text/javascript" src='js/component/tck/appLogin.js'></script>
+    <script type="text/javascript" src='js/component/tck/goodsDialog.js'></script>
+    <script type="text/javascript" src='js/component/dataScroll/dataScroll.js'></script>
+    <script type="text/javascript" src='js/component/getQuan/arrow.js'></script>
+    <script type="text/javascript" src='js/component/coupon/beforeGetState.js'></script>
+    <script type="text/javascript" src='js/component/coupon/afterGetState.js'></script>
+    <script type="text/javascript" src='js/component/coupon/getCouponBtn.js'></script>
+    <script type="text/javascript" src='js/component/coupon/codeVerify.js'></script>
+    <script type="text/javascript" src='js/component/coupon/getCouponState.js'></script>
+    <script type="text/javascript" src='js/component/coupon/getCouponInput.js'></script>
+    <script type="text/javascript" src='js/component/coupon/getCouponFailed.js'></script>
+    <script type="text/javascript" src='js/component/coupon/getCouponOk.js'></script>  
+    <script type="text/javascript" src='js/component/coupon/ruler.js'></script>    
+    <script type="text/javascript" src='js/component/coupon/wxGetQuan.js'></script>           
+
+    <!-- 大转盘业务逻辑 -->
+    <script type="text/javascript" src='js/business/dzp/dzp.js'></script>
+    <script type="text/javascript" src='js/business/dzp/dzpInterface.js'></script>
+    
+    <!-- 登录app弹出框 -->
+    <script type="text/javascript" src='js/business/share.js'></script>
+    <script type="text/javascript" src='js/business/dialog/appDialog.js'></script>
+
+    <!-- 实物领奖弹出框 -->
+    <script type="text/javascript" src='js/business/dialog/goodsDialog.js'></script>
+
+    <!-- 数据动态滚动 -->
+    <script type="text/javascript" src='js/business/dataScroll/dataScroll.js'></script>
+</body>
+</html>

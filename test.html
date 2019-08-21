@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工具测试页</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+*{margin:0;padding:0;font-family:"Microsoft YaHei" Arial}html{font-size:62.5%;height:100%}body{font-size:14px;font-family:"Microsoft YaHei" Arial!important;color:#333333;background-color:#FCFCFC;position:relative;height:100%;}input{outline:0 none;border:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}button{outline:0 none;border:none;font-family:"Microsoft YaHei" Arial!important;filter:chroma(color=#000000)}input,button,select,textarea{outline:none}textarea,button,select{font-family:"Microsoft YaHei" Arial!important}input:focus::-webkit-input-placeholder{color:transparent}input::-moz-focus-inner,input::-moz-focus-outer{border:0 none;padding:0;margin:0}input[type=button],input[type=submit]{cursor:pointer}ol,li,ul{list-style-type:none}html,body{height:100%;width:100%}#wrapContent,#wrap{height:100%;width:100%}#wrap{position:relative}#wrap{margin:0 auto;max-width:640px}.warpprize{-webkit-animation:bounceIn 0.3s ease-in-out 0s;-webkit-animation-fill-mode:backwards}@-webkit-keyframes bounceIn{0%{opacity:0;-webkit-transform:scale3d(0.3,0.3,0.3);transform:scale3d(0.3,0.3,0.3)}100%{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes bounceIn{0%{opacity:0;-webkit-transform:scale3d(0.3,0.3,0.3);transform:scale3d(0.3,0.3,0.3)}100%{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+	</style>
+ <script type="text/javascript">
+        (function(win) {
+            var timeout,
+                doc = win.document, 
+                html = doc.documentElement;
+            function setFontSize() {
+                var htmlWidth = html.getBoundingClientRect().width;
+                var ratio = htmlWidth / 640;
+                if(htmlWidth < 640) {
+                    win.rem = ratio * 100;
+                } else {
+                    win.rem = 100;
+                }
+                win.responseRatio = ratio;
+                html.style.fontSize = win.rem + "px";
+            }
+            win.addEventListener("resize", function() {
+                clearTimeout(timeout), timeout = setTimeout(setFontSize, 300);
+            }, false);
+            setFontSize();
+        })(window);
+    </script>
+</head>
+<body>
+	<div id='wrap'>
+  
+  <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(144, 211, 86);" class="bgColor">
+                <img src="" id="bgWrap" style="max-width:100%; max-height:100%;">
+            </div>
+            <div class="wrapContent" style="background-size:100% auto;position:relative;top:0;left:0;background-color:transparent;" data-role="wrapContentProto">
+
+            <div class="panelProto panelWrap zpWrap" data-text="大转盘" data-role="panelProto" style="position: absolute; height: 5.86rem; width: 6.4rem; left: 0; z-index: 0; font-size: 0.2rem;text-align: left; top: 0.646226rem; word-wrap: break-word; line-height: normal; cursor: move;background-image: url(images/pres/zp.png); background-position: center center;background-size: contain;background-repeat:no-repeat"><div class="panelContain" style="height:100%;width:100%;position:relative;"><div class="dragImg box panelChild" data-role="imgProto" style="z-index: 0; position: absolute; width: 5.91923rem; height: 5.83261rem; cursor: move; text-align: center; top: 0.0103124rem; left: 0.243473rem; line-height: normal;"><img src="images/pres/zhuanpanbg_03.png" style="height: 100%; width: 100%;"><span class="objBorder borderLeft proxy" style="height: 583px; display: none;"></span><span class="objBorder borderRight proxy" style="height: 583px; display: none;"></span><span class="objBorder borderTop proxy" style="width: 592px; display: none;"></span><span class="objBorder borderBottom proxy" style="width: 592px; display: none;"></span><span class="coor coorBottomRight proxy" style="display: none;"></span></div><div class="dragImg box" data-role="imgProto" style="z-index: 0; position: absolute; width: 5.77923rem; height: 5.76928rem; cursor: move; text-align: center; top: 0.00993981rem; left: 0.27393rem; line-height: normal;"><img src="images/pres/zhuanpan2_03.png" class="zpRotate" style="height: 100%; width: 100%;"><span class="objBorder borderLeft proxy" style="height: 577px; display: none;"></span><span class="objBorder borderRight proxy" style="height: 577px; display: none;"></span><span class="objBorder borderTop proxy" style="width: 578px; display: none;"></span><span class="objBorder borderBottom proxy" style="width: 578px; display: none;"></span><span class="coor coorBottomRight proxy" style="display: none;"></span></div><div class="dragImg box" data-role="imgProto" style="z-index: 0; position: absolute; width: 1.89231rem; height: 2.24374rem; cursor: move; text-align: center; top: 1.41025rem; left: 2.2581rem; line-height: normal;"><img src="images/pres/zhuanpanbtn_03.png" class="zpButton" style="height: 100%; width: 100%;"><span class="objBorder borderLeft proxy" style="height: 224px; display: none;"></span><span class="objBorder borderRight proxy" style="height: 224px; display: none;"></span><span class="objBorder borderTop proxy" style="width: 189px; display: none;"></span><span class="objBorder borderBottom proxy" style="width: 189px; display: none;"></span><span class="coor coorBottomRight proxy" style="display: none;"></span></div></div><span class="objBorder borderLeft proxy" style="display: none; height: 586px;"></span><span class="objBorder borderRight proxy" style="display: none; height: 586px;"></span><span class="objBorder borderTop proxy" style="display: none; width: 586px;"></span><span class="objBorder borderBottom proxy" style="display: none; width: 586px;"></span><span class="coor coorBottomRight  proxy" style="display: none;"></span></div><div class="panelProto panelWrap appLoginWrap dialog" data-text="app登录框" data-role="panelProto" style="position: fixed; height: 100%; z-index: 99; width: 6.4rem; font-size: 0.2rem; text-align: left; top: 0px; left: 0px; word-wrap: break-word; line-height: normal; cursor: move; margin-left: 0px; display: none; background-size: 100% 100%;"> <div class="panelContain" style="height: 100%; width: 100%; position: relative; background-color: rgba(0, 0, 0, 0.85098);">   <div class="panelProto panelWrap warpprize LoginDialog panelChild" data-role="panelProto" style="position: absolute; height: 3.28231rem; z-index: 0; width: 5.06rem; font-size: 0.2rem; text-align: left; top: 2.58422rem; left: 0.799531rem; word-wrap: break-word; line-height: normal; cursor: move; margin-left: 0px; background-size: 100% 100%;">     <div class="panelContain" style="height: 100%; width: 100%; position: relative; border-radius: 0.29rem; background-color: rgb(255, 255, 255);">       <div class="dragImg box panelChild" data-role="imgProto" style="z-index: 0; position: absolute; width: 2.96923rem; height: 1.28313rem; cursor: move; text-align: center; top: -0.172656rem; left: 1.06078rem; line-height: normal; margin-left: 0px;">          <img src="images/pres/over.png" style="height: 100%; width: 100%;">         <span class="objBorder borderLeft proxy" style="height: 128px; display: none;"></span>          <span class="objBorder borderRight proxy" style="height: 128px; display: none;"></span>         <span class="objBorder borderTop proxy" style="width: 297px; display: none;"></span>          <span class="objBorder borderBottom proxy" style="width: 297px; display: none;"></span>         <span class="coor coorBottomRight proxy" style="display: none;"></span>       </div>        <div class="box txtProto panelChild" data-role="txtProto" style="position: absolute; min-height: 0.3rem; z-index: 0; font-size: 0.24rem; height: auto; width: 3.5rem; text-align: center; top: 1.31766rem; left: 0.827344rem; max-width: 95%; word-wrap: break-word; cursor: move; line-height: 1.5;">          <div class="txtShuru" style="height: 100%; min-height: 0.3rem; width: 100%; background-color: transparent;">还没有登录哟<br>只有用户登录才有机会</div>          <span class="coor proxy coorRightCenter" style="display: none;"></span>         <span class="objBorder borderLeft proxy" style="height: 72px; display: none;"></span>         <span class="objBorder borderRight proxy" style="height: 72px; display: none;"></span>          <span class="objBorder borderTop proxy" style="width: 350px; display: none;"></span>          <span class="objBorder borderBottom proxy" style="width: 350px; display: none;"></span>       </div>        <div class="buttonProto box panelChild" data-role="buttonProto" style="z-index: 0; position: absolute; width: 2.66308rem; height: 0.615385rem; cursor: move; text-align: center; top: 2.33313rem; left: 1.25813rem; line-height: normal;">          <input type="button" value="去APP登录" class="btnOpera appLoginGo" style="font-family: Microsoft YaHei; height: 100%; width: 100%; font-size: 0.26rem; cursor: move; color: rgb(255, 255, 255); background-image: url(images/pres/botton-on1.png); background-color: transparent; background-size: 100% 100%;">          <span class="objBorder borderLeft proxy" style="height: 62px; display: none;"></span>         <span class="objBorder borderRight proxy" style="height: 62px; display: none;"></span>          <span class="objBorder borderTop proxy" style="width: 266px; display: none;"></span>          <span class="objBorder borderBottom proxy" style="width: 266px; display: none;"></span>         <span class="coor coorBottomRight proxy" style="display: none;"></span>       </div>        <div class="dragImg box panelChild" data-role="imgProto" style="z-index: 0; position: absolute; width: 0.615385rem; height: 0.615385rem; cursor: move; text-align: center; top: -0.143125rem; left: 4.56591rem; line-height: normal;">          <img src="images/pres/close.png" class="closeAppLogin" style="height: 100%; width: 100%;">          <span class="objBorder borderLeft proxy" style="height: 61px; display: none;"></span>         <span class="objBorder borderRight proxy" style="height: 61px; display: none;"></span>          <span class="objBorder borderTop proxy" style="width: 61px; display: none;"></span>         <span class="objBorder borderBottom proxy" style="width: 61px; display: none;"></span>          <span class="coor coorBottomRight proxy" style="display: none;"></span>       </div>      </div>      <span class="objBorder borderLeft proxy" style="display: none; height: 329px;"></span>      <span class="objBorder borderRight proxy" style="display: none; height: 329px;"></span>     <span class="objBorder borderTop proxy" style="display: none; width: 506px;"></span>      <span class="objBorder borderBottom proxy" style="display: none; width: 506px;"></span>     <span class="coor coorBottomRight  proxy" style="display: none;"></span>    </div></div></div></div>
+            <span class="proxy coorBottomRight" style="display: none;"></span>
+           <span class="proxy coorBottomLeft" style="display: none;"></span>
+           <span class="proxy coorTopRight" style="display: none;"></span>
+           <span class="proxy coorTopLeft" style="display: none;"></span>
+
+	</div>
+  <script type="text/javascript" src='js/zepto.min.js'></script> 
+  <script type="text/javascript" src='js/mobileCommon.js'></script>
+  <script type="text/javascript" src='js/business/dzp/dzp.js'></script>
+  <script type="text/javascript" src='js/business/dzp/dzpInterface.js'></script>
+  <!-- 登录app弹出框 -->
+  <script type="text/javascript" src='js/business/share.js'></script>
+  <script type="text/javascript" src='js/business/dialog/appDialog.js'></script>
+
+  <!-- 实物领奖弹出框 -->
+  <script type="text/javascript" src='js/business/dialog/goodsDialog.js'></script>
+  <!-- 数据动态滚动 -->
+  <script type="text/javascript" src='js/business/dataScroll/dataScroll.js'></script>
+  
+  <script type="text/javascript">
+   	    var wHei=$(window).height();
+   	    var wWid=$(window).width();
+   	    var wBl=wWid/640;
+   	    var hBl=wHei/1008;
+   	    var bl='';
+   	    if(wBl<hBl){
+			bl=wBl;
+   	    }else{
+   	    	bl=hBl;
+   	    }
+   		$('#wrapContent *').each(function(){
+   			var $obj=$(this);
+   			var protos=$obj.attr('data-prototype');
+   			if(protos){
+   				var prs=JSON.parse(protos);
+   				if(prs){
+   					for(var i in prs){
+   						if(prs.hasOwnProperty(i)){
+   							var pos=prs[i]*bl+'px';
+   							$obj.css(i,pos);
+   						}
+   					}
+   				}
+   			}
+   		})
+   </script>
+</body>
+</html>

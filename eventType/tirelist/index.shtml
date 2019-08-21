@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原配轮胎列表</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="css/style.css">	
+</head>
+<body>
+	<div class="banner">
+		<img src="images/banner01.jpg" alt="">
+		<img src="images/banner02.jpg" alt="">
+	</div>
+	<div class="search" id="txt_area">
+		<span class="select">按车系筛选</span>
+		<span class="arrow-shadow"></span>
+	</div>
+	<div class="ltListWrap">
+		<!-- <ul class="goodsList">
+				<li>
+					<p class="goodsImg">
+						<img src="images/1.jpg" alt="\">
+					</p>
+					<div class="goodsMesg">
+						<p class="goodsName">
+							刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿刷到腮偶的宿
+						</p>
+						<p class="price">
+							<span>￥48.22</span>
+							<del>￥100.25</del>
+						</p>					
+					<a href="javascript:;" class="goBuy">马上抢</a>
+				</li>
+			</ul> -->
+		
+		<ul class="goodsList">
+		<script id="goodsList_tmp" type="text/x-dot-template">
+		{{? it && it.length > 0}}
+		{{~ it :value}}
+				<li data-id={{=value.id}}>
+					<p class="goodsImg">
+						<img src="{{=value.masterImage}}" alt="">
+					</p>
+					<div class="goodsMesg">
+						<p class="goodsName">
+							{{=value.name}}
+						</p>
+						<p class="price">
+							<span>￥{{=value.mallPrice}}</span>
+							<del>￥{{=value.marketPrice}}</del>
+						</p>					
+					    <a href="javascript:;" class="goBuy">马上抢</a>
+					
+				</li>
+		{{~}}
+		{{??}}
+                <p style="text-align:center;background: #efeff4;font-size: 0.4rem;margin-top: 10px;">
+                	暂无数据
+                </p>
+		{{?}}		
+		</script>
+		<p class="load"><img src="images/loader.gif" alt=""></p>
+		</ul>
+	</div>
+	<div class="mask"></div>	
+	<div class="brandCon">
+		<p class="">宝马</p>
+		<p class="">Mini</p>
+		<p class="">奔驰</p>
+		<p class="">奥迪</p>
+		<p class="">大众</p>
+		<p class="">别克</p>
+		<p class="">日产</p>
+		<p class="">丰田</p>
+		<p class="">福特</p>
+		<p class="">本田</p>
+		<p class="">现代</p>
+		<p class="">标致</p>		
+	</div>
+	<div class="typeContent">
+		<div class="typeCon">   <!-- 宝马 -->
+			<ul class="jinkoubaoma">
+				<li class="producer">进口宝马</li>
+				<script id="typeList_tmp" type="text/x-dot-template">
+					{{~ it :value}}
+					<p data-id="{{=value.id}}">{{=value.name}}</p>
+					{{~}}
+				</script>
+			</ul>
+			<ul class="huachenbaoma">
+				<li class="producer">华晨宝马</li>
+			</ul>								
+		</div>
+		<div class="typeCon">	<!-- Mini -->		
+			<ul class="mini">
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 奔驰 -->
+			<ul class="beijingbenchi">
+				<li class="producer">北京奔驰</li>
+			</ul>
+			<ul class="jinkoubenchi">
+				<li class="producer">进口奔驰</li>
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 奥迪 -->
+			<ul class="yiqidazhong">
+				<li class="producer">一汽大众</li>
+			</ul>
+			<ul class="jinkouaodi">
+				<li class="producer">进口奥迪</li>
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 大众 -->
+			<ul class="yiqidazhong">
+				<li class="producer">一汽大众</li>
+			</ul>
+			<ul class="shanghaidazhong">
+				<li class="producer">上海大众</li>
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 别克 -->
+			<ul class="shanghaitongyong">
+				
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 日产 -->
+			<ul class="dongfengrichan">
+				
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 丰田 -->	
+			<ul class="yiqifengtian">
+				<li class="producer">一汽丰田</li>
+			</ul>
+			<ul class="guangqifengtian">
+				<li class="producer">广汽丰田</li>
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 福特 -->
+			<ul class="fute">
+				
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 本田 -->
+			<ul class="guangqibentian">
+				<li class="producer">广汽本田</li>
+			</ul>
+			<ul class="dongfengbentian">
+				<li class="producer">东风本田</li>
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 现代 -->
+			<ul class="xiandai">
+				
+			</ul>
+		</div>
+		<div class="typeCon">	<!-- 标志 -->
+			<ul class="jinkoubiaozhi">
+				<li class="producer">进口标志</li>
+			</ul>
+			<ul class="dongfengbiaozhi">
+				<li class="producer">东风标志</li>
+			</ul>
+		</div>
+	</div>
+	<div class="cancle">取消</div>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script src="js/doT.min.js"></script>
+	<script src="js/carData.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script>		
+	// var ajaxUrl = 'http://api.qichechaoren.com';
+	var ajaxUrl = 'http://192.168.2.75:9770';
+	if (/\.qccr\.com/.test(location.href))
+	    ajaxUrl = 'http://api.qichechaoren.com';
+	$(".mask").height(document.documentElement.clientHeight);
+	$(".search").on("touchend", function() {
+	    $(".typeContent div").hide();
+	    $(".brandCon,.cancle,.mask").show();
+	    stopScroll($(".brandCon"));	
+	    stopScroll($(".typeContent"));	
+
+	});
+
+	$(".brandCon p").on("click", function() {
+	    var _this = $(this),
+	        index = _this.index();
+	    $(".brandCon").hide();
+	    $(".typeContent").show();
+	    $(".typeContent div.typeCon").hide();
+	    $(".typeContent div.typeCon").eq(index).show().siblings().hide();
+	});
+	$(".cancle").on("touchend", function() {
+	    $(".typeContent,.brandCon,.cancle,.mask").hide();
+
+	});
+	storeObj.init(
+	    function() {
+	        storeObj.getMesg({
+	            url: ajaxUrl + '/goods/getOriginalTireList',
+	            isscroll: false,
+	            data: {
+	                pageNum: 1,
+	                pageSize: 10
+	            }
+	        });
+	    }, {
+	        url: ajaxUrl + '/goods/getOriginalTireList'
+	    }
+	);
+
+	$(".typeCon p").on("click", function() {
+	    storeObj.dataId = $(this).attr('data-id');
+	    $(".typeContent,.brandCon,.cancle,.mask").hide();
+	    $('.goodsList li').remove();
+	    storeObj.init(
+	        function() {
+	            storeObj.getMesg({
+	                url: ajaxUrl + '/goods/getOriginalTireList',
+	                isscroll: false,
+	                data: {
+	                    pageNum: 1,
+	                    pageSize: 10,
+	                    carType: storeObj.dataId
+	                }
+	            });
+	        }, {
+	            url: ajaxUrl + '/goods/getOriginalTireList',
+	            carType: storeObj.dataId
+	        }
+	    );
+	});
+
+$(".producer").on("touchstart",function(e){
+	e.preventDefault();
+});
+	</script>
+</body>
+</html>

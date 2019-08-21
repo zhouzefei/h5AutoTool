@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>汽车超人问答活动</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css?v=1">
+		<script type="text/javascript" src="http://www.qccr.com/resources/shop/default/js/jquery.js"></script>
+		<script src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+	</head>
+	<body>
+		<div style="width:0px;height:0px;overflow: hidden;">
+			<img src="http://static.qichechaoren.com/upload/yuanxiaoshare.jpg"/>
+		</div>
+		<div class="loadingbg">
+			<div id="loading">
+				<div class="spinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<span class="showtxt"></span>
+				</div>
+			</div>
+		</div>
+		<div id="con">
+			<div class="pages p1">
+				<span class="chaorenwarp">
+					<img src="images/cdm.png" / >
+					<img src="images/zhuti.png" / >
+				</span>
+				
+				<span class="start_btn"><img src="images/ksdt.png" style="opacity: 0;" /></span>
+				<span class="rule"><img src="images/ckgz.png" alt=""></span>
+			</div>
+			<div class="pages p2">
+				<div class="q1 quswarp">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/dioneti.png"  />
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/oneA.png">
+							</p>
+							<p class="sloution">
+								<img src="images/oneB.png">
+							</p>
+							<p class="sloution">
+								<img src="images/oneC.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q2 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/dierti.png"/>
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution">
+								<img src="images/twoA.png">
+							</p>
+							<p class="sloution" data-ok="true">
+								<img src="images/twoB.png">
+							</p>
+							<p class="sloution">
+								<img src="images/twoC.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q3 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/sanzt_03.png" />
+						</div>
+					</div>
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/san_03.png">
+							</p>
+							<p class="sloution">
+								<img src="images/san_06.png">
+							</p>
+							<p class="sloution">
+								<img src="images/san_08.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				<div class="q4 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+							<img src="images/si_03.png"/>
+						</div>
+					</div>
+
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution">
+								<img src="images/si_07.png">
+							</p>
+							<p class="sloution">
+								<img src="images/si_10.png">
+							</p>
+							<p class="sloution" data-ok="true">
+								<img src="images/si_12.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="nextqus" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+
+				<div class="q5 quswarp" style="display: none;">
+					<div class="p2_1">
+						<div class='imgShow'>
+						<img src="images/wu_03.png"/>
+					</div>
+					</div>
+
+					<div class="p2_2">
+						<div class="result">
+							<p class="sloution" data-ok="true">
+								<img src="images/wu_07.png">
+							</p>
+							<p class="sloution">
+								<img src="images/wu_10.png">
+							</p>
+							<p class="sloution">
+								<img src="images/wu_12.png">
+							</p>
+						</div>
+					</div>
+					<div class="p2_3">
+						<img class="surequs" src="images/btn1.png" width="100%">
+					</div>
+				</div>
+				
+
+			</div>
+			<div class="pages p3">
+				<div class="p3_2">
+					<div class='phoneIn'>
+						<input type="tel" id="phone" maxlength="11" placeholder="输入手机号码领奖吧"/>
+						<img src="images/daduile_03.png"/>
+					</div>
+				</div>
+				<div class="p3_3">
+					<img id="infoSubmit" src="images/daduile_07.png" />
+				</div>
+				<div class="p3_4 ">
+					<img src="images/daduile_11.png" />
+				</div>
+			</div>
+			<div class="pages p4">
+				<div class="p3_1">
+					<img class="overtitle" src="images/dacuole_03.png" />
+				</div>
+				<div class="p4_2">
+					<img class="reque requAgain" src="images/dacuole_07.png" />
+					<img class="down_btn" src="images/dacuole_10.png" />
+				</div>
+				<div class="p3_4">
+					<img src="images/daduile_11.png" />
+				</div>
+
+			</div>
+			<div class="pages p5">
+				<div class="p3_1">
+					<img class="overtitle" src="images/tjcg_03.png" />
+				</div>
+				<div class="p4_2">
+					<img class="reque requ1" src="images/btnicon_use.png" />
+					<img class="share_btn" src="images/btnicon_08.png" />
+				</div>
+				<div class="p3_4">
+					<img src="images/daduile_11.png" />
+				</div>
+
+			</div>
+			<div class="pages p6">
+				<div class="p3_1">
+					<img class="overtitle" src="images/yjdaguo_03.png" />
+				</div>
+				<div class="p4_2">
+					<img class="reque requ1" src="images/btnicon_use.png" />
+					<img class="share_btn" src="images/btnicon_08.png" />
+				</div>
+				<div class="p3_4">
+					<img src="images/daduile_11.png" />
+				</div>
+			</div>
+
+		</div>
+		<div class="share_img" style="display:none;">
+			<img src="images/ios_share.png" width="80%" style="padding-top: 15%;">
+		</div>
+		<div class="showMsg" style="display: none;">
+			
+		</div>
+		<script type="text/html" id="msgtip">
+	        <div class="confirmmsg">
+	            <div class="ftitle">活动规则</div>
+	            <div class="fcontent">
+	            	<span>答对所有题目可以获得66元养车红包</span>
+					<span>红包有效期：自领取之日起30天内有效</span>
+					<span>每个手机账户只能参加一次活动</span>
+					<span>下载进入汽车超人APP，进入超人钱包即可查看红包</span>
+					<span>特维轮网络科技（杭州）有限公司在法律规定的范围内对此活动有解释权。</span>
+	            </div>
+	        </div>
+	    </script>
+	    <script src="js/dialogchange.js?v=1"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript">
+			var ajaxurl = "http://market.yfbqccr.com";
+			//var redbagCode = "ec8b9d87-55c3-442c-ab2a-a2f5fc8ecf3a";
+			var redbagCode="47cae608fe114f3fa7eb7db9a244ba33";
+			var smsMsg = " 主银，我已经把66元的元宵红包放到您的超人钱包里了，有效期30天，记得去用哦~ 下载链接:  http://t.cn/R4yfrvL  ";
+			var url = location.href;
+			if (/\.qccr\.com/.test(url)) {
+				redbagCode = "391dd4ec53574fc58e8152b3d327865f";
+				ajaxurl = "http://market.qccr.com";
+			}
+			var h = document.documentElement.clientHeight,
+				w = document.documentElement.clientWidth,
+				qusStep = 0,
+				okCount = 0;
+			var reslutA = [3, 2, 1, 1, 0];
+			$(".pages,body").css({
+				"height": h,
+				"width": w
+			});
+			if (getCookie("yuanxiao")) {
+				$(".p1,.p2,.p3,.p4,.p5,.loadingbg").remove();
+				$(".loadingbg").hide();
+				$("#con").css("opacity", "1");
+				$(".pages").show();
+			} else {
+				function btnactive(ele) {
+					if (0) {
+						var oldSrc = ele.src;
+						var activeSrc = oldSrc.replace(".png", "h.png");
+						ele.src = activeSrc;
+						setTimeout(function() {
+							ele.src = oldSrc;
+						}, 300);
+					}
+				}
+				
+				var start_btn = document.querySelectorAll('.start_btn')[0];
+				$("body").on("touchend", ".sloution", function() {
+					$(this).closest('.p2_2').siblings('.p2_3').show();
+					if ($(this).hasClass("on")) {
+						$(this).toggleClass("on");
+					} else {
+						$(this).parents(".result").find("p").removeClass("on");
+						$(this).toggleClass("on");
+					}
+				});
+
+				
+				start_btn.addEventListener("touchend", function() {
+					toPage(1);
+					$(".quswarp").eq(0).show();
+				}, false);
+				$(".nextqus").bind("touchstart", function() {
+					var $that=$(this);
+					if ($(this).parents(".quswarp").find(".on").length < 1) {
+						btnactive(this);
+						showMsg("请至少选择一个答案！")
+					} else {
+						if ($(this).parents(".quswarp").find(".on").attr("data-ok") == "true") {
+							okCount++;
+						}
+						qusStep++;
+						btnactive(this);
+						setTimeout(function() {
+							$(".quswarp").hide();
+							$(".quswarp").eq(qusStep).show();
+						}, 300);
+					}
+				});
+				
+				$(".surequs").bind("touchstart", function() {
+					if ($(this).parents(".quswarp").find(".on").length < 1) {
+						btnactive(this);
+						showMsg("请至少选择一个答案！")
+					} else {
+						btnactive(this);
+						if ($(this).parents(".quswarp").find(".on").attr("data-ok") == "true") {
+							okCount++;
+						}
+						setTimeout(function() {
+							if (okCount == 5) {
+								$(".p4,.p5,.p6").hide();
+							} else {
+								$(".p3,.p5,.p6").hide();
+								$.ajax({
+									url: ajaxurl + "/hit/add.jhtml?format=json&app=answers",
+									dataType: "jsonp",
+									success: function(hitdata) {
+										if (hitdata.code == 0) {
+											//localStorage.Phone="1111";
+										}
+									}
+								});
+								//localStorage.Phone="111";
+								$(".p4").show();
+							}
+							toPage(2);
+						}, 300);
+					}
+				});
+
+				function toPage(i) {
+					$("#con").css({"-webkit-transform":"translate3d(0px, -" + i * h + "px, 0px)","-webkit-transition":"all 700ms ease"});
+				}
+				var isactive = false;
+
+				$("#infoSubmit").bind("touchstart", function() {
+					var phone = $("#phone").val();
+					if (!/^1\d{10}$/.test(phone)) {
+						showMsg("请填写正确的手机号码!");
+						return false;
+					}
+					if (isactive) return false;
+					isactive = true;
+					$.ajax({
+						url: ajaxurl + "/activity/receiveRewards4wechat?format=json&app=yuanxiao&phone=" + phone + "&redbagCode=" + redbagCode + "&smsMsg=" + smsMsg,
+						dataType: "jsonp",
+						success: function(data) {
+							isactive = false;
+							//var data={"rewardStatus":1,"info":[{"id":null,"redbagId":null,"wechatNick":null,"wechatHead":null,"createTime":1454383008000,"couponPrice":-20.0,"couponName":"20元商品定期优惠券","comment":null,"applyType":2},{"id":null,"redbagId":null,"wechatNick":null,"wechatHead":null,"createTime":1454383008000,"couponPrice":-0.01,"couponName":"测试1分钱","comment":null,"applyType":2}],"code":0};
+							if (data.code == 0 && data.rewardStatus == 1) {
+								$(".p5").show();
+								toPage(3);
+								addCookie("yuanxiao", $("#phone").val(), {
+									expires: 3600 * 24 * 365
+								});
+								
+							} else if (data.code == 0 && data.rewardStatus == 0) {
+								addCookie("yuanxiao", $("#phone").val(), {
+									expires: 3600 * 24 * 365
+								});
+								$(".p1,.p2,.p3,.p4,.p5,.loadingbg").remove();
+								$(".loadingbg").hide();
+								$("#con").css("opacity", "1");
+								$("#con").css("-webkit-transform", "translate3d(0px, -" + 0 + "px, 0px)");
+								$(".pages").show();
+							} else {
+								showMsg("领取失败！");
+							}
+						},
+						error: function() {
+							showMsg("领取失败！")
+						}
+					})
+				});
+				$(".pages").hide();
+				$(window).bind("load", function() {
+					setTimeout(function() {
+						$(".loadingbg").hide();
+						
+						$("#con").css("opacity", "1");
+						$(".pages").show();
+					}, 1000);
+				})
+			}
+
+			function is_weixn() {
+				var ua = navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == "micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			if (!is_weixn()) {} else {
+				url = encodeURIComponent(location.href.split('#')[0]);
+				$.ajax({
+					dataType: "jsonp",
+					url: "http://market.qccr.com/weixin/share?url=" + url,
+					success: function(data) {
+						data = data.info;
+						wx.config({
+							debug: false,
+							appId: data.appId, // 必填，公众号的唯一标识
+							timestamp: data.timestamp, // 必填，生成签名的时间戳
+							nonceStr: data.nonceStr, // 必填，生成签名的随机串
+							signature: data.signature, // 必填，签名，见附录1
+							jsApiList: ['onMenuShareTimeline',
+									'onMenuShareAppMessage',
+									'onMenuShareQQ',
+									'onMenuShareWeibo'
+								] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						});
+						wx.ready(function() {
+							var imgUrl = "http://static.qichechaoren.com/upload/yuanxiaoshare.jpg?v=" + new Date().getTime();
+							//分享朋友圈
+							wx.onMenuShareTimeline({
+								title: "猜字谜闹元宵，赢66元养车红包，你也赶紧来吧！",
+								desc: "2月18日-2月24日来汽车超人参与元宵答题，人人都有红包拿！",
+								link: location.href, // 分享链接
+								imgUrl: imgUrl, // 分享图标
+								success: function() {
+									$(".share_img").hide();
+								},
+								cancel: function() {
+									// 用户取消分享后执行的回调函数
+								}
+							});
+							//分享给朋友
+							wx.onMenuShareAppMessage({
+								title: "猜字谜闹元宵，赢66元养车红包，你也赶紧来吧！",
+								desc: "2月18日-2月24日来汽车超人参与元宵答题，人人都有红包拿！",
+								link: location.href, // 分享链接
+								imgUrl: imgUrl, // 分享图标
+								success: function() {
+									$(".share_img").hide();
+								},
+								cancel: function() {}
+							});
+						});
+						wx.error(function(res) {});
+					},
+					error: function() {}
+				});
+			}
+			$(".share_btn").bind("touchend", function() {
+				$(".share_img").show();
+			});
+			$(".down_btn").bind("touchend", function() {
+				location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404';
+			});
+			$(".requ1").bind("touchend", function() {
+				location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404';
+				// $("#con").css({"-webkit-transform":"translate3d(0px, 0px, 0px)","-webkit-transition":"all 0s ease"});
+				// $("#con").css("opacity", "1");
+				// $(".pages").show();
+				// $(".quswarp").hide();
+				// qusStep = 0;
+				// okCount = 0;
+				// $(".sloution").removeClass("on");
+			});
+			$(".requAgain").bind("touchend", function() {
+				location.reload();
+			});
+			$(".share_img").bind("touchend", function() {
+				$(this).hide()
+			});
+			$(".close").bind("touchend", function() {
+				$(".tc").hide();
+			});
+			$(".rule").bind("touchend", function() {
+				iDialog.show($("#msgtip").html(), { width:'8.963rem', height: '10rem' });
+			});
+			$("#con,.tc").bind("touchmove", function(e) {
+				e.preventDefault();
+			});
+			$("input").bind("blur", function() {
+				window.scrollTo(0, 0);
+			});
+			$(".share_img").css({
+				height: document.documentElement.clientHeight,
+				"width": document.documentElement.clientWidth
+			});
+			
+			//吐司提示
+			var flag=true;
+			function showMsg(content){
+				if(flag){
+					flag=false;
+					$(".showMsg").html("");
+					var $span=$("<span></span>")
+					$span.text("");
+					$span.text(content);
+					$(".showMsg").append($span);
+					$(".showMsg").css("display","block").animate({"opacity":"1"},1000).animate({"opacity":"0"},1000,function(){
+						flag=true;
+						$(".showMsg").css("display","none")
+					})
+				}	
+			}
+			$('input#phone').focus(function(){
+				flag=true;
+				$(".showMsg").css("display","none")
+			});
+	    $("#con").bind("touchmove", function(e) {
+			e.preventDefault();
+		});
+		$("body").on('touchmove',"#idialog", function(e) {
+			e.preventDefault();
+		});
+		</script>
+		<script type="text/javascript" src="js/traffics.js"></script>
+	</body>
+
+</html>

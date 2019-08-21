@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>免费领1分钱洗车券，限量3000份</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<script>
+		function resize() {
+			window.remFontSize = document.documentElement.clientWidth / 10;
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px"
+		}
+	var b = null;
+	window.addEventListener("resize", function() {
+		clearTimeout(b), 
+		b = setTimeout(resize, 300)
+	}, !1);
+	resize();
+	</script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="box">
+		<div class="redEnvelope">
+			<div class="redBag">
+				<img src="images/bg01.png" alt="">
+			</div>
+			<div class="redBagCon">
+				<p>输入手机号码即可领取</p>
+				<p>限量3000张，手慢无！</p>
+				<input type="text" placeholder="请输入手机号码" class="telNum">
+				<a href="javascript:;" class="getBtn">立即领取</a>
+			</div>
+			<div class="rule">
+				<h2>活动规则</h2>
+				<div class="rulCont">
+					<p>1、每个手机号码仅限领取一次；</p>
+					<p>2、领到券后，下载汽车超人APP，通过手机号码登录，即可在“我的”<<“超人钱包“查看；</p>
+					<p>3、1分钱洗车券在全国20000家汽车超人合作门店均可使用；</p>
+					<p>4、1分钱洗车券请在有效期内使用，逾期作废。</p>
+				</div>	
+			</div>
+			<div class="bottom">
+				<img src="images/bg04.jpg" alt="">
+			</div>			
+		</div>
+		<div class="getSucces" style="display:none">
+			<div class="topCon">
+				<h1>恭喜您领取成功!</h1>
+				<p><!-- 1分钱洗车券已放到<b>***********</b>的汽车超人账户，请尽快登录app使用哟~ --></p>
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren">点击下载APP</a>
+			</div>
+			<div class="botCon">
+				<img src="images/bg06.jpg" alt="">
+			</div>
+		</div>	
+
+	</div>
+	<div class="mask"></div>
+	<div class="winBox">
+		<p class="tx">
+			<span>请输入短信验证码，以确保您能正常绑定优惠券</span>
+			<span>验证码将发送到手机号：<b></b></span>
+		</p>
+		<p class="mesgCheck">
+			<input type="text" placeholder="请输入短信验证码" />
+			<a href="javascript:;" class="getCode">获取验证码</a>
+		</p>
+		<p class="btnCon">
+			<a href="javascript:;" class="btn cancleBtn">取  消</a>
+			<a href="javascript:;" class="btn sureBtn">确  定 </a>
+		</p>
+	</div>
+	<div class="dialogbox">
+		<div class="font">
+			很遗憾，券发完了，下次早点来~
+		</div>
+		<div class="btn">
+			确 定
+		</div>
+	</div>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/index.js"></script>
+	<script type="text/javascript" src="../../js/traffics.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+@charset "utf-8";
+/* CSS Document */
+
+.swarp{filter:alpha(opacity=50);
+	   -moz-opacity:0.5;
+	   -khtml-opacity: 0.5;
+	   opacity: 0.5;
+	   background:#000;
+	   position:absolute;
+	   left:0;
+	   top:0;
+	   width:100%;
+	   height:100%;
+	   z-index:1;
+	   
+	   }
+	   
+.srule{ 
+  background: url(../images/box.png) no-repeat;
+  width: 290px;
+  /* height: 460px; */
+  position: fixed;
+  left: 50%;
+  margin-left: -150px;
+  top: 40px;
+  z-index: 2;
+  background-size: 100% 100%;
+		
+		}
+		
+.srule p{ 
+        color:#FFF;
+        font-size:12px;
+		padding:0 10px;
+        }
+/*.srule p.sdate{
+	margin-top:80px;
+	}*/
+
+.guize{ margin-top:26px; height:236px; overflow-y:scroll;}
+.sh-rule{ margin-top:40px; height:45px;overflow-y:scroll;}
+
+
+
+.sclose,.close1{ width:35px; height:34px;
+         display:block;
+		 position:absolute;
+		 right:-10px;
+		   z-index: 10;
+		 }
+		 
+.sclose{top:-12px;}
+.close1{ top:35px;}	
+.stitle{ position:absolute; top:-28px; left:31px; width:250px;}
+.textbox{ overflow-y:scroll; margin-top:31px;}
+.hdtime{ margin-left:2px; margin-right:1px;}
+.hdtime img{ width:100%;}
+.stitle img{ width:220px;}
+	 
+/*===============中奖了  车载冰箱=====================*/
+.zhongjiang{ background:url(../images/win.png) no-repeat;
+             width:290px;
+			 height:399px;
+			 position:absolute;
+			 background-size:cover;
+			 -o-background-size:cover;
+			 -moz-background-size:cover;
+			 -webkit-background-size:cover;
+			 z-index:3;
+			 margin-top:-200px;
+			 top:50%;
+			 left:50%;
+			 margin-left:-145px;
+            }
+.radius{ border-radius:50%;
+         -o-border-radius:50%;
+		 -moz-border-radius:50%;
+		 -webkit-border-radius:50%;
+        }
+.zhongjiang h1{ padding-top:95px;
+                font-size:16px;
+				color:#fff;
+				text-align:center;
+				font-weight:normal;
+              }
+			
+.jpic{ 
+		width:108px;
+       height:108px;
+
+	   text-align:center;
+	   
+
+      }
+	  
+.twenty,.jpic{ margin:0 auto;margin-top:10px;}	  
+	  
+.jpic img{ width:100%; }
+.twenty{ width:108px;
+         height:108px;
+		 background:url(../images/coupons.png) no-repeat;
+		 background-size:cover;
+		 }
+
+.cj-bton{
+		  background:url(../images/botton-on.png) no-repeat;
+		   color:#e62d46; 
+		   bottom:22px;
+		
+         }
+		 
+
+.go-on{
+	   background:url(../images/botton-on1.png) no-repeat;
+	   color:#fff;
+	   bottom:24px;
+	  }		
+	  
+.cj-bton,.go-on,.overdown{ width:200px;
+				  height:45px;
+				  display:block;
+				  text-align:center;
+				  line-height:40px; 
+				  font-size:14px;
+				  position:absolute;
+				  left:50%;
+				  margin-left:-100px;
+				  background-size:cover;
+		        } 
+				
+.overdown{ background:url(../images/change-over.png) no-repeat !important;
+       bottom:22px !important;
+	   color:#fff !important;
+	   background-size:cover !important;
+	   }
+.goodluck{ font-size:14px; 
+           color:#fff;
+		   text-align:center;
+		   margin-top:12px;
+		   line-height:20px;
+		  }
+		  
+.tishi{ width:220px;
+         margin:0 auto;
+		 text-align:center;
+		 line-height:16px;
+		 font-size:12px;
+		 color:#fee283;
+		 margin-top:6px;
+
+        }
+		
+.zhongjiang p.share{ font-size:12px; 
+                    text-align:center; 
+					width:100%;
+					position:absolute;
+					top:271px;
+					color:#fff;
+					}
+		
+/*===============未抽中=====================*/
+.sorry-box{ width:290px;
+            height:195px;
+			position:relative;
+			margin:0 auto;
+			background:#fff;
+			border:#ffd74a 3px  solid;
+			border-radius:8px;
+			z-index:3;
+			top:150px;
+            }
+			
+.s-title{ background:url(../images/people-top.png) no-repeat;
+           width:270px;
+		   height:117px;
+		   background-size:cover;
+		   position:absolute;
+		   top:-80px;
+		   left:10px;
+		   z-index:4;
+
+          }
+		  
+.sorry-box p.again{ text-align:center;
+              color:#fff;
+			  color:#333;
+			  padding-top:55px;
+			  font-size:14px;
+			  }
+			  
+.sorry-box p.try-hard{ padding-top:65px;}			  
+.over{ color:#fcdf72;
+       font-size:12px;
+	   width:100%;
+	   text-align:center;
+	   }
+	   
+	   
+.jihui{ text-align:center;
+        font-size:12px;
+		color:#ee443a;
+		}

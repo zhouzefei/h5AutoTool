@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <title>抢月饼</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="container index">
+    <div class="index_top">
+      <img src="images/mooncake_01.png" />
+      <p class="text"></p>
+      <p class="makeNum"><span>100</span>个</p>
+      <div class="rule"></div>
+    </div>
+    <h3>点击开始制作月饼后，请在10s内快速点击制作</h3>
+    <div class="btnArea">
+      
+    </div>
+    <div class="friendHelp">
+     
+    </div>
+    <p class="load"><img src="images/loader.gif" alt=""></p>
+  </div>
+  <div class="ads">
+    <img src="images/ads.png">
+  </div>
+  <div class="index_out">
+    <div class="index_hbWindow">
+      <div class="hbWindowCon">
+        <div class="hbTip">         
+          <p>活动细则：<br>
+          时间段：2015年9月26日~10月7日。<br>
+          方法论：<br>
+          1.点击“开始制作”后，10秒内迅速点击月饼，可获得相应的月饼数。<br>
+          2.每位用户每天可玩3次，分享给好友帮忙制作月饼，同一好友每天可以帮做1次。<br>
+          小金库：<br>
+          1.累计制作50个可获1分钱商品券：燃油宝，买买买。<br>
+          2.累计制作100个可获100元商品抵价券：哇，100元，够我买个汽车养护四件套啦。<br>
+          3.累计制作200个可获200元加油卡：这个月，加油都不用钱了耶。<br>
+          领奖台：关注汽车超人服务号（qichechaoren888）<br>
+          10月5日~9日进入服务号界面下方“领取奖品”填写联系方式。<br>
+          奖品于10月10日-15日统一发放。<br>
+          碎碎念：<br>
+          1.如果用户出现违规行为（包括但不限于利用系统漏洞、黑客工具等非正常方式参与），则获得的月饼无效，活动主办方有权将礼品作废。<br>
+          2.本活动最终解释权归特维轮网络科技（杭州）有限公司所有。</p>
+        </div>
+      </div> 
+      <p class="colse"></p>     
+      </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+  var data=[{angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"},
+    {angle:0,words:"再试试",image:"",bgimg:"price1.png",closeimg:"close1.png"}];
+
+  var indexFun ={
+    status:0,//0代表自己的，1代表助力好友
+    page:1,
+    lock:true,
+    getListLock:true,
+    getChance:function(){
+      //getJsonData("",{page:1},function(data){
+        var chance = 1;
+        addCookie("userChance",chance);
+        var strVar = "";
+        if(indexFun.status == 0){
+          $(".text").text("您已制作");
+          if(chance==0){
+            strVar += "<a class=\"goMakeBtn\" href=\"javascript:void(0);\">今天次数已用完，明天再来吧<\/a>";
+            strVar += "<div class=\"btn\">";
+            strVar += " <a>喊好友来帮忙<\/a>";
+            strVar += " <a href=\"cakeList.html\">好友排行榜<\/a>";
+            strVar += "<\/div>";
+          }else if(chance >0){
+            strVar += "<a class=\"goMakeBtn\" href=\"makeCake.html\">开始制作吧！<\/a>";
+            strVar += "<div class=\"btn\">";
+            strVar += " <a>喊好友来帮忙<\/a>";
+            strVar += " <a href=\"cakeList.html\">好友排行榜<\/a>";
+            strVar += "<\/div>";
+          }
+        }else if(indexFun.status == 1){
+          $(".text").text("ta已制作");
+          $("h3").text("点击助力好友后，请在10s内快速点击制作");
+          if(chance==0){
+            strVar += "<a class=\"goMakeBtn\" href=\"javascript:void(0);\">今天次数已用完，明天再来吧<\/a>";
+            strVar += "<div class=\"btn\">";
+            strVar += "  <a href=\"makeCake.html\">我也要参与<\/a>";
+            strVar += " <a href=\"cakeList.html\">好友排行榜<\/a>";
+            strVar += "<\/div>";
+          }else if(chance >0){
+            strVar += "<a class=\"goMakeBtn\" href=\"makeCake.html?id=123\">助力好友<\/a>";
+            strVar += "<div class=\"btn\">";
+            strVar += " <a href=\"makeCake.html\">我也要参与<\/a>";
+            strVar += " <a href=\"cakeList.html\">好友排行榜<\/a>";
+            strVar += "<\/div>";
+          }
+        }
+        $(".btnArea").html(strVar);
+      //});
+    },
+    getList: function(page){
+    //getJsonData("",{page:1},function(data){
+      var strVar = "";
+      if(page==1){
+        strVar += "<img class=\"top\" src=\"images/friend_top.png\">";
+      }
+      strVar += "<ul class=\"helpList\">";
+      for(var i=0;i<data.length;i++){
+        strVar += " <li>";
+        strVar += " <img src=\"images/bg.jpg\"/>";
+        strVar += " <span class=\"name\">焦小美<br>";
+        strVar += "  助力好友，+5月饼！";
+        strVar += " <\/span>";
+        strVar += " <span class=\"time\">2015-9-16<\/span>";
+        strVar += " <div class=\"clear\">";
+        strVar += " <\/div>";
+        strVar += " <\/li>";
+      }
+      strVar += "<\/ul>";
+      indexFun.lock = true;
+      $(".friendHelp").append(strVar);
+    //})
+    },
+    init:function(){
+      indexFun.getChance();
+      var adsHeight = $(".ads").height();
+      $(window).scroll(function(){
+        if(indexFun.getListLock){
+          var scrollTop=$(window).scrollTop(),
+              h=$(window).height(); 
+          if ($('.index').height() <=scrollTop + h - adsHeight && indexFun.lock) {
+            $('.load').show();
+            indexFun.lock = false;
+            indexFun.page++;
+            indexFun.getList(indexFun.page);
+          }
+        }
+      })
+      $(".index").css("margin-bottom",adsHeight+"px");
+      indexFun.getList(indexFun.page);
+      $(".colse").bind("click",function(){
+        $(this).closest(".index_out").hide();
+        indexFun.getListLock = true;
+      });
+      $(".rule").bind("click",function(){
+        $(".index_out").show();
+        indexFun.getListLock = false;
+      })
+    }
+  }
+  indexFun.init();
+</script>
+<script type="text/javascript" src="../js/traffics.js"></script>

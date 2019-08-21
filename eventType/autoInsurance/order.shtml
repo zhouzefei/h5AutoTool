@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>订单列表</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="content">
+      
+    </div>
+    <p class="load" style="display: none;"><img src="images/loader.gif" alt=""></p>
+  </div>
+</body>
+</html>
+<script>
+    $("body").append('<p id="sds" style="width:10rem;"></p>');
+    var realrem= $("#sds").width()/10;
+     var rem=document.documentElement.clientWidth/10;
+     if(realrem!=rem)
+     {
+      $("html").css('font-size',(rem*rem)/realrem+"px");
+
+     }
+     $("#sds").remove();
+
+  var orderList ={
+    page: 1,
+    maxPage: 1,
+    pageSize: 10,
+    isLoad: true,
+    init: function(){
+      if(orderList.page < (orderList.maxPage + 1)){
+        signCreate("Order",'{"insurance_id": "1","service_id":"OrderList","user_id": '+ userId +',"page":'+ orderList.page +',"pageSize":"'+ orderList.pageSize +'"}',orderList.getOrder);
+      }
+    },
+    getUrl: function(){
+      $(".order .list").bind("click",function(){
+        var orderId = $(this).attr("orderId");
+      })
+    },
+    getOrder: function(data){
+        $('.load').hide();
+        if(data.info.list.length == 0){
+           if(orderList.page == 1) $(".content").html("<img class=\"noOrderPic\" src=\"images/noOrder.png\"><p class=\"noOrder\">您还没有保险订单哟！</p><div style=\"text-align:center;\"><a class=\"goYibaoxian\" href=\"http://123.57.7.50:8080/m/channel/default?from=m_app_chaoren&uid="+ userId +"\">马上给爱车保险<\/a><\/div>");
+           else $(".content").append("<p class=\"noOrder\">没有更多数据了</p>");
+          return false;
+        }else{
+          orderList.isLoad = true;
+          if(orderList.page == 1) orderList.maxPage = data.info.page.maxPage;
+          if(orderList.page == orderList.maxPage) orderList.isLoad = false;
+          orderList.page ++;
+          var strVar = "<ul class=\"order\">";
+          for(var i=0;i<data.info.list.length;i++){
+            strVar += "<li class=\"list\" orderId=\""+ data.info.list[i].order_id +"\">";
+            strVar += "<p>";
+            strVar += " <a href=\"orderInfo.shtml?orderId=" + data.info.list[i].order_id +"\">";
+            strVar += " <span class=\"time\">订单时间：" + data.info.list[i].create_time + "<\/span><span class=\"status\">"+ data.info.list[i].order_status +"<\/span>";
+            strVar += " <\/a>";
+            strVar += "<\/p>";
+            strVar += "<p>";
+            strVar += " <a href=\"orderInfo.shtml?orderId=" + data.info.list[i].order_id +"\">";
+            strVar += " <img class=\"pimg\" src=\"images/order.jpg\">";
+            strVar += " <span class=\"theCarNum\">车牌号：";
+            if(data.info.list[i].car_number == ""){
+              strVar += "新车未上牌<\/span>";
+            }else{
+              strVar += data.info.list[i].car_number + "<\/span>";
+            }
+            strVar += " <\/a>";
+            strVar += "<\/p>";
+            strVar += "<p class=\"pprice\">";
+            strVar += " <a href=\"orderInfo.shtml?orderId=" + data.info.list[i].order_id +"\">";
+            strVar += "              共1件商品";
+            strVar += " <span class=\"addMar\"><\/span>实付：<span>￥" + parseFloat(data.info.list[i].amount_now).toFixed(2) + "<\/span>";
+            strVar += " <\/a>";
+            strVar += "<\/p>";
+            strVar += "<p class=\"pbtn\">";
+            //添加状态判断代码
+            if(data.info.list[i].order_status == "待付款"){
+              strVar += " <span data-order-id='"+ data.info.list[i].order_id +"' data-channel-order-id='"+ data.info.list[i].channel_order_no +"' class=\"btn btn1 paynow\"><a href='javascript:void(0);'>立即付款<\/a><\/span>";
+            }else if(data.info.list[i].order_status == "已关闭"){
+              strVar += " <span class=\"btn requote\"><a href='javascript:void(0);'>重新报价<\/a><\/span>";
+            }else if(data.info.list[i].order_status == "交易成功"){}
+            strVar += "<\/p>";
+            strVar += "<\/li>";
+          }
+          strVar +="<\/ul>";
+          $(".content").append(strVar);
+        }
+    },
+    goPay: function(channel_order_Id, order_id,callback){
+      signCreate('Callback','{"insurance_id": "1","service_id":"getCallBackPayUrl","channel_order_Id":"'+ channel_order_Id +'","order_id": "'+ order_id +'"}',callback)
+    },
+    goPayCallback: function(data){
+      if(data.code === 0){
+        if(data.info.pay_url){
+            var transferUrl = data.info.pay_url;
+            window.location.href = transferUrl;
+        }
+      }
+    },
+    requoteCallback: function(data){
+      if(data.code === 0){
+        if(data.info.again_pay_url){
+          var again_pay_url = data.info.again_pay_url;
+          window.location.href = again_pay_url;
+        }
+      }
+    }
+  }
+  orderList.init();
+  $(window).on('scroll', function() {
+    var iH = $(window).scrollTop() + $(window).height();
+    if(iH >= $('body').height()){
+      console.log(orderList.page)
+      if(orderList.isLoad){
+        orderList.isLoad = false;
+        $('.load').show(); 
+        signCreate("Order",'{"insurance_id": "1","service_id":"OrderList","user_id": "123","page":'+ orderList.page +',"pageSize":"'+ orderList.pageSize +'"}',orderList.getOrder);
+      }
+    }           
+  });
+  $(function(){
+    //立即支付
+    $('.content').on('tap','.pbtn .paynow',function(){
+      var $this = $(this);
+      var channel_order_id = parseInt($this.attr('data-channel-order-id'));
+      var order_id = parseInt($this.attr('data-order-id'));
+      orderList.goPay(channel_order_id, order_id,orderList.goPayCallback);
+    });
+    //重新报价
+    $('.content').on('tap','.pbtn .requote',function(){
+      var $this = $(this);
+      var channel_order_id = parseInt($this.attr('data-channel-order-id'));
+      var order_id = parseInt($this.attr('data-order-id'));
+      orderList.goPay(channel_order_id, order_id, orderList.requoteCallback);
+    });
+  });
+</script>

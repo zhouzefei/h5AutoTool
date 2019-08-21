@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="width=device-width">
+    <title>汽车超人</title>
+    <script src="js/zepto.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+    	*{padding: 0; margin: 0;}
+		body{background: #422c2e;}
+		
+		.pageend {width:100%;position:relative;}
+		.pageend>img{width:100%;}
+		.pageend .zjbox{width:100%; position:absolute; top:73%;}
+		.pageend .head{height:1rem; font-size:0.4rem;color:#fff; background:#312223;position:relative; }
+		.pageend .head table{width:100%;}
+		.pageend .head table tr{height:1rem;opacity:1;}
+		.pageend .head .bg{opacity:0.7;height:1rem; position:absolute; top:0;} 
+		.pageend .winListMesgDiv{height:80%;overflow-y: scroll; }
+		.pageend .winListMesgDiv table{width:100%;}
+		.pageend .winListMesg td{font-size:0.4rem;color:#fff;padding:5px 0;}
+		.pageend .winListMesg td i.iwhach{vertical-align: middle;display:inline-block; width:0.4rem;height:0.4rem; background:url(images/iwhach.png) no-repeat; background-size:100% 100%; }
+		.pageend .winListMesg td i.carjl{vertical-align: middle;display:inline-block; width:0.4rem;height:0.4rem; background:url(images/carjl.png) no-repeat; background-size:100% 100%; }
+
+		.pageend .load{padding:10px 0;}
+		.pageend .load img{display:block;margin:0 auto;}
+		.pageend .hdgz{position:absolute; top:15px;left:5%; font-size:0.4rem;color:#fff;}
+		.pageend .zgift{position:absolute; top:15px;right:5%;font-size:0.4rem;color:#fff;}
+		.jname{padding-left:10px;}
+	</style>
+</head>
+<body >
+	<div class="pageend">
+		<img src="images/hdend.jpg">
+		<div class="hdgz j_guize">活动规则 >></div>
+		<div class="zgift j_gift">我中奖品 >></div>
+		<div class="zjbox">
+			<div class="head">
+				<div class="bg"></div>
+				<table>
+					<tr>
+						<th width="32%">中奖名单</th>
+						<th width="35%">奖品</th>
+						<th width="33%">时间</th>
+					</tr>
+				</table>
+			</div>
+			<div class="winListMesgDiv" id="winListMesgDiv">
+				<table class="winListMesg">
+					<tbody>
+						
+					</tbody>
+				</table>
+				<p class="load"><img src="images/loader.gif" alt=""></p>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/base.js" ></script>
+
+<script>
+var winListMesgDivH=document.documentElement.clientHeight-$(".head").offset().top-$(".head").height();
+$('.winListMesgDiv').height(winListMesgDivH);
+var page=1,
+isLoad=true;
+getwinMesg(1);
+
+$('.winListMesgDiv').scroll(function(){
+	var scrollTop=$('.winListMesgDiv').scrollTop(),
+		h=$('.winListMesgDiv').height();		
+	if ($('.winListMesg').height() <= scrollTop+h && !isLoad) {
+		$('.load').show();
+		page++;
+		isLoad=true;
+		setTimeout(function(){
+			getwinMesg(page);
+		},1000)		
+	}
+	
+})
+
+
+
+function getwinMesg(page){
+	getJsonData(ajaxurl+"/lottery/queryTotalPrizeEntityFront?format=json&app=appshuang",{"page":page},function(data){
+		var ned=data,str="";
+		if(ned.userPrizeList.length){
+			for(var i=0;i<ned.userPrizeList.length;i++)
+			{
+				str+="<tr><td width='32%' align='center'>"+ned.userPrizeList[i].userNick+"</td><td width='35%' align='left' class='jname'><i></i> <span>"+ned.userPrizeList[i].prizeName+"</span></td><td width='33%' align='center'>"+formatDate(new Date(ned.userPrizeList[i].createTime))+"</td></tr>";
+			}
+			$(".winListMesg tbody").append(str);
+			$(".jname").eq(0).find("i").addClass("iwhach");
+			$(".jname").eq(1).find("i").addClass("carjl");
+			$(".jname").eq(2).find("i").addClass("carjl");
+			$(".jname").eq(3).find("i").addClass("carjl");
+				
+			$('.load').hide();
+			isLoad=false;		
+		}else{
+			
+			$('.load').hide();
+		}
+
+		
+	});
+}
+function   formatDate(now)   {     
+  var   month=now.getMonth()+1;     
+  var   date=now.getDate();     
+  var   hour=now.getHours();     
+  var   minute=now.getMinutes();     
+  var   second=now.getSeconds();     
+  return month+"-"+(date>=10 ? date:("0"+date))+"   "+(hour>=10 ? hour:("0"+hour))+":"+(minute>=10 ? minute:("0"+minute))+":"+(second>=10 ? second:("0"+second));     
+} 
+var pages={
+	init:function(){
+		rules.event();
+		mygift.event();
+	}
+}
+window.onload=function(){
+	pages.init();
+}
+</script>
+
+</html>

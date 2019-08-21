@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>app集字春季活动</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<img class="bg" src="images/bg_01.jpg" alt="">	
+			<div class="banner">
+				<!-- <img src="images/banner1.png" alt=""> -->
+				<div class="one">
+					<img class="graylight" src="images/graylight1.png" alt="">
+					<!-- <img src="images/lighter1.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="two">
+					<img class="graylight" src="images/graylight2.png" alt="">
+					<!-- <img src="images/lighter2.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="three">
+					<img class="graylight" src="images/graylight3.png" alt="">
+					<!-- <img src="images/lighter3.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="four">
+					<img class="graylight" src="images/graylight4.png" alt="">
+					<!-- <img src="images/lighter4.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="five">
+					<img class="graylight" src="images/graylight5.png" alt="">
+					<!-- <img src="images/lighter5.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="six">
+					<img class="graylight" src="images/graylight6.png" alt="">
+					<!-- <img src="images/lighter6.png"	class="lighter" alt=""> -->
+				</div>
+				<div class="seven">
+					<img class="graylight" src="images/graylight7.png" alt="">
+					<!-- <img src="images/lighter7.png"	class="lighter" alt=""> -->
+				</div>
+			</div>		
+			<div class="gundong">
+				<img class="bg" src="images/bg_02.jpg" alt="">
+				<div class="gundongcon"></div>
+			</div>
+			<img class="bg" src="images/bg_03.jpg" alt="">
+			<div class="wordNum">
+				<img class="bg" src="images/bg_04.jpg" alt="">
+				<span>0</span>
+			</div>
+			<div class="btn">
+				<p class="startColle">开始集字</p>
+				<p class="friend">喊朋友帮忙</p>
+				<p class="over">活动已结束</p>			
+				<p class="check">查看礼包</p>
+			</div>
+		</div>
+		<div class="redRule">			
+			<div class="rulcontent">
+				<img src="images/rule.png" alt="">
+				<div class="rulCon">
+					<p>1. 本次活动时间：2016 /2 /29 ~ 2016 /3 /11 ;</p>
+					<p>2. 每位用户只能参与一次活动，也可以邀请好友为自己集字；</p>
+					<p>3. 成功邀请7位好友集字（包括自己），凑齐“超人请我做保养"，即可获得保养红包一份；</p>
+					<p>4. 保养红包包括10元、30元、50元、188元保养券，随机发放，自发放之日起30天内有效；</p>
+					<p>5.特维轮网络科技（杭州）有限公司在法律规定的范围内对此活动有解释权。</p>
+				</div>
+			</div>		
+		</div>
+	</div>	
+	<div class="done" style="display:none">
+		<div class="giftbag">
+			<div class="banner">
+				<div class="one">
+					<img src="images/lighter1.png"	class="lighter" alt="">
+				</div>
+				<div class="two">
+					<img src="images/lighter2.png"	class="lighter" alt="">
+				</div>
+				<div class="three">
+					<img src="images/lighter3.png"	class="lighter" alt="">
+				</div>
+				<div class="four">
+					<img src="images/lighter4.png"	class="lighter" alt="">
+				</div>
+				<div class="five">
+					<img src="images/lighter5.png"	class="lighter" alt="">
+				</div>
+				<div class="six">
+					<img src="images/lighter6.png"	class="lighter" alt="">
+				</div>
+				<div class="seven">
+					<img src="images/lighter7.png"	class="lighter" alt="">
+				</div>
+			</div>
+			<img src="images/Congra.png" alt="" class="congra">
+			<div class="coupon">
+				<span>188</span>
+				<span>保养券</span>
+			</div>
+			<p class="info">已放入<b>150****5265</b>账户中</p>
+			<p class="use" onclick="toApp.carToMaintain()">去使用</p>
+		</div>
+	</div>				
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	// var ajaxUrl = 'http://market.qccr.com';
+	// var ajaxUrl = 'http://market.yfbqccr.com';
+	var ajaxUrl = 'http://192.168.3.213';
+	//var ajaxUrl = 'http://market.csqccr.com:9100';
+	// var ajaxUrl = 'http://192.168.2.146';
+	if (/\.qccr\.com/.test(location.href))
+	    ajaxUrl = 'http://market.qccr.com';
+	var w = document.documentElement.clientWidth,
+	    h = document.documentElement.clientHeight;
+	$(".content,.done").width(w);
+	$(".done").height(h);		
+	wordCollect.apply();		
+	</script>
+	<script src="http://sale.qccr.com/js/traffics.js"></script>
+</body>
+</html>

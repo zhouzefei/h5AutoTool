@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>订单详情</title>
+  <meta charset="UTF-8">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://sale.qccr.com/commonComponents/js/common/mobilecommon.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      
+    </div>
+  </div>
+</body>
+</html>
+<script>    
+  var orderInfo = {
+    orderId: 1,
+    init: function(){
+        var orderId = getQueryString("orderId");
+        orderInfo.orderId = orderId;
+        signCreate("Order",'{"insurance_id": "1","service_id":"OrderInfo","order_id": '+ orderId +'}',orderInfo.getOrderInfo);
+    },
+    getOrderInfo: function(data){
+        var strVar = "";
+        strVar += "<table class=\"orderInfo addPadding\" cellspacing=\"0\">";
+        strVar += "<tr class=\"status\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += "   <img src=\"images/order_icon.png\">" + data.info.order_status;
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr class=\"address\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += "   <div class=\"addr\">";
+        strVar += "     <p class=\"userName\">";
+        strVar += "       收货人："+ data.info.ems_name +"<span class=\"phone\">"+ data.info.ems_phone +"<\/span>";
+        strVar += "     <\/p>";
+        strVar += "     <p class=\"addrInfo\">";
+        strVar += "       收货地址：" + data.info.ems_address;
+        strVar += "     <\/p>";
+        strVar += "   <\/div>";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr class=\"addSpace\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr class=\"carNum\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += "   <a href=\"insurance.shtml?orderId=" + orderInfo.orderId +"\" class=\"pList\">";
+        strVar += "     <div class=\"td_pic\">";
+        strVar += "       <img src=\"images/order.jpg\">";
+        strVar += "     <\/div>";
+        strVar += "     <div class=\"td_name\">";
+        strVar += "       <span>车牌号：";
+        if(data.info.car_code == ""){
+            strVar +=  "新车未上牌<\/span>";
+        }else{
+            strVar +=  data.info.car_code + "<\/span>";
+        }
+        strVar += "     <\/div>";
+        strVar += "     <div class=\"td_info\">";
+        strVar += "       <span>保单详情<\/span>";
+        strVar += "     <\/div>";
+        strVar += "   <\/a>";
+        strVar += "   <p class=\"pprice\">";
+        strVar += "              共1件商品";
+        strVar += "     <span class=\"addMar\"><\/span>实付：<span>￥"+ parseFloat(data.info.amount_now).toFixed(2) +"<\/span>";
+        strVar += "   <\/p>";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr class=\"addSpace\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<tr class=\"orderIdTime\">";
+        strVar += " <td colspan=\"3\">";
+        strVar += "   <p class=\"addBorder\">";
+        strVar += "     订单编号："+data.info.order_no;
+        strVar += "   <\/p>";
+        strVar += "   <p class=\"addPaddingTop\">";
+        strVar += "     下单时间："+data.info.create_time;
+        strVar += "   <\/p>";
+        strVar += " <\/td>";
+        strVar += "<\/tr>";
+        strVar += "<\/table>";
+        //添加状态判断代码
+        if(data.info.order_status == "待付款"){
+            strVar += "<div class=\"operate\">";
+            strVar += " <a data-order-id=\"" + data.info.order_id + "\" data-channel-order-id=\""+ data.info.channel_order_no +"\" href=\"javascript:void(0);\" class=\"btn paynow\">立即付款<\/a>";
+            strVar += "<\/div>";
+        }else if(data.info.order_status == "已关闭"){
+            strVar += "<div class=\"operate\">";
+            strVar += " <a data-order-id=\"" + data.info.order_id + "\" data-channel-order-id=\""+ data.info.channel_order_no +"\" href=\"javascript:void(0);\" class=\"btn requote\">重新报价<\/a>";
+            strVar += "<\/div>";
+        }else if(data.info.order_status == "交易成功"){
+
+        }
+        $(".content").html(strVar);
+    },
+    goPay: function(channel_order_Id, order_id,callback){
+      signCreate('Callback','{"insurance_id": "1","service_id":"getCallBackPayUrl","channel_order_Id":"'+ channel_order_Id +'","order_id": "'+ order_id +'"}',callback)
+    },
+    goPayCallback: function(data){
+      if(data.code === 0){
+        if(data.info.pay_url){
+            var transferUrl = data.info.pay_url;
+            window.location.href = transferUrl;
+        }
+      }
+    },
+    requoteCallback: function(data){
+      if(data.code === 0){
+        if(data.info.again_pay_url){
+          var again_pay_url = data.info.again_pay_url;
+          window.location.href = again_pay_url;
+        }
+      }
+    }
+  }
+  orderInfo.init();
+
+  $(function(){
+    //立即支付
+    $('.content').on('tap','.paynow',function(){
+      var $this = $(this);
+      var channel_order_id = parseInt($this.attr('data-channel-order-id'));
+      var order_id = parseInt($this.attr('data-order-id'));
+      orderInfo.goPay(channel_order_id, order_id,orderInfo.goPayCallback);
+    });
+    //重新报价
+    $('.content').on('tap','.requote',function(){
+      var $this = $(this);
+      var channel_order_id = parseInt($this.attr('data-channel-order-id'));
+      var order_id = parseInt($this.attr('data-order-id'));
+      orderInfo.goPay(channel_order_id, order_id, orderInfo.requoteCallback);
+    });
+  });
+</script>

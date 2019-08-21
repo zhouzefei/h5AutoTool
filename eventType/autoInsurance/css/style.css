@@ -1,0 +1,509 @@
+*{
+	margin: 0;
+	padding: 0;
+	font: 0.38rem 'Microsoft YaHei',tahoma, Arial, Verdana, sans-serif;
+	line-height: 0.7rem;
+	color:#666;
+}
+html,body{background: #efeff4;overflow-x: hidden;min-height: 100%;}
+a{
+	color:#000;
+	text-decoration: none;
+}
+input{
+	border:none;
+}
+.container{
+	position: relative;
+	overflow: hidden;
+}
+
+.mqad{
+	width: 100%;
+	font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;
+	
+}
+.mqad>div{
+	width:100%;
+}
+.mqad>div img{
+	width:100%;
+	display:block;
+}
+
+.container .banner{
+	position: relative;
+	width: 100%;
+}
+.container .banner a{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.container .banner a img{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.container .content{
+	position: relative;
+	width:100%;
+}
+.container .content .con_nocar{
+	position: relative;
+	display: block;
+	width: 2.5rem;
+	margin: 2rem auto 0.3rem auto;
+}
+.container .content p.con_t1{
+	text-align: center;
+}
+.container .content p.con_t2{
+	text-align: center;
+}
+.container .content .addBottom{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid #d7d7d7;
+	background-color: #fff;
+	text-align: center;
+	width: 100%;
+	z-index: 111;
+}
+.container .content .addBottom a{
+	display: block;
+	width: 100%;
+	color: #666;
+	padding: 0.3rem 0;
+}
+
+.container .content .carList{
+	position: relative;
+	width:100%;
+	font-size: 0.5rem;
+	background: #fff;
+	margin-bottom: 1.5rem;
+}
+.container .content .carList td{
+	border-bottom: 1px solid #cecece;
+}
+.container .content .carList .con_td1{
+	width:7rem;
+	line-height: 0.6rem;
+}
+.container .content .carList .con_td1 a{
+	position: relative;
+	display: block;
+	padding: 0.3rem 0;
+}
+.container .content .carList .con_td1 img{
+	float: left;
+	width:1.2rem;
+	height: 1.2rem;
+	margin-right: 0.3rem;
+	margin-left: 0.3rem;
+}
+.container .content .carList .con_td1 .carName{
+	width: 5rem;
+	text-overflow : ellipsis; 
+	white-space : nowrap; 
+	overflow : hidden;
+	color: #333;
+	line-height: 0.6rem;
+}
+.container .content .carList .con_td1 .carInfo{
+	color: #999;
+	font-size: 0.35rem;
+	line-height: 0.6rem;
+}
+.container .content .carList .con_td1 .carInfo span{
+	margin-left: 0.3rem;
+	font-size: 0.35rem;
+}
+.container .content .carList .con_td2{
+	width: 3rem;
+	text-align: center;
+}
+.container .content .carList .con_td2 a{
+	position: relative;
+	margin: auto;
+	padding: 0.2rem 0.5rem;
+	background: #f03060;
+	color: #fff;
+	border-radius: 0.14rem;
+	font-size: 0.34rem;
+}
+
+.container .content .top{
+	text-align: left;
+	background: #fff;
+	border-bottom: 1px solid #d7d7d7;
+	padding: 0.2rem;
+}
+.container .content .top img{
+	width: 1rem;
+	height: 1rem;
+	vertical-align: -0.4rem;
+	margin-right: 0.3rem;
+}
+.container .content .formList{
+	position: relative;
+	width: 100%;
+	margin: auto;
+}
+.container .content .formList td{
+	border-bottom: 1px solid #d7d7d7;
+}
+.container .content .formList .icon{
+	width: 100%;
+	padding: 0.2rem;
+	padding-top: 0.4rem;
+}
+.container .content .formList .icon span{
+	color: #f01e50;
+	vertical-align: -0.09rem;
+	margin-left: 0.05rem;
+}
+.container .content .formList .info{
+	width: 100%;
+	background: #fff;
+}
+.container .content .formList .info input[type='text']{
+	width: 94%;
+	height: 1rem;
+	margin: auto 0;
+	padding:0 3%;
+	border:0;
+}
+.container .content .formList .info input[type='text'].carNum{
+	width: 6.5rem;
+	margin-top: -1px;
+	padding:0 0.3rem;
+}
+.container .content .formList .info input[type='text'].setArea{
+	width: 8.7rem;
+	padding-right:1rem;
+	background: url(../images/icon_right.png) no-repeat;
+	background-size: 0.24rem;
+	background-position: 9.4rem center;
+}
+.container .content .formList .info p.carArea,.container .content .formList .info p.letter{
+	position: relative;
+	width: 0.8rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	margin: 0.2rem 0;
+	float: left;
+	text-align: center;
+	border-right: 1px solid #ddd;
+	z-index: 111;
+	padding-right: 0.6rem;
+	background: url(../images/icon_down.png) no-repeat;
+	background-size: 0.3rem;
+	background-position: 0.9rem center;
+}
+.container .content .formList .info p#txt_area{
+	height: 1rem;
+	line-height: 1rem;
+	width: 87%;
+	padding:0 3%;
+	padding-right:10%;
+	background: url(../images/icon_right.png) no-repeat;
+	background-size: 2.4%;
+	background-position: 96% center;
+}
+
+.container .content .goCompare{
+	width: 9.8rem;
+	margin:auto;
+	background: #f03060;
+	color: #fff;
+	text-align: center;
+	border-radius: 0.1rem;
+	padding: 0.15rem 0;
+	margin-top: 0.4rem;
+}
+
+.container .content .noOrder{
+	text-align: center;
+	margin: 0.2rem auto;
+}
+.container .content .noOrderPic{
+	position: relative;
+	display: block;
+	width: 1rem;
+	margin: auto;
+	margin-top: 4rem;
+}
+
+.container .content .goYibaoxian{
+	display: inline-block;
+	position: relative;
+	color: #666;
+	padding: 0.1rem 0.2rem;
+	border: 1px solid #666;
+	margin-top: 0.1rem;
+	margin-bottom: 0.1rem;
+	border-radius: 0.14rem;
+	min-width: 2.1rem;
+}
+
+.container .content .order{
+	position: relative;
+	width: 100%;
+}
+.container .content .order {
+	position: relative;
+	width: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.container .content .order li{
+	margin-bottom: 0.3rem;
+	border-top: 1px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+	padding-left: 3%;
+	background: #fff;
+}
+.container .content .order li.list{
+	display: block;
+}
+.container .content .order li.list p{
+	position: relative;
+	display: block;
+	overflow: auto;
+	width: 96%;
+	padding:0.3rem 4% 0.3rem 0;
+	border-bottom: 1px solid #d7d7d7;
+	color: #333;
+}
+.container .content .order li.list p span.theCarNum{
+	display: inline-block;
+	height: 1.8rem;
+	line-height: 1.8rem;
+}
+.container .content .order li.list p a{
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.container .content .order li.list p span.status{
+	float: right;
+	color: #f03060;
+}
+.container .content .order li.list p .pimg{
+	width: 1.8rem;
+	height: 1.8rem;
+	margin-right: 0.2rem;
+	float: left;
+	border:1px solid #d7d7d7;
+	border-radius: 0.15rem;
+}
+.container .content p.pprice{
+	text-align: right;
+}
+.container .content  p.pprice span{
+	font-weight: bold;
+}
+.container .content p.pprice span.addMar{
+	padding: 0.2rem;
+}
+
+.container .content .order li.list p.pbtn{
+	border: none;
+  overflow: auto;
+}
+.container .content .order li.list p.pbtn span{
+	padding:0.08rem 0.5rem;
+	float: right;
+	border:1px solid #ddd;
+	border-radius: 0.1rem;
+}
+
+.container .content .order li.list p.pbtn .btn1{
+	border: 1px solid #f03060;
+}
+.container .content .order li.list p.pbtn .btn1 a{
+  color: #f03060;
+}
+
+.container .content .orderInfo{
+	position: relative;
+	width: 100%;
+	border:none;
+  padding-bottom: 0.5rem;
+}
+.container .content .orderInfo.addPadding{
+  padding-bottom: 1.7rem;
+}
+
+.container .content .orderInfo td{
+	border-bottom: 1px solid #ddd;
+	padding:0.3rem;
+  background: #fff;
+}
+.container .content .orderInfo tr.addSpace td{
+  height: 0;
+  padding: 0.15rem;
+  background: #efeff4;
+}
+
+.container .content .orderInfo tr.status td{
+  color: #fff;
+  font-size: 0.4rem;
+  background: #525b75;
+}
+.container .content .orderInfo tr.status td img{
+  width: 0.6rem;
+  vertical-align: -0.18rem;
+  margin-right: 0.3rem;
+  margin-left: 0.14rem;
+}
+.container .content .orderInfo tr.address td .addr{
+  padding-left: 1rem;
+  background: url(../images/addr_icon.png) no-repeat;
+  background-size: 0.6rem auto;
+  background-position: 0.15rem center;
+}
+.container .content .orderInfo tr.address td .addr .userName{
+  color: #333;
+}
+.container .content .orderInfo tr.address td .addr .phone{
+  margin-left: 0.3rem;
+  float: right;
+}
+.container .content .orderInfo tr.carNum td{
+  border: none;
+  padding: 0;
+  padding-left: 0.2rem;
+}
+.container .content .orderInfo tr.carNum td p{
+  padding:0.3rem 0;
+  border-bottom: 1px solid #ddd;
+}
+.container .content .orderInfo tr.carNum td p.addrInfo,.container .content .orderInfo tr.carNum td p.addrInfo b,.container .content .orderInfo tr.carNum td p.addrInfo a,.container .content .orderInfo tr.carNum td p.addrInfo label,.container .content .orderInfo tr.carNum td p.addrInfo strong{
+	color: #666 !important;
+}
+.container .content .orderInfo .pList{
+	display: block;
+  min-height: 2rem;
+  padding:0.3rem 0;
+  overflow: auto;
+  border-bottom: 1px solid #ddd;
+}
+.container .content .orderInfo .td_pic{
+	width: 2rem;
+  display: inline-block;
+  float: left;
+}
+.container .content .orderInfo .td_pic img{
+	width: 1.8rem;
+  height: 1.8rem;
+  float: left;
+  border:1px solid #d7d7d7;
+  border-radius: 0.15rem;
+}
+.container .content .orderInfo .td_name{
+	width: 4.2rem;
+  display: inline-block;
+  float: left;
+  height: 2rem;
+  line-height: 2rem;
+}
+.container .content .orderInfo .td_info{
+  position: relative;
+	width: 3rem;
+  display: inline-block;
+	text-align: right;
+  float: right;
+  padding-top: 0.65rem;
+  padding-right: 0.5rem;
+}
+.container .content .orderInfo .td_info span{
+  height: 0.7rem;
+  color: #999;
+  padding-right: 0.6rem;
+  background: url(../images/icon_right.png)  no-repeat;
+	background-position: right center;
+	background-size: 0.26rem;
+  margin-top: 0.6rem;
+}
+
+.container .content .orderInfo .td_info:after{
+  clear: both;
+}
+.container .content .orderInfo tr.carNum td p.pprice{
+  padding-right: 0.3rem;
+  color: #333;
+}
+.container .content .orderInfo tr.carNum td p.pprice span{
+  font-weight: normal;
+}
+
+.container .content .orderInfo tr.orderIdTime td{
+  border: none;
+  padding: 0;
+  padding-left: 0.2rem;
+}
+.container .content .orderInfo tr td p.addBorder{
+  padding: 0.3rem 0;
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid #ddd
+}
+.container .content .orderInfo tr td p.addPaddingTop{
+  padding: 0.3rem 0;
+  padding-top: 0.1rem;
+}
+
+.container .content .orderInfo td.td_title{
+  padding-bottom: 0.16rem;
+	padding-top: 0.5rem;
+  background: #efeff4;
+  color: #666;
+}
+
+.container .content .orderInfo td .logo{
+	width: auto;
+	height: 0.5rem;
+	display: inline-block;
+  vertical-align: -0.08rem;
+}
+
+.container .content .orderInfo td .addColor{
+	float: right;
+	color: #f03060;
+}
+
+.container .content .orderInfo td.insurance p{
+	font-size: 0.36rem;
+	color: #262626;
+}
+
+.container .content .operate{
+  position: fixed;
+  width: 100%;
+  padding: 0.34rem 0;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #d7d7d7;
+  background: #fff;
+}
+.container .content .operate .btn{
+  padding:0.08rem 0.5rem;
+  float: right;
+  border:1px solid #f03060;
+  border-radius: 0.1rem;
+  margin-right: 0.5rem;
+  color: #f03060;
+}
+
+.load{text-align:center;margin-top:10px;}
+
+
+
+
+
+

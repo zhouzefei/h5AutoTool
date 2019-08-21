@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>汽车超人</title>
+  <meta name="copyright" content="特维轮网上商城" />
+  <meta name="keywords" content="汽车保养app、洗车app、汽车超人app下载" />
+  <meta name="description" content="汽车超人app是一款致力于发展汽车后市场O2O行业、服务于车主的APP应用软件。车主可通过该平台实现线上采购汽车配件，线下享受 汽车保养、美容、轮胎换装等一站式综合车主服务。" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate icon" type="image/png" href="http://app.qccr.com/images/29.png">
+  <style>
+    html,body{
+      position: relative;
+      height: 100%;
+    }
+    body{
+      background-color: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+          margin: 0;
+          padding: 0;
+    }
+    .swiper-container{
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          background: #fff;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+      }
+      .wrapper{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .sw1{
+        background: url('http://sale.qccr.com/appstatic/downh5/images/bg1.jpg') no-repeat center center;
+        background-size: auto 100%;
+      }
+      .sw2{
+        background:#f6f6f6 url('http://sale.qccr.com/appstatic/downh5/images/bg2.jpg') no-repeat center center;
+        background-size: auto 100%;
+      }
+      .sw3{
+        background: url('http://sale.qccr.com/appstatic/downh5/images/bg3.jpg') no-repeat center center;
+        background-size: auto 100%;
+      }
+      .sw4{
+        background:#f6f6f6 url('http://sale.qccr.com/appstatic/downh5/images/bg4.jpg') no-repeat center center;
+        background-size: auto 100%;
+      }
+      .sw5{
+        background: url('http://sale.qccr.com/appstatic/downh5/images/bg5.jpg') no-repeat center center;
+        background-size: auto 100%;
+      }
+      .w-top{
+        height: 19% !important;
+        display: block;
+        border: 0;
+        margin: 0 auto;
+        background-size: auto 100% !important;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .btn-download{
+        position: fixed;
+        top: 83%;
+        left: 50%;
+        width: 50%;
+        margin-left: -25%;
+        display: block;
+      }
+      .next a{
+        position: fixed;
+        bottom: 2%;
+        width: 24px;
+        margin-left: -12px;
+        left: 50%;
+      }
+      .next a img{
+        width: 100%;
+      }
+      @-webkit-keyframes nexting{
+        0%{
+            -webkit-transform:translateY(-2px);
+            transform:translateY(-2px); 
+        }
+        50%{
+            -webkit-transform:translateY(3px) ;
+            transform:translateY(3px); 
+        }
+        100%{
+            -webkit-transform:translateY(-2px);
+            transform:translateY(-2px); 
+        }
+    }
+
+  </style>
+  <script type="text/javascript" src="http://app.qccr.com/assets/js/respond.js"></script>
+</head>
+<body>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide sw1">
+          <section id="page" class="wrapper">
+          </section>
+        </div>
+        <div class="swiper-slide sw2">
+          <section id="page2" class="wrapper">
+          </section>
+        </div>
+        <div class="swiper-slide sw3">
+          <section id="page3" class="wrapper">
+          </section>
+        </div>
+        <div class="swiper-slide sw4">
+          <section id="page4" class="wrapper">
+          </section>
+        </div>
+        <div class="swiper-slide sw5">
+          <section id="page5" class="wrapper">
+          </section>
+        </div>
+      </div>
+    </div>
+    <a href="javascript:void(0)"><img src="http://sale.qccr.com/appstatic/downh5/images/btn.jpg" class="btn-download"></a>
+    <div class="next">
+      <a>
+        <img src="http://sale.qccr.com/appstatic/downh5/images/arrow.png" style="-webkit-animation: nexting 1.5s ease infinite;">
+      </a>
+    </div>
+<script type="text/javascript" src="http://app.qccr.com/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://sale.qccr.com/appstatic/downh5/js/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+page.style.height=document.documentElement.clientHeight+"px";
+(function(win){var timeout,doc = win.document,html = doc.documentElement;
+  function setFontSize(){var htmlWidth = html.getBoundingClientRect().width;var ratio = htmlWidth / 640;
+    if(htmlWidth < 640){win.rem = ratio * 1.5}
+    else{win.rem = 1.5}
+  win.responseRatio = ratio;html.style.fontSize = win.rem + "rem"}
+  win.addEventListener("resize",function(){clearTimeout(timeout),timeout = setTimeout(setFontSize,300)}
+,false);setFontSize()}
+)(window);
+window.onload = function(){
+  var mySwiper = new Swiper('.swiper-container',{
+    direction: 'vertical',
+    nextButton: '.next'
+  });
+  $(".btn-download").click(function(e){
+	e.preventDefault();
+	location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.twl.qichechaoren&ckey=CK1309439168404';
+  })
+}
+</script>

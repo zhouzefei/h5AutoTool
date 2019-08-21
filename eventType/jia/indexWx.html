@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta charset="utf-8">
+		<title>汽车超人抢红包</title>
+		<script>
+			function resize() {
+				window.remFontSize = document.documentElement.clientWidth / 10;
+				document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px"
+			}
+		var b = null;
+		window.addEventListener("resize", function() {
+			clearTimeout(b), 
+			b = setTimeout(resize, 300)
+		}, !1);
+		resize();
+		</script>
+		<link rel="stylesheet" href="css/fixedcoupon.css" />
+	</head>
+	<body>
+		<div class="pages living" >
+			<div class="RedEnvelope receiveRedEnvelope" style="display:none;">
+				<input type="text" placeholder="请输入您的手机号码" class="enterTel">
+				<a href="javascript:;">领取红包</a>
+			</div>
+
+			<div class="RedEnvelope grabCoupons" style="display:none">
+				<div class="RedEnvelopeCon">
+					<p class="coupon"><span>1分钱洗车券</span></p>
+					<p class="account">优惠券已放置账户<span>13567116114</span></p>
+					<p class="appuse">登录APP即可使用</p>
+				</div>
+				<a href="javascript:;">下载汽车超人客户端</a>
+			</div>
+
+			<div class="RedEnvelope haveReceived" >
+				<div class="RedEnvelopeCon">
+					<p class="coupon">
+						<span>已领取</span>
+						<span>1分钱洗车券</span>
+					</p>
+					<p class="account">优惠券已放置账户<span>13567116114</span></p>
+					<p class="appuse">登录APP即可使用</p>
+				</div>
+				<a href="javascript:;">下载汽车超人客户端</a>
+			</div>
+
+			<div class="RedEnvelope noneRedEnvelope" style="display:none">
+				<div class="RedEnvelopeCon">
+					<p class="coupon"><span>已抢光</span></p>
+				</div>
+				<a href="javascript:;">下载汽车超人客户端</a>
+			</div>
+
+			<div class="activityRule">
+				<img src="images/wxguize_05.png" alt="">
+			</div>
+		</div>
+		<div class="pages guoqi" style="display:none;">
+			<p><img src="images/guoqi_02.jpg" alt=""></p>
+			<a href="javascript:;">领取红包</a>
+			
+		</div>
+	</body>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script>
+		var bodyH=document.documentElement.clientHeight;
+		$('.pages').height(bodyH)
+	</script>
+</html>

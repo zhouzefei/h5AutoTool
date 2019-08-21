@@ -1,0 +1,18 @@
+$(function(){
+	//关闭
+	$('body').on('touchend','.closeAppLogin',function(){
+		$(this).closest('.appLoginWrap').hide();
+	});
+	//去登陆
+	$('body').on('touchend','.appLoginGo',function(){
+		try{
+			toApp.login();
+		}catch(e){
+		}
+		try{
+			 if(getQueryString("isIPhone")=="true")
+			 location.href="objc://login";
+		}catch(e){
+		}
+	});
+});

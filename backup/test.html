@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工具测试页</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+*{margin:0;padding:0;font-family:"Microsoft YaHei" Arial}html{font-size:62.5%;height:100%}body{font-size:14px;font-family:"Microsoft YaHei" Arial!important;color:#333333;background-color:#FCFCFC;position:relative;height:100%}input{outline:0 none;border:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}button{outline:0 none;border:none;font-family:"Microsoft YaHei" Arial!important;filter:chroma(color=#000000)}input,button,select,textarea{outline:none}textarea,button,select{font-family:"Microsoft YaHei" Arial!important}input:focus::-webkit-input-placeholder{color:transparent}input::-moz-focus-inner,input::-moz-focus-outer{border:0 none;padding:0;margin:0}input[type=button],input[type=submit]{cursor:pointer}ol,li,ul{list-style-type:none}html,body{height: 100%;width: 100%;}#wrapContent,#wrap{height: 100%;width: 100%;}#wrap{position: relative;}
+	</style>
+
+</head>
+<body>
+	<div id='wrap'>
+         <div id="wrapContent" style="position: relative; background-image: url(file:///D:/shopSale%20-%20%E5%89%AF%E6%9C%AC/sale/h5Tool/images/pres/dp1.png); background-size: 100% 100%;">
+           
+       <div class="box txtProto" data-role="txtProto" style="position: absolute; top: 900.055px; left: 257.231px;">请输入文本<div class="coor" style="display: block;"></div></div></div>
+   
+	</div>
+    <script>
+		!(function a(win) {
+		    var phoneWidth = parseInt(win.document.documentElement.getBoundingClientRect().width);
+		    var phoneScale = phoneWidth / 640;
+		    alert(phoneScale);
+		    document.getElementById('wrap').style.cssText = '-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scale(' + phoneScale + ');transform:scale(' + phoneScale + ');';
+
+		}(window));
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* CSS Document */
+html{color:#666;-ms-text-size-adjust:100%;_text-overflow:ellipsis;background:#e5e5e5;}
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,select,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+body,button,input,select,textarea{font:12px/1.5 hiragino sans gb,microsoft yahei,simsun}
+h1,h2,h3,h4,h5,h6{font-size:1em}
+body{background:#e5e5e5;}
+a{text-decoration:none; cursor:pointer;}
+a:active{outline:0 none}
+@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){a:active{background-color:transparent}}
+small,cite,code,em,th,i,b{font-size:1em;font-style:normal;font-weight:500}
+input,select,textarea,button{font-size:1em;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+button,input[type=button],input[type=submit]{cursor:pointer}
+button::-moz-focus-inner,button::-moz-focus-outer,input::-moz-focus-inner,input::-moz-focus-outer{border:0 none;padding:0;margin:0}
+input[type=search]{-webkit-appearance:textfield}
+input:focus::-webkit-input-placeholder{color:transparent}
+textarea{resize:vertical;overflow-y:auto}
+table{border-collapse:collapse;border-spacing:0}
+th{text-align:inherit}
+fieldset,img,iframe{border:0 none}
+img{display:inline-block;vertical-align:bottom;-ms-interpolation-mode:bicubic}
+iframe{display:block}
+ul,ol{list-style:none}
+li{vertical-align:top}
+.af-clear{ zoom:1;}
+.af-clear:after{
+content: '\20';
+display: block;
+height: 0;
+clear: both;
+}
+.clear{ clear:both; height:0px; overflow:hidden; width:100%; display:block;}
+body{ overflow-x:hidden; }
+/*网站公用部分*/
+
+.zhuanpan{background:url(../images/zhuanbg.jpg) no-repeat center top #ee443a; background-size:100% auto;}
+.zhuanpan .inner{position:relative;  height: 100%;}
+.zhuanpan .inner .rules{width:12%;display:block;position:absolute;top:0px; right:2.5%}
+.zhuanpan .col1{text-align:center;padding-top:22px;}
+.zhuanpanneirong {
+  position: relative;
+  margin: 20px auto -5px;
+  width: 90%;
+  background: url(../images/zhuanpanbg_03.png) no-repeat  1px 6px;
+  background-size: 100% 99%;
+  padding: 0px 2px 2px 2px;
+}
+.zhizhen{position:absolute;left:0;top:0;}
+.zhizheng{  position: absolute;
+  left: 34%;
+  top: 34%;
+  width: 31%;
+  height: 31%;}
+.zhongjiang1{position:relative;}
+.zhongjiang1  > img{display:block;}
+.mingdanlist{width:85.6%;height:46.5%;position:absolute;left:7.2%;bottom:11%;overflow:hidden;}
+.mingdanlist table{width:100%;height:100%;}
+.mingdanlist td{height:33%;}
+.panzi{  -webkit-transition: all 2s ease-out;}
+.cishu{  position: absolute;
+  width: 100%;
+   left: 3%;
+  text-align: center;
+  height: 21%;
+  top: 4%;
+  line-height: 2.3em;
+  font-size: 1.2em;
+  color: #ffffff;width: 88%;
+  left: 8%;}
+ .cishu span {
+  color: #ffe467;
+  font-size: 1.6em;
+  padding: 0px 10px;
+  
+  vertical-align: -2px;
+  
+}
+.warpguizhe .dwrap,.warpnoprize .sorry-box,.warpguizhe  .srule,.warpprize .zhongjiang{-webkit-animation: bounceIn 0.3s ease-in-out 0s;
+-webkit-animation-fill-mode: backwards;}
+ @-webkit-keyframes bounceIn {
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

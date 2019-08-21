@@ -1,0 +1,81 @@
+html { color: #666; -ms-text-size-adjust: 100%; _text-overflow: ellipsis; background: #e5e5e5; }
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, select, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { margin: 0; padding: 0 }
+body, button, input, select, textarea { font: 12px/1.5 hiragino sans gb, microsoft yahei, simsun }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+a { text-decoration: none; color: #000; }
+a:active { outline: 0 none }
+@media screen and (-ms-high-contrast:active), (-ms-high-contrast:none) {
+    a:active { background-color: transparent }
+}
+small, cite, code, em, th, i, b { font-size: 1em; font-style: normal; font-weight: 500 }
+input, select, textarea, button { font-size: 1em; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box }
+button, input[type=button], input[type=submit] { cursor: pointer }
+button::-moz-focus-inner, button::-moz-focus-outer, input::-moz-focus-inner, input::-moz-focus-outer { border: 0 none; padding: 0; margin: 0 }
+input[type=search] { -webkit-appearance: textfield }
+input:focus::-webkit-input-placeholder { color: transparent }
+img { display: inline-block; vertical-align: bottom; -ms-interpolation-mode: bicubic }
+ul, ol { list-style: none }
+li { vertical-align: top }
+.af-clear { zoom: 1; }
+.af-clear:after { content: '\20'; display: block; height: 0; clear: both; }
+.clear { clear: both; height: 0px; overflow: hidden; width: 100%; display: block; }
+.container_bonus { position: relative; width: 100%; height: 100%; background: url(../images/bg1.png) repeat-y; background-size: 100% auto; background-position: center top; overflow: hidden; }
+.container_bonus .bonus_keywarp { position: absolute; top: 58%; left: 20%; width: 59%; height: 2rem; line-height: 2rem; padding: 0; font-size: 16px; text-align: center; border: 0; outline: none; background-color: none; }
+.container_bonus .bonus_keywarp input { width: 100%; height: 1.5rem; padding: 0; font-size: 16px; text-align: center; background-color: none; border: 0; outline: none; }
+.container_bonus .exchange { position: absolute; top: 8rem; z-index: 2; left: 12%; width: 76%; display: block; height: 1.3rem; background: #ffcd32; border-radius: 50px; box-shadow: 0px 5px #f90; font-size: 0.5rem; color: #aa5a0a; text-align: center; line-height: 1.3rem; font-weight: bold; }
+.container_bonus .content { position: relative; }
+
+/*.container_bonus .bottom{position:relative;width:100%;background:url(../images/bottombg.png) no-repeat;background-size:100% 100%;z-index:9;margin-top:-6%;}*/
+.container_bonus .bottomimg { position: absolute; bottom: 0; left: 0; }
+.container_bonus img { width: 100%; }
+.container_bonus .msg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/msgbg.png) no-repeat; background-size: cover; z-index: 111; text-align: center; display: block; }
+.container_bonus .msg .msg_content { position: absolute; top: 6rem; left: 0; right: 0; bottom: 0; width: 7rem; height: 4rem; background: #FF4641; margin: 0 auto; display: block; font-size: 0.5rem; color: #fff; }
+.container_bonus .msg .msg_content .msg_con { line-height: 2.5rem; }
+.container_bonus .msg .msg_content .sureBtn { height: 1.5rem; line-height: 1.5rem; background: #FFD64E; color: #a4292e; }
+@-webkit-keyframes bounceIn {
+    0% { -webkit-transform: scale3d(0.3, 0.3, 0.3); }
+    100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); }
+}
+.container_bonus .msg .msg_content .msg_con .bonus_tel input { height: 30px; width: 100%; border: 0; padding: 0; line-height: 30px; text-align: center; border-radius: 26px; outline: none; background: none; }
+#mpt { position: fixed; top: 45%; left: 5%; z-index: 9999; width: 90%; border-radius: 6px; background-color: rgba(0, 0, 0, .7); text-align: center; }
+#mpt p { margin: 0; padding: 0; font-size: 16px; line-height: 3em; color: #fff; }
+#mpt-full { position: fixed; top: 0; left: 0; z-index: 9998; width: 100%; height: 100%; }
+
+/*弹窗样式*/
+* { margin: 0; padding: 0; }
+a { text-decoration: none; }
+.g-body { position: absolute; top: 0; z-index: 4; display: none; }
+.bj { width: 100%; height: 100%; background: #000; opacity: 0.7; position: fixed; }
+.g-dialog { width: 8.3rem; height: 10rem; background: url(../images/dialog1.png) no-repeat; background-size: 100%; margin: 0 auto; text-align: center; position: relative; z-index: 99; top: 50%; margin-top: -5.5rem; }
+.m-text { padding-top: 3.5rem; }
+.m-text img { width: 1.5rem; margin-top: 0.3rem; }
+.m-text .u-ticket1 { color: #ffcd32; font-size: 0.5rem; padding-top: 0.2rem; font-weight: bold; }
+.m-text .u-ticket span { font-size: 3rem; padding-right: 0.3rem; }
+.u-tips2 { color: #ffcd32; font-size: 0.61rem; padding-top: 1.7rem; }
+.u-tips3 { color: #fed4d6; font-size: 0.4rem; padding-top: 0.1rem; }
+.m-btn, .check { font-size: 0.4rem; background: #ffcd32; border-radius: 50px; box-shadow: 0px 5px #f90; color: #aa5a0a; text-align: center; line-height: 1rem; width: 4.5rem; margin: 0 auto; margin-top: 0.2rem; }
+.m-btn a { color: #a4292e; }
+.g-body .succe { padding-top: 4rem; }
+.succe .success { color: #FCBC3D; font-size: 0.55rem; }
+.succe .yunqi { padding-top: 0.8rem; padding-bottom: 0.5rem; color: #fff; font-size: 0.4rem; }
+.succe .tips { color: #FCBC3D; font-size: 0.3rem; }
+@media screen and (max-height:480px) {
+    .container_bonus .exchange { top: 7.2rem; }
+    .ruleContent .font { overflow-y: scroll; }
+}
+.rule { position: absolute; top: 0; right: 10px; width: 9%; display: block; height: 3rem; background: #ffcd32; border-radius: 4px; box-shadow: 0px 5px #f90; font-size: 0.5rem; color: #aa5a0a; text-align: center; }
+.ruleContent { display: none; position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.8); z-index: 4; }
+
+/*.ruleContent div{
+    position: absolute;
+    top: 1rem;
+    left: 0.5rem;
+    background: url(../images/rulecontent.png) no-repeat;
+    background-size: 100%;
+}*/
+.ruleContent img { width: 95%; height: 15rem; margin-left: 2.5%; margin-top: 0.5rem; }
+.ruleContent h3 { font-weight: bold; }
+.ruleContent .font { position: absolute; top: 1.5rem; left: 4%; width: 83%; color: #bc6f16; font-weight: bold; padding: 10px; border: 5px solid #ecc247; border-radius: 10px; background: #e7e7e7; letter-spacing: 1px; }
+.ruleContent .font::-webkit-scrollbar { width: 0; height: 0; }
+.ruleContent .font p { font-size: 0.32rem; }
+.ruleContent .close { position: absolute; top: 0.5rem; right: 0.2rem; width: 1rem; height: 1rem; z-index: 3; }
